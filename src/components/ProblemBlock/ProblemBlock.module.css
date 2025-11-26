@@ -1,0 +1,200 @@
+.problemBlock {
+  position: relative;
+  width: 100%;
+  background: var(--colors-white);
+  padding: var(--spacing-56) 0;
+}
+
+.content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-24) 0 var(--spacing-72);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-104);
+  position: relative;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+
+/* Headings */
+.heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.headingGray {
+  color: var(--colors-dark-2);
+}
+
+.headingDark {
+  color: var(--colors-dark);
+}
+
+.headingRed {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.25;
+  color: var(--colors-accent);
+  margin: 0;
+}
+
+.conclusionHeading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 56px;
+  line-height: 1.2;
+  color: var(--colors-dark-2);
+  margin: 0;
+}
+
+/* Cards */
+.cardsRow {
+  display: flex;
+  gap: var(--spacing-24);
+  width: 100%;
+}
+
+.card {
+  flex: 1;
+  min-width: 0;
+  background: var(--colors-light-bg);
+  border-radius: var(--spacing-6);
+  padding: var(--spacing-12) var(--spacing-24) var(--spacing-12) var(--spacing-16);
+  height: 136px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.cardText {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--colors-dark);
+  margin: 0;
+}
+
+/* Decorative Brackets */
+.bracketGray {
+  position: absolute;
+  left: 2px;
+  top: 24px;
+  width: 41px;
+  height: 326px;
+  pointer-events: none;
+}
+
+.bracketGray img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.bracketRed {
+  position: absolute;
+  left: 2px;
+  top: 360px;
+  width: 41px;
+  height: 324px;
+  pointer-events: none;
+}
+
+.bracketRed img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .problemBlock {
+    padding: var(--spacing-48) 0;
+  }
+
+  .content {
+    gap: var(--spacing-72);
+  }
+
+  .heading,
+  .headingRed {
+    font-size: 36px;
+  }
+
+  .conclusionHeading {
+    font-size: 42px;
+  }
+
+  /* Hide brackets on tablet */
+  .bracketGray,
+  .bracketRed {
+    display: none;
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  .problemBlock {
+    padding: var(--spacing-32) var(--spacing-18);
+  }
+
+  .content {
+    padding: 0 0 0 var(--spacing-80);
+    gap: var(--spacing-40);
+  }
+
+  .section {
+    gap: var(--spacing-12);
+  }
+
+  .heading,
+  .headingRed {
+    font-size: 28px;
+  }
+
+  .headingGray,
+  .headingDark {
+    display: block;
+  }
+
+  .conclusionHeading {
+    font-size: 28px;
+  }
+
+  /* Stack cards vertically on mobile */
+  .cardsRow {
+    flex-direction: column;
+    gap: var(--spacing-8);
+  }
+
+  .card {
+    width: 100%;
+    height: 104px;
+    min-height: 104px;
+    max-height: 104px;
+    padding: var(--spacing-12) var(--spacing-8) var(--spacing-12) var(--spacing-12);
+    overflow: hidden;
+  }
+
+  /* Adjust bracket positions for mobile */
+  .bracketGray {
+    left: 12px;
+    top: 28px;
+    height: 438px;
+  }
+
+  .bracketRed {
+    left: 12px;
+    top: 476px;
+    height: 412px;
+  }
+}

@@ -13,7 +13,7 @@
 ---
 
 ## 📍 Current Focus
-**Session Goal:** Build TwoQuotes section with responsive design
+**Session Goal:** Build ProblemBlock section with responsive design
 - Status: ✅ Completed
 - Next: Build remaining sections (Contact Form, Footer)
 
@@ -56,6 +56,12 @@
   - Desktop: Photo left, quote/attribution right
   - Mobile: Photo + attribution row on top, quote text below
   - Poppins Italic 32px desktop / 24px mobile
+- [x] **ProblemBlock Section** - Desktop + Mobile responsive
+  - Three subsections: "At 40+ employees", "You've tried", "None of it scales"
+  - 6 problem/solution cards in light-bg background
+  - Decorative SVG brackets on the left (gray and red)
+  - Desktop: 3 cards per row / Mobile: stacked vertical
+  - Headings: 48px/56px desktop / 28px mobile
 - [ ] Contact Form
 - [ ] Footer
 
@@ -67,6 +73,7 @@
 - `Quote` - Quote section with author info and link
 - `AlignVectors` - Features section with alternating layouts and quote callout
 - `TwoQuotes` - CEO quotes section with dark background
+- `ProblemBlock` - Problem/solution cards with decorative brackets
 
 ---
 
@@ -97,9 +104,12 @@
 │   │   ├── AlignVectors/
 │   │   │   ├── AlignVectors.jsx
 │   │   │   └── AlignVectors.module.css
-│   │   └── TwoQuotes/
-│   │       ├── TwoQuotes.jsx
-│   │       └── TwoQuotes.module.css
+│   │   ├── TwoQuotes/
+│   │   │   ├── TwoQuotes.jsx
+│   │   │   └── TwoQuotes.module.css
+│   │   └── ProblemBlock/
+│   │       ├── ProblemBlock.jsx
+│   │       └── ProblemBlock.module.css
 │   ├── App.jsx              # ✓ Main app component
 │   ├── App.css              # ✓ App-level styles
 │   └── main.jsx             # ✓ Entry point
@@ -226,7 +236,26 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ## 📝 Session Notes
 > Auto-update: Quick notes for next session
 
-**Session 2025-11-26 PM (Bug Fix - Latest):**
+**Session 2025-11-26 PM (ProblemBlock - Latest):**
+- ✅ Built ProblemBlock section (node-id: 113-256 desktop, 134-983 mobile)
+  - Fetched designs from Figma for desktop and mobile versions
+  - Created ProblemBlock component with CSS Modules
+  - Three subsections: "At 40+ employees, everything breaks", "You've tried", "None of it scales"
+  - 6 problem/solution cards total (3 cards per subsection)
+  - Desktop layout: 3 cards horizontal per row with 24px gap, 136px height
+  - Mobile layout: Stacked vertical cards with 8px gap, 104px enforced height
+  - Headings: 48px/56px desktop → 28px mobile
+  - Card styling: light-bg background, 6px border radius
+  - Decorative SVG brackets: User-exported from Figma (GreyArrowDesktop/Mobile, RedArrowDesktop/Mobile)
+  - Bracket positioning: Desktop (left: 2px, gray top: 24px, red top: 360px), Mobile (left: 12px, gray top: 28px, red top: 476px)
+  - Brackets hidden on tablet (768px-1024px)
+  - Fixed bracket positioning: Moved inside content container to work with centered layout
+  - Desktop gap between brackets and content: 29px
+  - Mobile content padding: 80px left, "everything breaks" wraps to new line
+  - Integrated into App.jsx
+- **Next:** Build Contact Form and Footer sections
+
+**Session 2025-11-26 PM (Bug Fix):**
 - ✅ Fixed horizontal scroll issue in AlignVectors section
   - Root cause: Fixed flex widths (412px + 709px + 32px gap = 1153px) exceeded viewport width at 1024px-1200px range
   - Solution: Changed `flex: 0 0 XXXpx` to `flex: 0 1 XXXpx` on `.featureText` and `.featureImage`
