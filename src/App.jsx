@@ -1,14 +1,14 @@
-import Hero from './components/Hero'
-import ContactForm from './components/ContactForm'
-import './App.css'
+import Navigation from './components/Navigation/Navigation';
+import Hero from './components/Hero/Hero';
+import './App.css';
 
 function App() {
   return (
     <div className="app">
+      <Navigation />
       <Hero />
-      <ContactForm />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

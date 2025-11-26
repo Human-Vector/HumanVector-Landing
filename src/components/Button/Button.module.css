@@ -1,0 +1,74 @@
+/* Button Base Styles */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-4);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  border: none;
+  outline: none;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+/* Variants */
+.primary {
+  background-color: var(--colors-accent);
+  color: var(--colors-white);
+  border: 1px solid var(--colors-accent);
+}
+
+.primary:hover {
+  background-color: #d91929;
+  box-shadow: 0 4px 12px rgba(237, 29, 45, 0.3);
+}
+
+.secondary {
+  background-color: transparent;
+  color: var(--colors-dark-2);
+  border: 1px solid var(--colors-accent);
+}
+
+.secondary:hover {
+  background-color: var(--colors-accent);
+  color: var(--colors-white);
+}
+
+/* Sizes */
+.medium {
+  padding: var(--spacing-12) var(--spacing-24);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-relaxed);
+}
+
+.large {
+  padding: var(--spacing-18) var(--spacing-40);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-normal);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .button {
+    font-size: var(--font-size-14);
+  }
+
+  .medium {
+    padding: var(--spacing-12) var(--spacing-18);
+  }
+
+  .large {
+    padding: var(--spacing-16) var(--spacing-40);
+  }
+}

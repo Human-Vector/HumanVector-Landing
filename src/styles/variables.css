@@ -1,0 +1,68 @@
+/**
+ * Design Tokens - Human Vector Landing Page
+ * Extracted from Figma design system
+ */
+
+:root {
+  /* Colors */
+  --colors-accent: #ed1d2d;
+  --colors-dark: #1a2b32;
+  --colors-dark-2: #48555b;
+  --colors-light-bg: #f8f6f2;
+  --colors-white: #ffffff;
+  --colors-link-color: #02669f;
+
+  /* Spacing Scale */
+  --spacing-4: 4px;
+  --spacing-6: 6px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-18: 18px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-56: 56px;
+  --spacing-64: 64px;
+  --spacing-72: 72px;
+  --spacing-80: 80px;
+  --spacing-104: 104px;
+  --spacing-120: 120px;
+
+  /* Typography - Font Families */
+  --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Typography - Font Sizes */
+  --font-size-14: 14px;
+  --font-size-16: 16px;
+  --font-size-24: 24px;
+  --font-size-28: 28px;
+  --font-size-32: 32px;
+  --font-size-48: 48px;
+  --font-size-56: 56px;
+
+  /* Typography - Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Typography - Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.25;
+  --line-height-normal: 1.3;
+  --line-height-relaxed: 1.4;
+  --line-height-loose: 1.5;
+  --line-height-extra-loose: 1.65;
+
+  /* Border Radius */
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-full: 9999px;
+
+  /* Breakpoints (for reference in media queries) */
+  --breakpoint-mobile: 390px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1280px;
+}
