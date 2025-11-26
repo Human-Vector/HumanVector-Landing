@@ -25,12 +25,19 @@
 }
 
 .iconContainer.image {
-  width: 85px;
-  height: 106px;
+  width: 76px;
+  height: 114px;
   border: 1px solid rgba(72, 85, 91, 0.2);
   border-radius: 4px;
   padding: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.iconContainer.image:hover {
+  transform: scale(1.5);
+  z-index: 10;
 }
 
 .icon {

@@ -1,0 +1,182 @@
+/* Quote Wrapper */
+.quote {
+  width: 100%;
+  padding: var(--spacing-56) 0;
+  background-color: var(--colors-white);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-24);
+}
+
+/* Quote Section */
+.quoteSection {
+  background-color: var(--colors-light-bg);
+  border-radius: var(--spacing-6);
+  padding: var(--spacing-40) var(--spacing-64);
+  display: flex;
+  gap: var(--spacing-40);
+  align-items: flex-start;
+}
+
+/* Quote Icon */
+.quoteIcon {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.quoteIcon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Quote Content */
+.quoteContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-32);
+}
+
+/* Quote Text Container */
+.quoteTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+.quoteText {
+  font-size: var(--font-size-32);
+  font-weight: 400;
+  font-style: italic;
+  line-height: var(--line-height-loose);
+  color: var(--colors-dark);
+  margin: 0;
+}
+
+.attribution {
+  font-size: var(--font-size-16);
+  font-weight: 400;
+  line-height: var(--line-height-loose);
+  color: var(--colors-dark-2);
+  margin: 0;
+}
+
+/* Author Container */
+.authorContainer {
+  display: flex;
+  gap: var(--spacing-16);
+  align-items: center;
+}
+
+.authorImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 84px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.authorImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Author Info */
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.authorName {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  font-size: var(--font-size-32);
+  font-weight: 500;
+  line-height: var(--line-height-tight);
+  color: var(--colors-dark);
+}
+
+.verifiedBadge {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Post Link */
+.postLink {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  font-size: var(--font-size-16);
+  font-weight: 400;
+  line-height: var(--line-height-normal);
+  color: var(--colors-link-color);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.postLink:hover {
+  opacity: 0.8;
+}
+
+.postLink img {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .quote {
+    padding: var(--spacing-40) 0;
+  }
+
+  .container {
+    padding: 0 var(--spacing-18);
+  }
+
+  .quoteSection {
+    padding: var(--spacing-24) var(--spacing-16);
+  }
+
+  /* Hide quote icon on mobile */
+  .quoteIcon {
+    display: none;
+  }
+
+  .quoteContent {
+    gap: var(--spacing-24);
+  }
+
+  .quoteTextContainer {
+    gap: var(--spacing-8);
+  }
+
+  .quoteText {
+    font-size: var(--font-size-24);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .authorImage {
+    width: 64px;
+    height: 64px;
+  }
+
+  .authorName {
+    font-size: var(--font-size-24);
+  }
+
+  .verifiedBadge {
+    width: 20px;
+    height: 20px;
+  }
+}

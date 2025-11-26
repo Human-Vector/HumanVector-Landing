@@ -2,6 +2,7 @@
   width: 100%;
   padding: var(--spacing-104) 0;
   background-color: var(--colors-white);
+  overflow: hidden;
 }
 
 .container {
