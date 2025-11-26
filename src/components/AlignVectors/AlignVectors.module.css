@@ -50,7 +50,7 @@
 
 /* Feature Text */
 .featureText {
-  flex: 0 0 412px;
+  flex: 0 1 412px;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-24);
@@ -108,7 +108,7 @@
 
 /* Feature Image */
 .featureImage {
-  flex: 0 0 709px;
+  flex: 0 1 709px;
   position: relative;
 }
 

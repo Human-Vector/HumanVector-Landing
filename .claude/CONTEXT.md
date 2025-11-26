@@ -226,7 +226,15 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ## 📝 Session Notes
 > Auto-update: Quick notes for next session
 
-**Session 2025-11-26 PM (TwoQuotes - Latest):**
+**Session 2025-11-26 PM (Bug Fix - Latest):**
+- ✅ Fixed horizontal scroll issue in AlignVectors section
+  - Root cause: Fixed flex widths (412px + 709px + 32px gap = 1153px) exceeded viewport width at 1024px-1200px range
+  - Solution: Changed `flex: 0 0 XXXpx` to `flex: 0 1 XXXpx` on `.featureText` and `.featureImage`
+  - Allows proportional shrinking on smaller viewports while maintaining design on larger screens
+  - Files modified: `src/components/AlignVectors/AlignVectors.module.css` (lines 53, 111)
+- **Next:** Build Contact Form and Footer sections
+
+**Session 2025-11-26 PM (TwoQuotes):**
 - ✅ Built TwoQuotes section (node-id: 113-218 desktop, 131-858 mobile)
   - Fetched designs from Figma for desktop and mobile versions
   - Downloaded 2 CEO photos (Sundar Pichai, Jack Ma)
