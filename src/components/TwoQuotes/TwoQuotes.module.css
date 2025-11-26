@@ -1,0 +1,145 @@
+/* Two Quotes Section Styles */
+
+.section {
+  background: var(--colors-dark);
+  padding: var(--spacing-56) 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-48);
+}
+
+/* Quote Block */
+.quoteBlock {
+  width: 100%;
+}
+
+.topRow {
+  display: flex;
+  gap: var(--spacing-32);
+  align-items: flex-start;
+}
+
+/* Photo */
+.photoContainer {
+  flex-shrink: 0;
+}
+
+.photo {
+  width: 144px;
+  height: 144px;
+  border-radius: var(--spacing-6);
+  object-fit: cover;
+  display: block;
+}
+
+/* Desktop Text Content */
+.textContentDesktop {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+
+.quoteText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--colors-light-bg);
+  margin: 0;
+}
+
+.quoteTextShort {
+  max-width: 605px;
+}
+
+/* Attribution */
+.attribution {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.attributionText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--colors-light-bg);
+}
+
+/* Hide mobile-specific elements on desktop */
+.attributionMobile {
+  display: none;
+}
+
+.quoteTextMobile {
+  display: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 1023px) {
+  .section {
+    padding: var(--spacing-32) 0;
+  }
+
+  .container {
+    padding: 0 var(--spacing-18);
+  }
+
+  .quoteBlock {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-18);
+  }
+
+  /* Mobile Top Row: Photo + Attribution side by side */
+  .topRow {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+  }
+
+  .photo {
+    width: 96px;
+    height: 96px;
+    border-radius: 4px;
+  }
+
+  /* Show mobile attribution, hide desktop content */
+  .attributionMobile {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-8);
+    flex: 1;
+  }
+
+  .textContentDesktop {
+    display: none;
+  }
+
+  /* Show mobile quote text below */
+  .quoteTextMobile {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--colors-light-bg);
+    margin: 0;
+  }
+}
