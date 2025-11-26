@@ -1,6 +1,7 @@
 import Navigation from './components/Navigation/Navigation';
 import Hero from './components/Hero/Hero';
 import Quote from './components/Quote/Quote';
+import AlignVectors from './components/AlignVectors/AlignVectors';
 import './App.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Navigation />
       <Hero />
       <Quote />
+      <AlignVectors />
     </div>
   );
 }
