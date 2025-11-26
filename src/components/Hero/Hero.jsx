@@ -72,7 +72,7 @@ const Hero = () => {
         {/* Hero Video */}
         <div className={styles.imageContainer}>
           <video
-            src="/videos/hero-video.webm"
+            src="/videos/hero-video.webm?v=2"
             autoPlay
             loop
             muted
