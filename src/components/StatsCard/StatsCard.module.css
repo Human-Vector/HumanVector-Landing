@@ -39,10 +39,11 @@
   color: var(--colors-link-color);
   cursor: pointer;
   display: inline;
+  transition: color 0.2s ease;
 }
 
 .textLink:hover {
-  color: var(--colors-link-color);
+  color: var(--colors-accent);
   text-decoration: underline;
 }
 
@@ -50,6 +51,12 @@
 .textLink .description {
   color: var(--colors-link-color);
   font-weight: var(--font-weight-medium);
+  transition: color 0.2s ease;
+}
+
+.textLink:hover .highlight,
+.textLink:hover .description {
+  color: var(--colors-accent);
 }
 
 .iconContainer {

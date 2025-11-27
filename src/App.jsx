@@ -4,6 +4,7 @@ import Quote from './components/Quote/Quote';
 import AlignVectors from './components/AlignVectors/AlignVectors';
 import TwoQuotes from './components/TwoQuotes/TwoQuotes';
 import ProblemBlock from './components/ProblemBlock/ProblemBlock';
+import ProvenSolution from './components/ProvenSolution/ProvenSolution';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <AlignVectors />
       <TwoQuotes />
       <ProblemBlock />
+      <ProvenSolution />
     </div>
   );
 }

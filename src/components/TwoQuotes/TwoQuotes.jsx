@@ -7,15 +7,14 @@ export default function TwoQuotes() {
         {/* Quote 1: Sundar Pichai */}
         <div className={styles.quoteBlock}>
           <div className={styles.topRow}>
-            <div className={styles.photoContainer}>
+            <div className={styles.logoContainer}>
               <img
-                src="/images/quotes/sundar-pichai.png"
-                alt="Sundar Pichai"
-                className={styles.photo}
+                src="/images/quotes/google-icon.svg"
+                alt="Google"
+                className={styles.logo}
               />
             </div>
             <div className={styles.attributionMobile}>
-              <img src="/images/quotes/google-icon.svg" alt="Google" className={styles.icon} />
               <span className={styles.attributionText}>Sundar Pichai, CEO of Alphabet Inc.</span>
             </div>
             <div className={styles.textContentDesktop}>
@@ -23,7 +22,6 @@ export default function TwoQuotes() {
                 «The future of AI is not about replacing humans, it's about augmenting human capabilities.»
               </p>
               <div className={styles.attribution}>
-                <img src="/images/quotes/google-icon.svg" alt="Google" className={styles.icon} />
                 <span className={styles.attributionText}>Sundar Pichai, CEO of Alphabet Inc.</span>
               </div>
             </div>
@@ -36,15 +34,14 @@ export default function TwoQuotes() {
         {/* Quote 2: Jack Ma */}
         <div className={styles.quoteBlock}>
           <div className={styles.topRow}>
-            <div className={styles.photoContainer}>
+            <div className={styles.logoContainer}>
               <img
-                src="/images/quotes/jack-ma.png"
-                alt="Jack Ma"
-                className={styles.photo}
+                src="/images/quotes/alibaba-icon.svg"
+                alt="Alibaba"
+                className={styles.logo}
               />
             </div>
             <div className={styles.attributionMobile}>
-              <img src="/images/quotes/alibaba-icon.svg" alt="Alibaba" className={styles.icon} />
               <span className={styles.attributionText}>Jack Ma, Alibaba founder</span>
             </div>
             <div className={styles.textContentDesktop}>
@@ -52,7 +49,6 @@ export default function TwoQuotes() {
                 «My job is to make sure smart people are working together.»
               </p>
               <div className={styles.attribution}>
-                <img src="/images/quotes/alibaba-icon.svg" alt="Alibaba" className={styles.icon} />
                 <span className={styles.attributionText}>Jack Ma, Alibaba founder</span>
               </div>
             </div>

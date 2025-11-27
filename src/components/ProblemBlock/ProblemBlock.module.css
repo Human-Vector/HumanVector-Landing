@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   background: var(--colors-white);
-  padding: var(--spacing-56) 0;
+  padding: var(--spacing-56) 0 var(--spacing-104);
 }
 
 .content {
@@ -126,7 +126,7 @@
 /* Mobile (< 768px) */
 @media (max-width: 767px) {
   .problemBlock {
-    padding: var(--spacing-32) var(--spacing-18);
+    padding: var(--spacing-32) var(--spacing-18) var(--spacing-56);
   }
 
   .content {

@@ -44,8 +44,15 @@ const Hero = () => {
                 />
               </div>
               <p className={styles.ctaText}>
-                <span className={styles.ctaTextLight}>30-minute call with </span>
-                <span className={styles.ctaTextBold}>co-founder George Kachanouski</span>
+                <span className={styles.ctaTextLight}>30-minute call with co-founder </span>
+                <a
+                  href="https://www.linkedin.com/in/georgekachanouski/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.ctaLink}
+                >
+                     George Kachanouski
+                </a>
               </p>
             </div>
           </div>

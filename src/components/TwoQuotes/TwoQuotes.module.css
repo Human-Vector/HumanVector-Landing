@@ -2,7 +2,8 @@
 
 .section {
   background: var(--colors-dark);
-  padding: var(--spacing-56) 0;
+  padding: 72px 0;
+  margin-bottom: 32px;
 }
 
 .container {
@@ -25,16 +26,23 @@
   align-items: flex-start;
 }
 
-/* Photo */
-.photoContainer {
+/* Logo */
+.logoContainer {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.photo {
-  width: 144px;
-  height: 144px;
-  border-radius: var(--spacing-6);
-  object-fit: cover;
+/* Add top padding to Google logo on desktop */
+.quoteBlock:first-child .logoContainer {
+  padding-top: 8px;
+}
+
+.logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
   display: block;
 }
 
@@ -64,13 +72,6 @@
 .attribution {
   display: flex;
   align-items: center;
-  gap: var(--spacing-8);
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
 }
 
 .attributionText {
@@ -90,8 +91,15 @@
   display: none;
 }
 
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 32px;
+  }
+}
+
 /* Mobile Styles */
-@media (max-width: 1023px) {
+@media (max-width: 768px) {
   .section {
     padding: var(--spacing-32) 0;
   }
@@ -106,17 +114,25 @@
     gap: var(--spacing-18);
   }
 
-  /* Mobile Top Row: Photo + Attribution side by side */
+  /* Mobile Top Row: Logo + Attribution side by side */
   .topRow {
     display: flex;
     gap: 18px;
     align-items: center;
   }
 
-  .photo {
-    width: 96px;
-    height: 96px;
-    border-radius: 4px;
+  .logoContainer {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  .logo {
+    width: 72px;
+    height: 72px;
   }
 
   /* Show mobile attribution, hide desktop content */
