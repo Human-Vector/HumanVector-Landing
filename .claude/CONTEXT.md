@@ -13,7 +13,7 @@
 ---
 
 ## 📍 Current Focus
-**Session Goal:** Build ProblemBlock section with responsive design
+**Session Goal:** Updated ProblemBlock section with new design
 - Status: ✅ Completed
 - Next: Build remaining sections (Contact Form, Footer)
 
@@ -57,11 +57,11 @@
   - Mobile: Photo + attribution row on top, quote text below
   - Poppins Italic 32px desktop / 24px mobile
 - [x] **ProblemBlock Section** - Desktop + Mobile responsive
-  - Three subsections: "At 40+ employees", "You've tried", "None of it scales"
+  - Three subsections with updated messaging
   - 6 problem/solution cards in light-bg background
   - Decorative SVG brackets on the left (gray and red)
   - Desktop: 3 cards per row / Mobile: stacked vertical
-  - Headings: 48px/56px desktop / 28px mobile
+  - Headings: 28px desktop / 20px mobile, SemiBold (600)
 - [ ] Contact Form
 - [ ] Footer
 
@@ -259,6 +259,41 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
     - "Based on" - normal dark color (#1a2b32), no underline
     - "«The Human Vector» by Oleg Kondrashov" - link color (#02669f) with underline, medium weight (500)
   - No hover effect on card itself
+- ✅ Added LinkedIn link to George Kachanouski's name
+  - CTA text now links "George Kachanouski" to https://www.linkedin.com/in/georgekachanouski/
+  - Opens in new tab with security attributes (target="_blank" rel="noopener noreferrer")
+  - Styling: Medium weight, underlined, link color (#02669f), hover changes to accent red (#ed1d2d)
+  - Files modified: Hero.jsx, Hero.module.css
+- ✅ Improved TwoQuotes section layout
+  - Replaced CEO photos with company logos (Google G, Alibaba 'a')
+  - Desktop: Logo on left (72px), quote + attribution on right
+  - Mobile: Logos (72px) without background + attribution in top row, quote below
+  - Removed small icons from attribution text (logo is now the main visual)
+  - Desktop: Increased vertical padding from 56px to 72px (+16px)
+  - Desktop: Added 8px top padding to Google logo for better alignment
+  - Cleaner, more professional appearance matching updated Figma design
+  - Files modified: TwoQuotes.jsx, TwoQuotes.module.css
+- ✅ Global tablet spacing improvements
+  - Increased horizontal padding from 24px to 32px (+8px) on all sections for tablet (768px-1024px)
+  - Applied to: Hero, Quote, AlignVectors, TwoQuotes, ProblemBlock
+  - Better breathing room on tablet devices
+  - Files modified: Hero.module.css, Quote.module.css, AlignVectors.module.css, TwoQuotes.module.css, ProblemBlock.module.css
+- ✅ Enhanced link hover effects and section spacing
+  - Book link ("The Human Vector" by Oleg Kondrashov) now changes from blue to red on hover, matching George Kachanouski link
+  - Increased spacing between AlignVectors and TwoQuotes sections by 32px (88px bottom padding on AlignVectors)
+  - Increased spacing between TwoQuotes and ProblemBlock sections by 32px (32px bottom margin on TwoQuotes)
+  - Dark background of TwoQuotes section maintains original size with 72px padding
+  - Better visual separation between major content sections
+  - Files modified: StatsCard.module.css, AlignVectors.module.css, TwoQuotes.module.css
+- ✅ Updated ProblemBlock section with new design (2025-11-27)
+  - Changed all three heading texts to match new Figma design
+  - Reduced heading font sizes: 48px/56px → 28px desktop, 28px → 20px mobile
+  - Updated font weight to SemiBold (600) for all headings
+  - First heading: "At 40+ people, your old systems stop keeping up" (gray/red/gray)
+  - Second heading: "You've already done everything you could" (gray/red)
+  - Third heading: "But your old approach no longer scales as the team grows" (red/gray)
+  - Simplified CSS by removing separate .headingRed class
+  - Files modified: ProblemBlock.jsx, ProblemBlock.module.css
 - **Next:** Build Contact Form and Footer sections
 
 **Session 2025-11-26 PM (ProblemBlock):**

@@ -18,11 +18,12 @@ const ProblemBlock = () => {
           </picture>
         </div>
 
-        {/* First Section: At 40+ employees */}
+        {/* First Section: At 40+ people */}
         <div className={styles.section}>
           <h2 className={styles.heading}>
-            <span className={styles.headingGray}>At 40+ employees, </span>
-            <span className={styles.headingDark}>everything breaks</span>
+            <span className={styles.headingGray}>At 40+ people, </span>
+            <span className={styles.headingRed}>your old systems </span>
+            <span className={styles.headingGray}>stop keeping up</span>
           </h2>
           <div className={styles.cardsRow}>
             <div className={styles.card}>
@@ -43,9 +44,13 @@ const ProblemBlock = () => {
           </div>
         </div>
 
-        {/* Second Section: You've tried */}
+        {/* Second Section: You've already done everything you could */}
         <div className={styles.section}>
-          <h2 className={styles.headingRed}>You've tried</h2>
+          <h2 className={styles.heading}>
+            <span className={styles.headingGray}>You've already </span>
+            <span className={styles.headingGray}>done </span>
+            <span className={styles.headingRed}>everything you could</span>
+          </h2>
           <div className={styles.cardsRow}>
             <div className={styles.card}>
               <p className={styles.cardText}>Spreadsheets</p>
@@ -63,7 +68,10 @@ const ProblemBlock = () => {
 
         {/* Conclusion */}
         <div className={styles.conclusion}>
-          <h2 className={styles.conclusionHeading}>None of it scales</h2>
+          <h2 className={styles.conclusionHeading}>
+            <span className={styles.headingRed}>But your old approach </span>
+            <span className={styles.headingGray}>no longer scales as the team grows</span>
+          </h2>
         </div>
       </div>
     </section>
