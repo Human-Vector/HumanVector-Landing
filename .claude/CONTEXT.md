@@ -244,6 +244,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
   - Changed to hero-video2.mp4 (14.4MB, higher quality)
   - Bumped cache-busting parameter to v=4
   - File location: /public/videos/hero-video2.mp4
+  - Removed old video files (hero-video.mp4, hero-video.webm) to reduce repository size
 - ✅ Added edge blur/fade effect to hero video
   - Applied radial gradient mask to create soft edge fade
   - Vignette effect: 85% ellipse, solid center (60%), fade to transparent (100%)
