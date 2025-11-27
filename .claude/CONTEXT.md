@@ -13,7 +13,7 @@
 ---
 
 ## 📍 Current Focus
-**Session Goal:** Build ProvenSolution section
+**Session Goal:** Build IntegrationSteps section
 - Status: ✅ Completed
 - Next: Build remaining sections (Contact Form, Footer)
 
@@ -69,6 +69,16 @@
   - CTA button: "See how It works" linking to Calendly
   - Co-founder info with George Kachanouski LinkedIn link and avatar
   - Desktop: 1200px max-width, 56px gap / Mobile: full width, 24px gap
+- [x] **IntegrationSteps Section** - Desktop + Mobile responsive
+  - "How we integrate this system into your business" heading
+  - 4 step cards in 2x2 grid layout (desktop) / vertical stack (mobile)
+  - Each card: number, title, description with light background
+  - Heading: 48px desktop / 28px mobile
+  - Step titles: 28px desktop / 20px mobile, SemiBold (600)
+  - Step numbers: 56px, accent red, positioned on right
+  - Card height: 120px, rounded corners (6px)
+  - CTA button: "Start with a Demo" linking to Calendly
+  - Desktop: 24px gaps / Mobile: 16px gaps
 - [ ] Contact Form
 - [ ] Footer
 
@@ -82,6 +92,7 @@
 - `TwoQuotes` - CEO quotes section with dark background
 - `ProblemBlock` - Problem/solution cards with decorative brackets
 - `ProvenSolution` - Dashboard showcase with CTA and founder info
+- `IntegrationSteps` - 4-step integration process with numbered cards
 
 ---
 
@@ -118,9 +129,12 @@
 │   │   ├── ProblemBlock/
 │   │   │   ├── ProblemBlock.jsx
 │   │   │   └── ProblemBlock.module.css
-│   │   └── ProvenSolution/
-│   │       ├── ProvenSolution.jsx
-│   │       └── ProvenSolution.module.css
+│   │   ├── ProvenSolution/
+│   │   │   ├── ProvenSolution.jsx
+│   │   │   └── ProvenSolution.module.css
+│   │   └── IntegrationSteps/
+│   │       ├── IntegrationSteps.jsx
+│   │       └── IntegrationSteps.module.css
 │   ├── App.jsx              # ✓ Main app component
 │   ├── App.css              # ✓ App-level styles
 │   └── main.jsx             # ✓ Entry point
@@ -249,6 +263,22 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 > Auto-update: Quick notes for next session
 
 **Session 2025-11-27 (Video Update - Latest):**
+- ✅ Built IntegrationSteps section (2025-11-27)
+  - Fetched designs from Figma (node-id: 113-288 desktop, 160-304 mobile)
+  - Created IntegrationSteps component with CSS Modules
+  - "How we integrate this system into your business" heading
+  - 4 step cards showing integration process: Request Demo, Pilot Program, Week 1 Visibility, Month 3 Results
+  - Desktop: 2x2 grid layout with 24px gaps, 48px heading
+  - Mobile: Vertical stack with 16px gaps, 28px heading
+  - Step cards: Light background (#f8f6f2), 120px height, 6px border radius
+  - Each card: Title (28px/20px SemiBold), description (16px Regular), number (56px Medium, accent red)
+  - Card layout: Text content on left (flex-grow), number on right
+  - Desktop padding: 16px top, 18px bottom, 24px horizontal
+  - Mobile padding: 16px horizontal, 16px top, 18px bottom
+  - CTA button: "Start with a Demo" (non-functional button, no link)
+  - Fully responsive with tablet optimization (32px horizontal padding)
+  - Files created: IntegrationSteps.jsx, IntegrationSteps.module.css
+  - Integrated into App.jsx
 - ✅ Changed hero video format from webm to mp4
   - Updated Hero.jsx to use hero-video.mp4 instead of hero-video.webm
   - Bumped cache-busting parameter from v=2 to v=3
