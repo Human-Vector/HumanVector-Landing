@@ -9,6 +9,49 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cardLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.iconLink {
+  cursor: pointer !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.linkPrefix {
+  font-weight: var(--font-weight-regular);
+  color: var(--colors-dark);
+  display: inline;
+}
+
+.textLink {
+  text-decoration: underline;
+  color: var(--colors-link-color);
+  cursor: pointer;
+  display: inline;
+}
+
+.textLink:hover {
+  color: var(--colors-link-color);
+  text-decoration: underline;
+}
+
+.textLink .highlight,
+.textLink .description {
+  color: var(--colors-link-color);
+  font-weight: var(--font-weight-medium);
+}
+
 .iconContainer {
   flex-shrink: 0;
   background-color: var(--colors-white);

@@ -115,7 +115,7 @@
 │   └── main.jsx             # ✓ Entry point
 ├── public/
 │   ├── videos/
-│   │   └── hero-video.webm  # ✓ Hero video
+│   │   └── hero-video.mp4   # ✓ Hero video
 │   └── images/
 │       ├── hero/            # ✓ Hero section images (logo, ENCATA, book, avatar)
 │       ├── quote/           # ✓ Quote section images and icons
@@ -236,7 +236,31 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ## 📝 Session Notes
 > Auto-update: Quick notes for next session
 
-**Session 2025-11-26 PM (ProblemBlock - Latest):**
+**Session 2025-11-27 (Video Update - Latest):**
+- ✅ Changed hero video format from webm to mp4
+  - Updated Hero.jsx to use hero-video.mp4 instead of hero-video.webm
+  - Bumped cache-busting parameter from v=2 to v=3
+- ✅ Updated to hero-video2.mp4
+  - Changed to hero-video2.mp4 (14.4MB, higher quality)
+  - Bumped cache-busting parameter to v=4
+  - File location: /public/videos/hero-video2.mp4
+- ✅ Added edge blur/fade effect to hero video
+  - Applied radial gradient mask to create soft edge fade
+  - Vignette effect: 85% ellipse, solid center (60%), fade to transparent (100%)
+  - Cross-browser compatible with -webkit-mask-image and mask-image
+- ✅ Made book StatsCard clickable with Amazon link
+  - Added optional `href`, `linkIndividual`, and `linkPrefix` props to StatsCard component
+  - Book card now links to https://www.amazon.ca/Human-Vector-Pivot-Profitability/dp/1642251534
+  - Opens in new tab with proper security (target="_blank" rel="noopener noreferrer")
+  - Individual links: Only book cover image and text are clickable (not whole card)
+  - Book cover: Cursor pointer on hover (overrides zoom-in with !important)
+  - Text styling matches Figma design:
+    - "Based on" - normal dark color (#1a2b32), no underline
+    - "«The Human Vector» by Oleg Kondrashov" - link color (#02669f) with underline, medium weight (500)
+  - No hover effect on card itself
+- **Next:** Build Contact Form and Footer sections
+
+**Session 2025-11-26 PM (ProblemBlock):**
 - ✅ Built ProblemBlock section (node-id: 113-256 desktop, 134-983 mobile)
   - Fetched designs from Figma for desktop and mobile versions
   - Created ProblemBlock component with CSS Modules

@@ -62,9 +62,12 @@ const Hero = () => {
             <StatsCard
               icon="/images/hero/stat-book.png"
               iconAlt="The Human Vector book"
-              highlight="Based on «The Human Vector»"
+              linkPrefix="Based on"
+              highlight="«The Human Vector»"
               description="by Oleg Kondrashov"
               iconType="image"
+              href="https://www.amazon.ca/Human-Vector-Pivot-Profitability/dp/1642251534"
+              linkIndividual={true}
             />
           </div>
         </div>
@@ -72,7 +75,7 @@ const Hero = () => {
         {/* Hero Video */}
         <div className={styles.imageContainer}>
           <video
-            src="/videos/hero-video.webm?v=2"
+            src="/videos/hero-video2.mp4?v=4"
             autoPlay
             loop
             muted
