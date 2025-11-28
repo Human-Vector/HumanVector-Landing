@@ -3,6 +3,11 @@ import styles from './ProvenSolution.module.css';
 export default function ProvenSolution() {
   return (
     <section className={styles.section}>
+      {/* White Triangle Decoration */}
+      <div className={styles.triangle}>
+        <img src="/images/proven-solution/WhiteTriangle.svg" alt="" />
+      </div>
+
       <div className={styles.container}>
         <h2 className={styles.heading}>
           <span className={styles.headingGray}>Human Vector is a proven solution for </span>

@@ -1,0 +1,244 @@
+/* ChooseScale Section */
+.chooseScale {
+  padding: var(--spacing-56) 0;
+  background-color: var(--colors-white);
+}
+
+/* Container */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-24);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-40);
+}
+
+/* Heading */
+.heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.25;
+  color: var(--colors-dark);
+  text-align: center;
+  max-width: 835px;
+  margin: 0;
+}
+
+/* Table Wrapper */
+.tableWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  padding: var(--spacing-32) var(--spacing-40);
+  border-radius: var(--spacing-8);
+}
+
+/* Background Boxes */
+.backgroundBoxes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.lightBgBox {
+  position: absolute;
+  background-color: var(--colors-light-bg);
+  border-radius: var(--spacing-6);
+  /* Desktop positioning: covers Generic HR Tools and Doing Nothing columns */
+  left: 325px;
+  top: -0.23px;
+  width: 955px;
+  height: 424px;
+}
+
+.whiteBgBox {
+  position: absolute;
+  background-color: var(--colors-white);
+  border-radius: var(--spacing-6);
+  /* Desktop positioning: covers Human Vector column */
+  left: 925px;
+  top: 15.77px;
+  width: 339px;
+  height: 392px;
+}
+
+/* Table Content */
+.tableContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+
+/* Header Row */
+.headerRow {
+  display: flex;
+  gap: 156px;
+  align-items: center;
+}
+
+.challengeHeader {
+  width: 213px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--colors-dark);
+  flex-shrink: 0;
+}
+
+/* Columns Container */
+.columnsContainer {
+  display: flex;
+  gap: 96px;
+  align-items: center;
+  flex-grow: 1;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.columnHeader {
+  font-weight: 600;
+  color: var(--colors-dark);
+  flex-shrink: 0;
+}
+
+.columnHeader:nth-child(1) {
+  width: 190px;
+}
+
+.columnHeader:nth-child(2) {
+  width: 176px;
+}
+
+.columnHeader:nth-child(3) {
+  width: 236px;
+}
+
+/* Comparison Rows */
+.comparisonRows {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.comparisonRow {
+  display: flex;
+  gap: 156px;
+  align-items: center;
+}
+
+.challengeCell {
+  width: 213px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--colors-dark-2);
+  flex-shrink: 0;
+}
+
+.columnCell {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--colors-dark-2);
+  flex-shrink: 0;
+}
+
+.columnCell:nth-child(1) {
+  width: 190px;
+}
+
+.columnCell:nth-child(2) {
+  width: 176px;
+}
+
+.columnCell:nth-child(3) {
+  width: 236px;
+}
+
+/* Accent Text (Doing Nothing column) */
+.accentText {
+  color: var(--colors-accent);
+}
+
+/* Divider */
+.divider {
+  height: 0;
+  width: 100%;
+  position: relative;
+}
+
+.divider img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+  .chooseScale {
+    padding: var(--spacing-32) 0;
+  }
+
+  .container {
+    padding: 0 var(--spacing-18);
+    gap: var(--spacing-40);
+  }
+
+  .heading {
+    font-size: 28px;
+    max-width: 100%;
+  }
+
+  .tableWrapper {
+    padding: var(--spacing-32) var(--spacing-12);
+    overflow-x: auto;
+  }
+
+  /* Adjust background boxes for mobile */
+  .lightBgBox {
+    left: 250px;
+    top: 0;
+    width: 778px;
+    height: 424px;
+  }
+
+  .whiteBgBox {
+    left: 706px;
+    top: 16px;
+    width: 298px;
+    height: 392px;
+  }
+
+  /* Adjust gaps for mobile */
+  .headerRow,
+  .comparisonRow {
+    gap: 64px;
+  }
+
+  .columnsContainer {
+    gap: 40px;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    padding: 0 var(--spacing-32);
+  }
+
+  .tableWrapper {
+    overflow-x: auto;
+  }
+}

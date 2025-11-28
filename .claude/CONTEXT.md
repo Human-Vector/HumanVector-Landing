@@ -13,7 +13,7 @@
 ---
 
 ## 📍 Current Focus
-**Session Goal:** Build IntegrationSteps section
+**Session Goal:** Build ChooseScale section
 - Status: ✅ Completed
 - Next: Build remaining sections (Contact Form, Footer)
 
@@ -79,6 +79,17 @@
   - Card height: 120px, rounded corners (6px)
   - CTA button: "Start with a Demo" linking to Calendly
   - Desktop: 24px gaps / Mobile: 16px gaps
+- [x] **ChooseScale Section** - Desktop + Mobile responsive
+  - "Choose how you want to scale" heading
+  - Comparison table: Challenge vs Generic HR Tools vs Doing Nothing vs Human Vector
+  - 5 comparison rows: Culture, Performance, Feedback, Team Composition, Accountability
+  - Background boxes: light-bg for middle columns, white for Human Vector column
+  - "Doing Nothing" column in accent red color
+  - Heading: 48px desktop / 28px mobile, Medium (500)
+  - Content: Poppins Regular/SemiBold 16px
+  - Divider lines between rows
+  - Desktop: 156px gap between challenge and columns, 96px gap between columns
+  - Mobile: 64px and 40px gaps, horizontal scroll support
 - [ ] Contact Form
 - [ ] Footer
 
@@ -93,6 +104,7 @@
 - `ProblemBlock` - Problem/solution cards with decorative brackets
 - `ProvenSolution` - Dashboard showcase with CTA and founder info
 - `IntegrationSteps` - 4-step integration process with numbered cards
+- `ChooseScale` - Comparison table with 3 solution approaches
 
 ---
 
@@ -132,9 +144,12 @@
 │   │   ├── ProvenSolution/
 │   │   │   ├── ProvenSolution.jsx
 │   │   │   └── ProvenSolution.module.css
-│   │   └── IntegrationSteps/
-│   │       ├── IntegrationSteps.jsx
-│   │       └── IntegrationSteps.module.css
+│   │   ├── IntegrationSteps/
+│   │   │   ├── IntegrationSteps.jsx
+│   │   │   └── IntegrationSteps.module.css
+│   │   └── ChooseScale/
+│   │       ├── ChooseScale.jsx
+│   │       └── ChooseScale.module.css
 │   ├── App.jsx              # ✓ Main app component
 │   ├── App.css              # ✓ App-level styles
 │   └── main.jsx             # ✓ Entry point
@@ -146,7 +161,8 @@
 │       ├── quote/           # ✓ Quote section images and icons
 │       ├── align-vectors/   # ✓ AlignVectors section feature images (4 screenshots)
 │       ├── quotes/          # ✓ TwoQuotes section CEO photos
-│       └── proven-solution/ # ✓ ProvenSolution section dashboard screenshot and avatar
+│       ├── proven-solution/ # ✓ ProvenSolution section dashboard screenshot and avatar
+│       └── choose-scale/    # ✓ ChooseScale section divider line SVG
 ├── index.html               # ✓ HTML entry
 ├── vite.config.js           # ✓ Vite configuration
 ├── package.json             # ✓ Dependencies
@@ -262,7 +278,52 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ## 📝 Session Notes
 > Auto-update: Quick notes for next session
 
-**Session 2025-11-27 (Video Update - Latest):**
+**Session 2025-11-28 (Design Updates - Latest):**
+- ✅ Added decorative red arrow to ProblemBlock section (2025-11-28)
+  - Curved arrow pointing down from "But your old approach no longer scales" heading
+  - Desktop only (hidden on tablet and mobile)
+  - Positioned at right side of conclusion text (top: 605px)
+  - Created RedArrowDown.svg (78×168px, updated by user)
+  - Files modified: ProblemBlock.jsx, ProblemBlock.module.css
+- ✅ Added white triangle to ProvenSolution section (2025-11-28)
+  - Triangle decoration at top center of section
+  - Points downward from previous section
+  - Desktop: 162×56px at top: -2px / Mobile: 88×32px at top: -3px
+  - Created WhiteTriangle.svg
+  - Files modified: ProvenSolution.jsx, ProvenSolution.module.css
+- ✅ Fixed ProblemBlock conclusion text width (2025-11-28)
+  - Added max-width: 515px to "But your old approach" heading
+  - Files modified: ProblemBlock.module.css
+- ✅ Updated IntegrationSteps section design (2025-11-28)
+  - Numbers styled with outlined/stroked effect (1px stroke, transparent fill, bold weight)
+  - Numbers wrapped in container with bottom alignment (padding-bottom: 6px)
+  - Changed font-size: 48px, font-weight: 700 (Bold)
+  - Cards have equal width with flex: 1 1 0 and min-width: 0
+  - Desktop: align-items: center, numbers in bottom-aligned container
+  - Tablet/Mobile: align-items: flex-end for bottom alignment
+  - Text wraps naturally on all screen sizes for responsive behavior
+  - Description text updated: "Find who moves..." (removed "out")
+  - Files modified: IntegrationSteps.jsx, IntegrationSteps.module.css
+- **Next:** Build Contact Form and Footer sections
+
+**Session 2025-11-27 (ChooseScale):**
+- ✅ Built ChooseScale section (2025-11-27)
+  - Fetched designs from Figma (node-id: 113-310 desktop, 163-459 mobile)
+  - Created ChooseScale component with CSS Modules
+  - "Choose how you want to scale" heading
+  - Comparison table with 4 columns: Challenge, Generic HR Tools, Doing Nothing, Human Vector
+  - 5 comparison rows: Culture at scale, Performance tracking, Employee feedback loop, Team composition insight, Remote accountability
+  - Background styling: Light-bg box (#f8f6f2) behind Generic HR Tools and Doing Nothing columns, white box behind Human Vector column
+  - "Doing Nothing" column highlighted in accent red (#ed1d2d)
+  - Desktop: 48px heading (Medium 500), 156px gap between challenge and columns, 96px gap between columns
+  - Mobile: 28px heading, 64px and 40px gaps, horizontal scroll support
+  - Typography: Poppins SemiBold 16px for headers, Regular 16px for content
+  - Divider lines between rows using SVG
+  - Files created: ChooseScale.jsx, ChooseScale.module.css, divider-line.svg
+  - Integrated into App.jsx after IntegrationSteps section
+- **Next:** Build Contact Form and Footer sections
+
+**Session 2025-11-27 (IntegrationSteps):**
 - ✅ Built IntegrationSteps section (2025-11-27)
   - Fetched designs from Figma (node-id: 113-288 desktop, 160-304 mobile)
   - Created IntegrationSteps component with CSS Modules

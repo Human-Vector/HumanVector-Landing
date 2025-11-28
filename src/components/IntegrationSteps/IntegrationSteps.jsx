@@ -15,7 +15,7 @@ const IntegrationSteps = () => {
     {
       number: '3',
       title: 'Week 1 Visibility',
-      description: 'Find out who moves your business ahead and who keeps it stuck'
+      description: 'Find who moves your business ahead and who keeps it stuck'
     },
     {
       number: '4',
@@ -39,7 +39,9 @@ const IntegrationSteps = () => {
                   <h3 className={styles.stepTitle}>{step.title}</h3>
                   <p className={styles.stepDescription}>{step.description}</p>
                 </div>
-                <span className={styles.stepNumber}>{step.number}</span>
+                <div className={styles.numberContainer}>
+                  <span className={styles.stepNumber}>{step.number}</span>
+                </div>
               </div>
             ))}
           </div>
@@ -51,7 +53,9 @@ const IntegrationSteps = () => {
                   <h3 className={styles.stepTitle}>{step.title}</h3>
                   <p className={styles.stepDescription}>{step.description}</p>
                 </div>
-                <span className={styles.stepNumber}>{step.number}</span>
+                <div className={styles.numberContainer}>
+                  <span className={styles.stepNumber}>{step.number}</span>
+                </div>
               </div>
             ))}
           </div>

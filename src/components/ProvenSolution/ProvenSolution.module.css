@@ -2,6 +2,25 @@
 .section {
   background-color: var(--colors-light-bg);
   padding: var(--spacing-48) 0 var(--spacing-40);
+  position: relative;
+}
+
+/* White Triangle Decoration */
+.triangle {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 162px;
+  height: 56px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.triangle img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .container {
@@ -152,5 +171,12 @@
     padding: var(--spacing-16) var(--spacing-40);
     width: 100%;
     text-align: center;
+  }
+
+  /* Smaller triangle on mobile */
+  .triangle {
+    width: 88px;
+    height: 32px;
+    top: -3px;
   }
 }

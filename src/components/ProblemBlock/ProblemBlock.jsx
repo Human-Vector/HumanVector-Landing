@@ -17,6 +17,9 @@ const ProblemBlock = () => {
             <img src="/images/problem-block/RedArrowDesktop.svg" alt="" />
           </picture>
         </div>
+        <div className={styles.arrowDown}>
+          <img src="/images/problem-block/RedArrowDown.svg" alt="" />
+        </div>
 
         {/* First Section: At 40+ people */}
         <div className={styles.section}>

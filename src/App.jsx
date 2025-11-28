@@ -6,6 +6,7 @@ import TwoQuotes from './components/TwoQuotes/TwoQuotes';
 import ProblemBlock from './components/ProblemBlock/ProblemBlock';
 import ProvenSolution from './components/ProvenSolution/ProvenSolution';
 import IntegrationSteps from './components/IntegrationSteps/IntegrationSteps';
+import ChooseScale from './components/ChooseScale/ChooseScale';
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <ProblemBlock />
       <ProvenSolution />
       <IntegrationSteps />
+      <ChooseScale />
     </div>
   );
 }
