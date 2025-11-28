@@ -7,6 +7,7 @@ import ProblemBlock from './components/ProblemBlock/ProblemBlock';
 import ProvenSolution from './components/ProvenSolution/ProvenSolution';
 import IntegrationSteps from './components/IntegrationSteps/IntegrationSteps';
 import ChooseScale from './components/ChooseScale/ChooseScale';
+import ContactForm from './components/ContactForm/ContactForm';
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <ProvenSolution />
       <IntegrationSteps />
       <ChooseScale />
+      <ContactForm />
     </div>
   );
 }

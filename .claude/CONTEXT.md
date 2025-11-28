@@ -13,9 +13,9 @@
 ---
 
 ## 📍 Current Focus
-**Session Goal:** Build ChooseScale section
+**Session Goal:** Build ContactForm section
 - Status: ✅ Completed
-- Next: Build remaining sections (Contact Form, Footer)
+- Next: Build Footer section
 
 ---
 
@@ -91,7 +91,19 @@
   - Divider lines between rows
   - Desktop: 156px gap between challenge and columns, 96px gap between columns
   - Mobile: 56px gaps, horizontal scroll support
-- [ ] Contact Form
+- [x] **ContactForm Section** - Desktop + Mobile responsive
+  - "Let's have a demo call and get to know each other" heading
+  - Form fields: Name, Email, Team size (dropdown), Biggest challenge (optional textarea)
+  - Client-side validation: required fields (name, email, team size), email format validation
+  - Error messages display on blur and invalid submission
+  - Team size options: 20-40, 40-60, 60-100, 100+
+  - "Book my demo" submit button
+  - George Kachanouski info with LinkedIn link and avatar
+  - Desktop: Two-column layout (heading left, form right), 88px gap
+  - Mobile: Vertical stack, full-width form
+  - Form styling: White card, dark-2 border, 6px border radius
+  - Heading: 48px desktop / 28px mobile, Medium (500)
+  - Decorative person image placeholder (to be exported from Figma)
 - [ ] Footer
 
 ### Reusable Components Created:
@@ -106,6 +118,7 @@
 - `ProvenSolution` - Dashboard showcase with CTA and founder info
 - `IntegrationSteps` - 4-step integration process with numbered cards
 - `ChooseScale` - Comparison table with 3 solution approaches
+- `ContactForm` - Demo booking form with validation
 
 ---
 
@@ -148,9 +161,12 @@
 │   │   ├── IntegrationSteps/
 │   │   │   ├── IntegrationSteps.jsx
 │   │   │   └── IntegrationSteps.module.css
-│   │   └── ChooseScale/
-│   │       ├── ChooseScale.jsx
-│   │       └── ChooseScale.module.css
+│   │   ├── ChooseScale/
+│   │   │   ├── ChooseScale.jsx
+│   │   │   └── ChooseScale.module.css
+│   │   └── ContactForm/
+│   │       ├── ContactForm.jsx
+│   │       └── ContactForm.module.css
 │   ├── App.jsx              # ✓ Main app component
 │   ├── App.css              # ✓ App-level styles
 │   └── main.jsx             # ✓ Entry point
@@ -163,7 +179,8 @@
 │       ├── align-vectors/   # ✓ AlignVectors section feature images (4 screenshots)
 │       ├── quotes/          # ✓ TwoQuotes section CEO photos
 │       ├── proven-solution/ # ✓ ProvenSolution section dashboard screenshot and avatar
-│       └── choose-scale/    # ✓ ChooseScale section divider line SVG
+│       ├── choose-scale/    # ✓ ChooseScale section divider line SVG
+│       └── contact-form/    # ✓ ContactForm section icons (chevron, resize)
 ├── index.html               # ✓ HTML entry
 ├── vite.config.js           # ✓ Vite configuration
 ├── package.json             # ✓ Dependencies
@@ -240,7 +257,11 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
   - Photos with company icons and attributions
   - Desktop: horizontal layout / Mobile: vertical with photo-attribution row
   - Italic quotes with semibold attributions
-- [ ] Contact form
+- [x] **ContactForm section** - Desktop + Mobile responsive
+  - Demo booking form with client-side validation
+  - 4 form fields with error handling
+  - Team size dropdown with 4 options
+  - George Kachanouski CTA with LinkedIn link
 - [ ] Footer
 - [ ] Final deployment
 
@@ -279,7 +300,43 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ## 📝 Session Notes
 > Auto-update: Quick notes for next session
 
-**Session 2025-11-28 (ChooseScale Responsive Fixes - Latest):**
+**Session 2025-11-28 (ContactForm - Latest):**
+- ✅ Built ContactForm section with interactive video (2025-11-28)
+  - Fetched designs from Figma (node-id: 113-355 desktop, 179-751 mobile)
+  - Created ContactForm component with CSS Modules
+  - **Form validation:** Full client-side validation with error messages
+    - Name (text, required), Email (email, required + format validation), Team size (dropdown, required with preselected "20-40"), Biggest challenge (textarea, optional)
+    - Validation triggers: onBlur for individual fields, onSubmit for all fields
+    - Error messages in accent red, visual feedback with red border on invalid fields
+    - Focus state: 2px blue border (link color) instead of red
+  - **Layout & Styling:**
+    - Desktop: Two-column (heading left, form right 538px), 64px gap between content
+    - Mobile/Tablet: Vertical stack, full-width form
+    - Form: White card, dark-2 border, 6px radius, 16px padding
+    - Heading: 48px desktop / 28px mobile, Medium (500)
+    - CTA: "Book my demo" with George Kachanouski LinkedIn link and avatar (inline layout matching ProvenSolution)
+    - George's avatar positioned inline with name (24px, flex row with 8px gap)
+  - **Interactive Video Background:**
+    - User added person-waving.mp4 video to /public/images/contact-form/
+    - Desktop (non-touch devices): Shows last frame initially, plays on hover (loops while hovering), pauses on mouse leave
+    - Mobile/Tablet (touch devices): Autoplays and loops, tap to pause/play from current frame
+    - Touch detection using 'ontouchstart' in window and navigator.maxTouchPoints (more reliable than screen width)
+    - Video positioned at bottom with no padding after, 48px gap before content
+    - Responsive: Desktop (absolute positioned), Tablet/Mobile (static, full-width, aspect-ratio 1896/1892)
+    - z-index: 3 for clickability, pointer-events: auto, cursor: pointer
+  - **Icons & Assets:**
+    - Created chevron-down.svg for dropdown (removed resize-icon.svg from textarea)
+    - Reused George's avatar from proven-solution folder
+  - **Layout Spacing:**
+    - Section padding: 48px top, 0 bottom (video at edge)
+    - Content margin-bottom: 48px (gap before video)
+    - Desktop padding: 40px horizontal / Mobile: 18px horizontal
+  - Form ready for Supabase integration
+  - Files created: ContactForm.jsx, ContactForm.module.css, chevron-down.svg
+  - Integrated into App.jsx after ChooseScale section
+- **Next:** Build Footer section
+
+**Session 2025-11-28 (ChooseScale Responsive Fixes):**
 - ✅ Fixed ChooseScale section responsive behavior across all viewports (2025-11-28)
   - **Problem:** Table content was overflowing dark container, breaking layout on tablet and small desktop
   - **Solution:** Implemented clean horizontal scroll structure for all responsive breakpoints
