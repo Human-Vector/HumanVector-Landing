@@ -2,7 +2,7 @@ import styles from './AlignVectors.module.css';
 
 export default function AlignVectors() {
   return (
-    <section className={styles.section}>
+    <section id="how-it-works" className={styles.section}>
       <div className={styles.container}>
         {/* Section Title */}
         <h2 className={styles.title}>

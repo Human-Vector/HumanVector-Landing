@@ -8,6 +8,13 @@ import styles from './Hero.module.css';
  * Main hero section with headline, CTA, stats, and hero image
  */
 const Hero = () => {
+  const scrollToForm = () => {
+    const formSection = document.getElementById('contact-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <section className={styles.hero}>
       <div className={styles.container}>
@@ -32,7 +39,7 @@ const Hero = () => {
 
           {/* CTA Container */}
           <div className={styles.ctaContainer}>
-            <Button variant="primary" size="large">
+            <Button variant="primary" size="large" onClick={scrollToForm}>
               See how It works
             </Button>
 

@@ -2,7 +2,7 @@ import styles from './ProblemBlock.module.css';
 
 const ProblemBlock = () => {
   return (
-    <section className={styles.problemBlock}>
+    <section id="problem" className={styles.problemBlock}>
       <div className={styles.content}>
         {/* Decorative Brackets */}
         <div className={styles.bracketGray}>

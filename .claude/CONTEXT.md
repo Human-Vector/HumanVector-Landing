@@ -13,14 +13,15 @@
 ---
 
 ## 📍 Current Focus
-**Session Goal:** Build ContactForm section
+**Session Goal:** Polish spacing, implement smooth navigation, and prepare for deployment
 - Status: ✅ Completed
-- Next: Build Footer section
+- Next: Final testing and deployment
 
 ---
 
 ## 🏗️ Stack & Setup
 **Framework:** Vite + React 18
+**Routing:** React Router DOM v6
 **Backend:** Supabase (forms, data)
 **Styling:** Custom CSS (from Figma design tokens)
 **Deployment:** Vercel
@@ -104,7 +105,26 @@
   - Form styling: White card, dark-2 border, 6px border radius
   - Heading: 48px desktop / 28px mobile, Medium (500)
   - Decorative person image placeholder (to be exported from Figma)
-- [ ] Footer
+- [x] **FAQ Section** - Desktop + Mobile responsive
+  - "What founders ask us" heading
+  - 5 expandable/collapsible FAQ items with questions and answers
+  - First question always open by default
+  - Chevron icon rotates when expanded/collapsed
+  - Desktop: 48px heading, 28px questions, centered layout (900px max)
+  - Mobile: 28px heading, 20px questions, left-aligned
+  - Light-bg background cards with 6px border radius
+  - 120px gap before Footer (desktop), 80px (mobile)
+- [x] **Footer** - Desktop + Mobile responsive
+  - Copyright "© 2025 Human Vector"
+  - Built on Oleg Kondrashov's book and 15+ years scaling EnCata
+  - Privacy Policy
+  - Desktop: Horizontal layout with dot separators
+  - Mobile: Vertical centered layout with dot separators
+  - 16px Regular text in dark-2 color
+
+### Pages:
+- `LandingPage` - Main landing page with all sections
+- `PrivacyPolicy` - Standard privacy policy page
 
 ### Reusable Components Created:
 - `Button` - Primary/secondary variants, responsive
@@ -119,6 +139,9 @@
 - `IntegrationSteps` - 4-step integration process with numbered cards
 - `ChooseScale` - Comparison table with 3 solution approaches
 - `ContactForm` - Demo booking form with validation
+- `FAQ` - Expandable/collapsible FAQ items, can close all questions
+- `Footer` - Footer with copyright, text, and clickable privacy policy link
+- `ScrollToTop` - Utility component that scrolls to top on route change
 
 ---
 
@@ -164,12 +187,23 @@
 │   │   ├── ChooseScale/
 │   │   │   ├── ChooseScale.jsx
 │   │   │   └── ChooseScale.module.css
-│   │   └── ContactForm/
-│   │       ├── ContactForm.jsx
-│   │       └── ContactForm.module.css
-│   ├── App.jsx              # ✓ Main app component
+│   │   ├── ContactForm/
+│   │       │   ├── ContactForm.jsx
+│   │       │   └── ContactForm.module.css
+│   │   ├── FAQ/
+│   │       │   ├── FAQ.jsx
+│   │       │   └── FAQ.module.css
+│   │   ├── Footer/
+│   │   │   ├── Footer.jsx
+│   │   │   └── Footer.module.css
+│   │   └── ScrollToTop.jsx  # ✓ Utility component for route changes
+│   ├── pages/
+│   │   ├── LandingPage.jsx  # ✓ Main landing page
+│   │   ├── PrivacyPolicy.jsx # ✓ Privacy policy page
+│   │   └── PrivacyPolicy.module.css
+│   ├── App.jsx              # ✓ Router configuration
 │   ├── App.css              # ✓ App-level styles
-│   └── main.jsx             # ✓ Entry point
+│   └── main.jsx             # ✓ Entry point with BrowserRouter
 ├── public/
 │   ├── videos/
 │   │   └── hero-video.mp4   # ✓ Hero video
@@ -180,7 +214,8 @@
 │       ├── quotes/          # ✓ TwoQuotes section CEO photos
 │       ├── proven-solution/ # ✓ ProvenSolution section dashboard screenshot and avatar
 │       ├── choose-scale/    # ✓ ChooseScale section divider line SVG
-│       └── contact-form/    # ✓ ContactForm section icons (chevron, resize)
+│       ├── contact-form/    # ✓ ContactForm section icons (chevron, resize)
+│       └── faq/             # ✓ FAQ section icons (chevron, dot separator)
 ├── index.html               # ✓ HTML entry
 ├── vite.config.js           # ✓ Vite configuration
 ├── package.json             # ✓ Dependencies
@@ -262,7 +297,15 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
   - 4 form fields with error handling
   - Team size dropdown with 4 options
   - George Kachanouski CTA with LinkedIn link
-- [ ] Footer
+- [x] **FAQ section** - Desktop + Mobile responsive
+  - 5 expandable/collapsible FAQ items
+  - First question always open by default
+  - Smooth chevron rotation animation
+  - Responsive typography and spacing
+- [x] **Footer** - Desktop + Mobile responsive
+  - Copyright, company info, privacy policy
+  - Horizontal layout (desktop) / Vertical layout (mobile)
+  - Dot separators between items
 - [ ] Final deployment
 
 ---
@@ -300,7 +343,128 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ## 📝 Session Notes
 > Auto-update: Quick notes for next session
 
-**Session 2025-11-28 (ContactForm - Latest):**
+**Session 2025-11-28 (Polish & Navigation - Latest):**
+- ✅ Spacing adjustments (2025-11-28)
+  - Added 32px to ChooseScale section bottom padding (desktop only): 80px → 112px
+  - Added 40px to IntegrationSteps section top padding (desktop only): 56px → 96px
+  - Better visual rhythm and breathing room between sections
+- ✅ CTA buttons scroll to contact form (2025-11-28)
+  - Updated all CTA buttons to scroll to ContactForm section instead of external links
+  - Hero button: "See how It works" → scrolls to #contact-form
+  - Navigation button: "See how It works" → scrolls to #contact-form
+  - ProvenSolution button: Changed from Calendly link to scroll function
+  - IntegrationSteps button: "Start with a Demo" → scrolls to #contact-form
+  - All buttons use smooth scrollIntoView({ behavior: 'smooth', block: 'start' })
+- ✅ Navigation menu smooth scrolling (2025-11-28)
+  - Added section IDs: #problem (ProblemBlock), #solution (ProvenSolution), #how-it-works (AlignVectors), #faq (FAQ)
+  - Added scroll-behavior: smooth to html element in global.css
+  - All navigation menu items now smoothly scroll to their target sections
+  - "The Problem" → "At 40+ people, your old systems stop keeping up"
+  - "The Solution" → "Proven solution" section
+  - "How It Works" → "Align the vectors" section
+  - "FAQ" → FAQ section
+- **Files modified:**
+  - ChooseScale.module.css, IntegrationSteps.module.css (spacing)
+  - Hero.jsx, Navigation.jsx, ProvenSolution.jsx, IntegrationSteps.jsx (scroll functions)
+  - ContactForm.jsx, ProblemBlock.jsx, ProvenSolution.jsx, AlignVectors.jsx, FAQ.jsx (section IDs)
+  - global.css (smooth scroll behavior)
+- **Next:** Final testing and deployment
+
+**Session 2025-11-28 (Privacy Policy & Routing):**
+- ✅ Added FAQ close functionality (2025-11-28)
+  - Fixed toggleFAQ function to allow closing any FAQ item (including first one)
+  - Changed logic from `setOpenIndex(openIndex === index ? index : index)` to `setOpenIndex(openIndex === index ? null : index)`
+  - Now all FAQ items can be expanded/collapsed, including the first one that opens by default
+- ✅ Installed and configured React Router DOM (2025-11-28)
+  - Installed react-router-dom package (v6)
+  - Updated main.jsx to wrap App with BrowserRouter
+  - Refactored App.jsx to use Routes and Route components
+  - Created LandingPage component with all existing sections
+  - Created ScrollToTop utility component for automatic scroll on route changes
+- ✅ Built Privacy Policy page (2025-11-28)
+  - Created comprehensive Privacy Policy page with standard legal content
+  - **Sections included:** Introduction, Information Collection, Usage, Sharing, Security, Retention, User Rights, Cookies, Third-Party Links, Children's Privacy, Policy Changes, Contact
+  - **Layout:**
+    - "Back to Home" link at top
+    - Main title: 48px desktop / 32px mobile, SemiBold
+    - Section headings: 28px desktop / 24px mobile, SemiBold
+    - Body text: 16px Regular, dark-2 color
+    - Bulleted lists with proper spacing
+    - All links styled in link-color with hover to accent red
+  - **Styling:**
+    - Max-width: 900px, centered
+    - Section gaps: 32px
+    - Responsive padding: 48px desktop / 32px mobile
+  - Files created: PrivacyPolicy.jsx, PrivacyPolicy.module.css
+- ✅ Updated Footer component (2025-11-28)
+  - Converted Privacy Policy text to Link component
+  - Added React Router Link with route to /privacy-policy
+  - Styled link to match existing text with hover effect (accent red)
+  - No underline by default, smooth color transition on hover
+- **Routing structure:**
+  - `/` - Landing page with all sections
+  - `/privacy-policy` - Privacy Policy page
+- **Next:** Final testing and deployment
+
+**Session 2025-11-28 (FAQ and Footer):**
+- ✅ Built FAQ section with expandable/collapsible functionality (2025-11-28)
+  - Fetched designs from Figma (node-id: 186-925 desktop, 186-962 mobile)
+  - Created FAQ component with React state management
+  - **Expandable/Collapsible Behavior:**
+    - First question (index 0) always open by default
+    - Click to expand/collapse any FAQ item
+    - Chevron icon rotates 180deg when open
+    - Smooth CSS transitions for chevron rotation (0.3s ease)
+  - **5 FAQ Items:**
+    - "Will this slow us down?" - Answer about speed and time savings
+    - "Does this work for remote/hybrid teams?" - Planfix integration
+    - "What if my team resists?" - Same answer as #2 (user provided)
+    - "Do you help with setup?" - Full onboarding support
+    - "What's the investment?" - Pricing discussion and ROI
+  - **Desktop Layout:**
+    - Heading: "What founders ask us" - 48px Medium, centered, 835px max
+    - FAQ container: 900px max width, centered
+    - FAQ items: Light-bg background, 6px border radius
+    - Open item: 24px horizontal padding, 12px top/bottom
+    - Closed items: 24px horizontal padding, 18px all around
+    - Questions: 28px SemiBold, dark color
+    - Answers: 16px Regular, dark-2 color, 16px top margin
+    - Chevron: 40px size, 6px gap from question
+  - **Mobile Layout:**
+    - Heading: 28px, left-aligned
+    - Questions: 20px
+    - FAQ items: full width
+    - Open item: 8px top, 12px horizontal/bottom
+    - Closed items: 12px all around
+  - **Spacing:**
+    - Section padding: 48px top, 120px bottom (desktop) / 32px top, 80px bottom (mobile)
+    - 24px gap between heading and FAQ container
+    - 16px gap between FAQ items
+  - Files created: FAQ.jsx, FAQ.module.css, chevron-down.svg, dot.svg
+- ✅ Built Footer section (2025-11-28)
+  - Created Footer component with responsive layout
+  - **Content:**
+    - Copyright: "© 2025 Human Vector"
+    - Company info: "Built on Oleg Kondrashov's book and 15+ years scaling EnCata"
+    - Privacy Policy text
+  - **Desktop Layout:**
+    - Horizontal layout with flex
+    - Items separated by 8px dot SVG (dark-2 color)
+    - 32px gap between items
+    - Copyright: 203px fixed width
+    - Other text: nowrap
+  - **Mobile Layout:**
+    - Vertical centered layout
+    - 8px gap between all items
+    - Company info text wraps and centers
+  - **Styling:**
+    - All text: 16px Regular, dark-2 color, line-height 1.5
+    - Footer padding: 0 horizontal, 48px bottom (desktop) / 64px bottom (mobile)
+  - Files created: Footer.jsx, Footer.module.css
+- ✅ Integrated both components into App.jsx
+- **Next:** Final testing and deployment
+
+**Session 2025-11-28 (ContactForm):**
 - ✅ Built ContactForm section with interactive video (2025-11-28)
   - Fetched designs from Figma (node-id: 113-355 desktop, 179-751 mobile)
   - Created ContactForm component with CSS Modules

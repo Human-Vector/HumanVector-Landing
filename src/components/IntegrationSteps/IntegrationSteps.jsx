@@ -1,6 +1,13 @@
 import styles from './IntegrationSteps.module.css';
 
 const IntegrationSteps = () => {
+  const scrollToForm = () => {
+    const formSection = document.getElementById('contact-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const steps = [
     {
       number: '1',
@@ -61,7 +68,7 @@ const IntegrationSteps = () => {
           </div>
         </div>
 
-        <button className={styles.ctaButton}>
+        <button className={styles.ctaButton} onClick={scrollToForm}>
           Start with a Demo
         </button>
       </div>

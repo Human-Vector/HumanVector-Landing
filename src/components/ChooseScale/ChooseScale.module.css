@@ -4,7 +4,10 @@
 
 /* Section */
 .chooseScale {
-  padding: var(--spacing-56) 0;
+  padding-top: var(--spacing-56);
+  padding-bottom: var(--spacing-80);
+  padding-left: 0;
+  padding-right: 0;
   background-color: var(--colors-white);
 }
 
@@ -234,7 +237,10 @@
 
 @media (max-width: 767px) {
   .chooseScale {
-    padding: var(--spacing-32) 0;
+    padding-top: var(--spacing-32);
+    padding-bottom: var(--spacing-56);
+    padding-left: 0;
+    padding-right: 0;
     overflow: hidden;
   }
 
@@ -370,6 +376,16 @@
   /* Divider */
   .divider {
     width: 100%;
+  }
+}
+
+/* ========================================
+   Desktop (1025px+)
+   ======================================== */
+
+@media (min-width: 1025px) {
+  .chooseScale {
+    padding-bottom: 112px; /* 80px base + 32px additional */
   }
 }
 

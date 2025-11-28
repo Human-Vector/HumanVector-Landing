@@ -20,6 +20,12 @@
   position: relative;
   z-index: 2;
   margin-bottom: var(--spacing-48);
+  pointer-events: none;
+}
+
+.heading,
+.formCard {
+  pointer-events: auto;
 }
 
 .heading {
@@ -235,7 +241,7 @@
   width: 590px;
   height: 589px;
   pointer-events: auto;
-  z-index: 3;
+  z-index: 1;
   cursor: pointer;
 }
 
@@ -254,6 +260,7 @@
   .content {
     flex-direction: column;
     gap: var(--spacing-32);
+    pointer-events: auto;
   }
 
   .heading {
@@ -290,6 +297,7 @@
   .content {
     gap: var(--spacing-32);
     margin-bottom: var(--spacing-32);
+    pointer-events: auto;
   }
 
   .heading {

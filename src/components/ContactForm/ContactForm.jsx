@@ -163,7 +163,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className={styles.contactFormSection}>
+    <section id="contact-form" className={styles.contactFormSection}>
       <div className={styles.container}>
         <div className={styles.content}>
           <h2 className={styles.heading}>

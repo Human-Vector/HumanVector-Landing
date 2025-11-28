@@ -1,8 +1,15 @@
 import styles from './ProvenSolution.module.css';
 
 export default function ProvenSolution() {
+  const scrollToForm = () => {
+    const formSection = document.getElementById('contact-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
-    <section className={styles.section}>
+    <section id="solution" className={styles.section}>
       {/* White Triangle Decoration */}
       <div className={styles.triangle}>
         <img src="/images/proven-solution/WhiteTriangle.svg" alt="" />
@@ -24,14 +31,12 @@ export default function ProvenSolution() {
         </div>
 
         <div className={styles.ctaContainer}>
-          <a
-            href="https://calendly.com/georgekachanouski/30min"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={scrollToForm}
             className={styles.ctaButton}
           >
             See how It works
-          </a>
+          </button>
 
           <div className={styles.ctaInfo}>
             <p className={styles.ctaTextTop}>

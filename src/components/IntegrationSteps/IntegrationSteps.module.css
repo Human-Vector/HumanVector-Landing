@@ -125,6 +125,13 @@
   background-color: #d11929;
 }
 
+/* Desktop (1025px+) */
+@media (min-width: 1025px) {
+  .section {
+    padding: 96px 0 56px 0; /* 56px + 40px top padding */
+  }
+}
+
 /* Tablet (768px - 1024px) */
 @media (max-width: 1024px) and (min-width: 768px) {
   .container {

@@ -9,6 +9,13 @@ import styles from './Navigation.module.css';
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToForm = () => {
+    const formSection = document.getElementById('contact-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const navLinks = [
     { label: 'The Problem', href: '#problem' },
     { label: 'The Solution', href: '#solution' },
@@ -39,7 +46,7 @@ const Navigation = () => {
 
         {/* CTA Button */}
         <div className={styles.ctaButton}>
-          <Button variant="secondary" size="medium">
+          <Button variant="secondary" size="medium" onClick={scrollToForm}>
             See how It works
           </Button>
         </div>
