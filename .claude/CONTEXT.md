@@ -83,13 +83,14 @@
   - "Choose how you want to scale" heading
   - Comparison table: Challenge vs Generic HR Tools vs Doing Nothing vs Human Vector
   - 5 comparison rows: Culture, Performance, Feedback, Team Composition, Accountability
-  - Background boxes: light-bg for middle columns, white for Human Vector column
-  - "Doing Nothing" column in accent red color
+  - Dark gray table background (#48555b)
+  - Background boxes: red overlay (rgba(237,39,55,0.8)) for "Doing Nothing" column, white for "Human Vector" column
+  - Text colors: white/light-bg on dark background, dark on white background
   - Heading: 48px desktop / 28px mobile, Medium (500)
   - Content: Poppins Regular/SemiBold 16px
   - Divider lines between rows
   - Desktop: 156px gap between challenge and columns, 96px gap between columns
-  - Mobile: 64px and 40px gaps, horizontal scroll support
+  - Mobile: 56px gaps, horizontal scroll support
 - [ ] Contact Form
 - [ ] Footer
 
@@ -278,7 +279,22 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ## 📝 Session Notes
 > Auto-update: Quick notes for next session
 
-**Session 2025-11-28 (Design Updates - Latest):**
+**Session 2025-11-28 (ChooseScale Responsive Fixes - Latest):**
+- ✅ Fixed ChooseScale section responsive behavior across all viewports (2025-11-28)
+  - **Problem:** Table content was overflowing dark container, breaking layout on tablet and small desktop
+  - **Solution:** Implemented clean horizontal scroll structure for all responsive breakpoints
+  - **Mobile (<768px):** Clean scroll with 1050px table wrapper, 18px padding, proper background box positioning
+  - **Tablet (768px-1024px):** Same structure as mobile with 32px padding, smooth horizontal scroll
+  - **Small Desktop (1025px-1320px):** Horizontal scroll enabled, 1280px wrapper, desktop gaps maintained
+  - **Desktop (1321px+):** Normal layout, no scroll needed
+  - Container structure: Removed padding from container, added to heading and scroll container separately
+  - Background boxes: Properly positioned within wrapper bounds for all breakpoints
+  - Divider lines: Set to 100% width, stay within white card boundaries
+  - All content now scrolls inside the dark container instead of overflowing
+  - Files modified: ChooseScale.module.css
+- **Next:** Build Contact Form and Footer sections
+
+**Session 2025-11-28 (Design Updates):**
 - ✅ Added decorative red arrow to ProblemBlock section (2025-11-28)
   - Curved arrow pointing down from "But your old approach no longer scales" heading
   - Desktop only (hidden on tablet and mobile)
@@ -304,6 +320,21 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
   - Text wraps naturally on all screen sizes for responsive behavior
   - Description text updated: "Find who moves..." (removed "out")
   - Files modified: IntegrationSteps.jsx, IntegrationSteps.module.css
+- ✅ Rebuilt ChooseScale section from scratch (2025-11-28)
+  - Fetched final designs from Figma (node-id: 165-632 desktop, 165-677 mobile)
+  - Completely rewrote component and styles based on exact Figma specifications
+  - Dark-2 background (#48555b) for table container
+  - Red overlay box (rgba(237,39,55,0.8)) behind "Doing Nothing" column (639px left desktop, 512px mobile)
+  - White background box behind "Human Vector" column (940px left desktop, 764px mobile)
+  - Text colors: white/light-bg on dark background, dark/dark-2 on white background
+  - Desktop gaps: 156px (challenge to columns), 96px (between columns), 18px (between rows)
+  - Mobile gaps: 56px (uniform), 728px fixed width for horizontal scroll
+  - Column widths: Challenge 213px, Generic HR Tools 190px, Doing Nothing 176px, Human Vector 236px
+  - Typography: SemiBold 16px headers, Regular 16px content, line-height 1.5
+  - Divider width: 1192px desktop, 100% mobile
+  - Row spacing: Added 12px bottom padding to comparison rows
+  - Background boxes: Fixed to stay within table bounds (top: 32px, max-height: calc(100% - 64px))
+  - Files rebuilt: ChooseScale.jsx, ChooseScale.module.css
 - **Next:** Build Contact Form and Footer sections
 
 **Session 2025-11-27 (ChooseScale):**
