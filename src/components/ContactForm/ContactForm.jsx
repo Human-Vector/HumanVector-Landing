@@ -5,6 +5,7 @@ import SuccessModal from '../SuccessModal/SuccessModal';
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
+    messengerContact: '',
     email: '',
     teamSize: '20-40',
     challenge: ''
@@ -40,12 +41,14 @@ export default function ContactForm() {
 
   const [errors, setErrors] = useState({
     name: '',
+    messengerContact: '',
     email: '',
     teamSize: ''
   });
 
   const [touched, setTouched] = useState({
     name: false,
+    messengerContact: false,
     email: false,
     teamSize: false
   });
@@ -64,6 +67,11 @@ export default function ContactForm() {
       case 'name':
         if (!value.trim()) {
           return 'Name is required';
+        }
+        return '';
+      case 'messengerContact':
+        if (!value.trim()) {
+          return 'Messenger contact is required';
         }
         return '';
       case 'email':
@@ -138,12 +146,13 @@ export default function ContactForm() {
     // Validate all fields
     const newErrors = {
       name: validateField('name', formData.name),
+      messengerContact: validateField('messengerContact', formData.messengerContact),
       email: validateField('email', formData.email),
       teamSize: validateField('teamSize', formData.teamSize)
     };
 
     setErrors(newErrors);
-    setTouched({ name: true, email: true, teamSize: true });
+    setTouched({ name: true, messengerContact: true, email: true, teamSize: true });
 
     // Check if there are any errors
     const hasErrors = Object.values(newErrors).some(error => error !== '');
@@ -164,11 +173,12 @@ export default function ContactForm() {
     // Reset form
     setFormData({
       name: '',
+      messengerContact: '',
       email: '',
       teamSize: '20-40',
       challenge: ''
     });
-    setTouched({ name: false, email: false, teamSize: false });
+    setTouched({ name: false, messengerContact: false, email: false, teamSize: false });
   };
 
   return (
@@ -180,92 +190,114 @@ export default function ContactForm() {
           </h2>
 
           <form className={styles.formCard} onSubmit={handleSubmit} noValidate>
-            {/* Name Field */}
-            <div className={styles.formField}>
-              <label htmlFor="name" className={styles.label}>
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                placeholder="William"
-                className={`${styles.input} ${errors.name && touched.name ? styles.inputError : ''}`}
-              />
-              {errors.name && touched.name && (
-                <span className={styles.errorMessage}>{errors.name}</span>
-              )}
-            </div>
-
-            {/* Email Field */}
-            <div className={styles.formField}>
-              <label htmlFor="email" className={styles.label}>
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                placeholder="William@gmail.com"
-                className={`${styles.input} ${errors.email && touched.email ? styles.inputError : ''}`}
-              />
-              {errors.email && touched.email && (
-                <span className={styles.errorMessage}>{errors.email}</span>
-              )}
-            </div>
-
-            {/* Team Size Field */}
-            <div className={styles.formField}>
-              <label htmlFor="teamSize" className={styles.label}>
-                Team size
-              </label>
-              <div className={styles.selectWrapper}>
-                <select
-                  id="teamSize"
-                  name="teamSize"
-                  value={formData.teamSize}
+            <div className={styles.formFieldsWrapper}>
+              {/* Name Field */}
+              <div className={styles.formField}>
+                <label htmlFor="name" className={styles.label}>
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`${styles.select} ${errors.teamSize && touched.teamSize ? styles.inputError : ''}`}
-                >
-                  <option value="">Select team size</option>
-                  {teamSizeOptions.map(option => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-                <img
-                  src="/images/contact-form/chevron-down.svg"
-                  alt=""
-                  className={styles.chevronIcon}
+                  placeholder="William"
+                  className={`${styles.input} ${errors.name && touched.name ? styles.inputError : ''}`}
+                />
+                {errors.name && touched.name && (
+                  <span className={styles.errorMessage}>{errors.name}</span>
+                )}
+              </div>
+
+              {/* Messenger Contact Field */}
+              <div className={styles.formField}>
+                <label htmlFor="messengerContact" className={styles.label}>
+                  Messenger contact
+                </label>
+                <input
+                  type="text"
+                  id="messengerContact"
+                  name="messengerContact"
+                  value={formData.messengerContact}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="Telegram/WhatsApp/other"
+                  className={`${styles.input} ${errors.messengerContact && touched.messengerContact ? styles.inputError : ''}`}
+                />
+                {errors.messengerContact && touched.messengerContact && (
+                  <span className={styles.errorMessage}>{errors.messengerContact}</span>
+                )}
+              </div>
+
+              {/* Email Field */}
+              <div className={styles.formField}>
+                <label htmlFor="email" className={styles.label}>
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="William@gmail.com"
+                  className={`${styles.input} ${errors.email && touched.email ? styles.inputError : ''}`}
+                />
+                {errors.email && touched.email && (
+                  <span className={styles.errorMessage}>{errors.email}</span>
+                )}
+              </div>
+
+              {/* Team Size Field */}
+              <div className={styles.formField}>
+                <label htmlFor="teamSize" className={styles.label}>
+                  Team size
+                </label>
+                <div className={styles.selectWrapper}>
+                  <select
+                    id="teamSize"
+                    name="teamSize"
+                    value={formData.teamSize}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={`${styles.select} ${errors.teamSize && touched.teamSize ? styles.inputError : ''}`}
+                  >
+                    <option value="">Select team size</option>
+                    {teamSizeOptions.map(option => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                  <img
+                    src="/images/contact-form/chevron-down.svg"
+                    alt=""
+                    className={styles.chevronIcon}
+                  />
+                </div>
+                {errors.teamSize && touched.teamSize && (
+                  <span className={styles.errorMessage}>{errors.teamSize}</span>
+                )}
+              </div>
+
+              {/* Challenge Field (Optional) */}
+              <div className={styles.formField}>
+                <label htmlFor="challenge" className={styles.label}>
+                  Biggest challenge (optional)
+                </label>
+                <textarea
+                  id="challenge"
+                  name="challenge"
+                  value={formData.challenge}
+                  onChange={handleChange}
+                  placeholder="We grew from 30 to 45 people this year but profit stayed flat. Something's broken but I can't see where..."
+                  className={styles.textarea}
+                  rows={5}
                 />
               </div>
-              {errors.teamSize && touched.teamSize && (
-                <span className={styles.errorMessage}>{errors.teamSize}</span>
-              )}
-            </div>
-
-            {/* Challenge Field (Optional) */}
-            <div className={styles.formField}>
-              <label htmlFor="challenge" className={styles.label}>
-                Biggest challenge (optional)
-              </label>
-              <textarea
-                id="challenge"
-                name="challenge"
-                value={formData.challenge}
-                onChange={handleChange}
-                placeholder="We grew from 30 to 45 people this year but profit stayed flat. Something's broken but I can't see where..."
-                className={styles.textarea}
-                rows={5}
-              />
             </div>
 
             {/* CTA Container */}

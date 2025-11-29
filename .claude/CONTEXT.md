@@ -13,7 +13,7 @@
 ---
 
 ## 📍 Current Focus
-**Session Goal:** Build success modal, polish FAQ section, update contact details
+**Session Goal:** Add messenger contact field and adjust form spacing
 - Status: ✅ Completed
 - Next: Final testing and deployment
 
@@ -94,15 +94,16 @@
   - Mobile: 56px gaps, horizontal scroll support
 - [x] **ContactForm Section** - Desktop + Mobile responsive
   - "Let's have a demo call and get to know each other" heading
-  - Form fields: Name, Email, Team size (dropdown), Biggest challenge (optional textarea)
-  - Client-side validation: required fields (name, email, team size), email format validation
+  - Form fields: Name, Messenger contact, Email, Team size (dropdown), Biggest challenge (optional textarea)
+  - Client-side validation: required fields (name, messenger contact, email, team size), email format validation
   - Error messages display on blur and invalid submission
   - Team size options: 20-40, 40-60, 60-100, 100+
   - "Book my demo" submit button
   - George Kachanouski info with LinkedIn link and avatar
-  - Desktop: Two-column layout (heading left, form right), 88px gap
+  - Desktop: Two-column layout (heading left, form right), 64px gap
   - Mobile: Vertical stack, full-width form
-  - Form styling: White card, dark-2 border, 6px border radius
+  - Form styling: White card, dark-2 border, 6px border radius, 18px gap (desktop) / 12px gap (mobile)
+  - Form fields wrapper: 12px gap (desktop) / 8px gap (mobile)
   - Heading: 48px desktop / 28px mobile, Medium (500)
   - Decorative person waving video with interactive hover/click behavior
   - Success modal displays after valid form submission with user's name
@@ -348,7 +349,24 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ## 📝 Session Notes
 > Auto-update: Quick notes for next session
 
-**Session 2025-11-29 (Success Modal & Polish - Latest):**
+**Session 2025-11-29 PM (ContactForm Updates - Latest):**
+- ✅ Added "Messenger contact" field to ContactForm (2025-11-29)
+  - Fetched updated designs from Figma (node-id: 113-355 desktop, 179-751 mobile)
+  - New field positioned between Name and Email fields
+  - Label: "Messenger contact"
+  - Placeholder: "Telegram/WhatsApp/other"
+  - Required field with validation
+  - **Form Field Order:** Name → Messenger contact → Email → Team size → Biggest challenge
+  - Added to form state, validation, error handling, and reset logic
+- ✅ Updated ContactForm spacing (2025-11-29)
+  - Wrapped form fields in `.formFieldsWrapper` container
+  - Desktop spacing: Form card 18px gap (was 29px), fields wrapper 12px gap
+  - Mobile spacing: Form card 12px gap (was 24px), fields wrapper 8px gap
+  - Matches Figma design specifications exactly
+  - Files modified: ContactForm.jsx, ContactForm.module.css
+- **Next:** Final testing and deployment
+
+**Session 2025-11-29 AM (Success Modal & Polish):**
 - ✅ Built SuccessModal component (2025-11-29)
   - Fetched design from Figma (node-id: 194-67)
   - Created SuccessModal component with CSS Modules

@@ -45,9 +45,16 @@
   padding: var(--spacing-24) var(--spacing-40);
   display: flex;
   flex-direction: column;
-  gap: 29px;
+  gap: var(--spacing-18);
   width: 538px;
   flex-shrink: 0;
+}
+
+/* Form Fields Wrapper */
+.formFieldsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 /* Form Fields */
@@ -306,8 +313,12 @@
 
   .formCard {
     padding: var(--spacing-12) var(--spacing-16);
-    gap: var(--spacing-24);
+    gap: var(--spacing-12);
     max-width: 100%;
+  }
+
+  .formFieldsWrapper {
+    gap: var(--spacing-8);
   }
 
   .ctaContainer {
