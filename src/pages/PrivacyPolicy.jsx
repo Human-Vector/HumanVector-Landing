@@ -122,8 +122,8 @@ const PrivacyPolicy = () => {
             <h2>12. Contact Us</h2>
             <p>If you have any questions about this Privacy Policy, please contact us:</p>
             <ul>
-              <li>Email: privacy@humanvector.com</li>
-              <li>Website: <a href="https://humanvector.com" target="_blank" rel="noopener noreferrer">humanvector.com</a></li>
+              <li>Email: go@human-vector.work</li>
+              <li>Website: <a href="https://human-vector.work" target="_blank" rel="noopener noreferrer">human-vector.work</a></li>
             </ul>
           </section>
         </div>

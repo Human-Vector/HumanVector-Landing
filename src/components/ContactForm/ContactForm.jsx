@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import styles from './ContactForm.module.css';
+import SuccessModal from '../SuccessModal/SuccessModal';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -48,6 +49,8 @@ export default function ContactForm() {
     email: false,
     teamSize: false
   });
+
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const teamSizeOptions = [
     { value: '20-40', label: '20-40' },
@@ -149,17 +152,23 @@ export default function ContactForm() {
       // Form is valid, submit data
       console.log('Form submitted:', formData);
       // TODO: Integrate with Supabase or API
-      alert('Thank you! We will contact you soon.');
 
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        teamSize: '',
-        challenge: ''
-      });
-      setTouched({ name: false, email: false, teamSize: false });
+      // Show success modal
+      setShowSuccessModal(true);
     }
+  };
+
+  const handleCloseModal = () => {
+    setShowSuccessModal(false);
+
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      teamSize: '20-40',
+      challenge: ''
+    });
+    setTouched({ name: false, email: false, teamSize: false });
   };
 
   return (
@@ -308,6 +317,14 @@ export default function ContactForm() {
           </video>
         </div>
       </div>
+
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <SuccessModal
+          userName={formData.name}
+          onClose={handleCloseModal}
+        />
+      )}
     </section>
   );
 }

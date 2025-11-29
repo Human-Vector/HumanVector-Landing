@@ -1,0 +1,159 @@
+/* Modal Backdrop */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: var(--spacing-24);
+  backdrop-filter: blur(4px);
+}
+
+/* Modal Content Container */
+.modalContent {
+  position: relative;
+  background-color: var(--colors-white);
+  border-radius: var(--spacing-8);
+  padding: var(--spacing-32) var(--spacing-80) var(--spacing-56);
+  max-width: 668px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-40);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Close Button */
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.closeButton img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Checkmark Icon */
+.iconContainer {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.iconContainer img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Text Container */
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Heading */
+.heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--colors-dark);
+  margin: 0;
+}
+
+/* Description */
+.description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--colors-dark-2);
+  margin: 0;
+}
+
+.description .bold {
+  font-weight: 600;
+  color: var(--colors-dark);
+}
+
+/* CTA Button */
+.ctaButton {
+  width: 100%;
+  background-color: var(--colors-accent);
+  color: var(--colors-white);
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.ctaButton:hover {
+  background-color: #d11a27;
+}
+
+.ctaButton:active {
+  background-color: #b51723;
+}
+
+/* Mobile Responsive */
+@media (max-width: 767px) {
+  .modalBackdrop {
+    padding: var(--spacing-18);
+  }
+
+  .modalContent {
+    padding: var(--spacing-24) var(--spacing-18) var(--spacing-40);
+    gap: var(--spacing-32);
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .ctaButton {
+    font-size: 14px;
+    padding: 18px 32px;
+  }
+}
+
+/* Tablet Responsive */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .modalContent {
+    padding: var(--spacing-32) var(--spacing-40) var(--spacing-48);
+  }
+}

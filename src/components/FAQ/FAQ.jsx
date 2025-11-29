@@ -35,8 +35,6 @@ const FAQ = () => {
   return (
     <section id="faq" className={styles.faqSection}>
       <div className={styles.container}>
-        <h2 className={styles.heading}>What founders ask us</h2>
-
         <div className={styles.faqContainer}>
           {faqData.map((faq, index) => (
             <div
