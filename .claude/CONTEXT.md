@@ -13,9 +13,11 @@
 ---
 
 ## 📍 Current Focus
-**Session Goal:** Add messenger contact field and adjust form spacing
-- Status: ✅ Completed
-- Next: Final testing and deployment
+**Session Goal:** Supabase integration with Telegram notifications
+- Status: ⚠️ Backend complete, frontend debugging in progress
+- Backend: ✅ Database, RLS, Edge Function, Webhook all working
+- Frontend: ⚠️ Network connectivity issue - investigating regional access
+- Next: Resolve frontend connection issue and complete deployment
 
 ---
 
@@ -152,6 +154,8 @@
 ```
 /
 ├── src/
+│   ├── lib/
+│   │   └── supabaseClient.js  # ✓ Supabase client configuration
 │   ├── styles/
 │   │   ├── variables.css      # ✓ Design tokens (colors, spacing, typography)
 │   │   └── global.css         # ✓ Global styles, resets, font imports
@@ -231,18 +235,61 @@
 ---
 
 ## 🗄️ Supabase Schema
-**Tables:** [Auto-update when created]
+**Project URL:** https://vkjndyldfpulotwyfrss.supabase.co
 
+**Tables:**
 ```sql
--- Example: form_submissions table
--- [Add schema when created]
+-- form_submissions table (17 fields)
+CREATE TABLE form_submissions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+
+  -- Form data (5 fields)
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  team_size TEXT NOT NULL,
+  biggest_challenge TEXT,
+  messenger_contact TEXT,
+
+  -- Device & Browser (3 fields)
+  device_type TEXT,
+  browser TEXT,
+  os TEXT,
+
+  -- Location & Language (4 fields)
+  country TEXT,
+  city TEXT,
+  language TEXT,
+  timezone TEXT,
+
+  -- Traffic Source (1 field)
+  referrer TEXT,
+
+  -- Screen (1 field)
+  screen_resolution TEXT,
+
+  -- System (3 fields)
+  ip_address TEXT,
+  submitted_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- RLS Policies
+ALTER TABLE form_submissions ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Allow anonymous inserts" ON form_submissions FOR INSERT TO anon WITH CHECK (true);
+CREATE POLICY "Allow authenticated reads" ON form_submissions FOR SELECT TO authenticated USING (true);
 ```
+
+**Edge Functions:**
+- `notify-telegram` - Sends Telegram notifications on new form submissions via Database Webhook
 
 **Environment Variables:**
 ```
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
+VITE_SUPABASE_URL=https://vkjndyldfpulotwyfrss.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... (208 chars)
 ```
+
+**Telegram Bot:**
+- Bot Token: 8389547521:AAFqr0hOTebHQyXjoC6eOUVb8--2dRlT-zA
+- Chat ID: 404180634
 
 ---
 
@@ -349,7 +396,55 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ## 📝 Session Notes
 > Auto-update: Quick notes for next session
 
-**Session 2025-11-29 PM (ContactForm Updates - Latest):**
+**Session 2025-11-29 Evening (Supabase Integration - Latest):**
+- ✅ **Supabase Database Setup** (2025-11-29)
+  - Created `form_submissions` table with 17 fields (form data + metadata)
+  - Set up Row Level Security (RLS) policies
+    - Anonymous users can INSERT (for public form submissions)
+    - Authenticated users can SELECT (for viewing submissions)
+  - Database migration: `create_form_submissions_table`
+  - RLS migration: `setup_form_submissions_rls`
+- ✅ **Supabase Client Integration** (2025-11-29)
+  - Installed @supabase/supabase-js (v2.39.0)
+  - Created `src/lib/supabaseClient.js` with environment variable configuration
+  - Added `.env` file with Supabase credentials (git-ignored)
+  - Environment variables: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`
+- ✅ **ContactForm Metadata Collection** (2025-11-29)
+  - Updated ContactForm to collect 17 fields on submission
+  - Metadata collected: device_type, browser, os, language, timezone, referrer, screen_resolution
+  - Removed external location API (ipapi.co) to avoid VPN/network issues
+  - Location data (country, city, ip_address) set to null for reliability
+  - Added `.trim()` to environment variables to prevent header errors
+- ✅ **Telegram Bot Integration** (2025-11-29)
+  - Created Telegram bot via @BotFather
+  - Bot Token: 8389547521:AAFqr0hOTebHQyXjoC6eOUVb8--2dRlT-zA
+  - Chat ID: 404180634
+  - Created Supabase Edge Function: `notify-telegram`
+  - Configured Database Webhook to trigger Edge Function on INSERT
+  - Telegram message format includes all 17 fields with emojis
+- ✅ **Vercel Deployment** (2025-11-29)
+  - Committed and pushed Supabase integration to GitHub
+  - Deployed to Vercel (auto-deploy from main branch)
+  - Added environment variables to Vercel dashboard
+  - Fixed environment variable whitespace/newline issues
+- ⚠️ **Frontend Connection Issue** (2025-11-29 - UNRESOLVED)
+  - Backend working: Database inserts work, Edge Function deployed, Webhook configured
+  - Frontend failing: Browser can't connect to Supabase (ERR_INTERNET_DISCONNECTED)
+  - Tested on desktop (with/without VPN) and mobile - same error
+  - Environment variables loaded correctly in browser
+  - Investigating: Possible regional access restriction or CORS issue
+  - **Next:** Debug frontend connection, test direct fetch to Supabase endpoint
+- **Files Created:**
+  - `src/lib/supabaseClient.js`
+  - `.env` (local only, git-ignored)
+  - `SUPABASE_TELEGRAM_PLAN.md`
+  - `.mcp.json`
+- **Files Modified:**
+  - `src/components/ContactForm/ContactForm.jsx` (added Supabase integration + metadata)
+  - `package.json` (@supabase/supabase-js already installed)
+- **Next:** Resolve frontend connection issue and test end-to-end
+
+**Session 2025-11-29 PM (ContactForm Updates):**
 - ✅ Added "Messenger contact" field to ContactForm (2025-11-29)
   - Fetched updated designs from Figma (node-id: 113-355 desktop, 179-751 mobile)
   - New field positioned between Name and Email fields
