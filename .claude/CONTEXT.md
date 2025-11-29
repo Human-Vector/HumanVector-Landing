@@ -382,6 +382,20 @@ VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... (208 chars)
 ## 📝 Session Notes
 > Auto-update: Quick notes for next session
 
+**Session 2025-11-29 Updates (CET Timezone & Video Positioning):**
+- ✅ **Telegram Timezone Update** (2025-11-29)
+  - Updated Telegram notification timestamp to CET timezone
+  - Changed from America/New_York to Europe/Paris
+  - Added "CET" label to timestamp for clarity
+  - Deployed Edge Function version 12 via MCP tools
+  - Files updated: supabase-edge-function-notify-telegram.ts
+- ✅ **Contact Form Video Repositioning** (2025-11-29)
+  - Moved video 24px further to the left on tablet and mobile
+  - **Tablet:** margin-left changed from -50px to -74px
+  - **Mobile:** margin-left changed from -36px to -60px
+  - Better alignment with design on smaller viewports
+  - Files modified: ContactForm.module.css
+
 **Session 2025-11-29 Final (Favicon, OpenGraph & Telegram Fix):**
 - ✅ **Favicon & OpenGraph Setup** (2025-11-29)
   - Added favicon: `/images/fav.png` to replace default vite.svg
@@ -401,7 +415,6 @@ VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... (208 chars)
   - Deployed via MCP tools (mcp__supabase__deploy_edge_function)
   - **Status:** ✅ Working and tested successfully
   - Files updated: supabase-edge-function-notify-telegram.ts
-- **Next:** Production deployment to Vercel
 
 **Session 2025-11-29 Late Night (Contact Form UI Improvements):**
 - ✅ **Button Loading State** (2025-11-29)

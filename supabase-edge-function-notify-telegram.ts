@@ -24,10 +24,10 @@ serve(async (req) => {
 📱 Device: ${record.device_type || 'Unknown'}
 
 🕐 Submitted: ${new Date(record.submitted_at).toLocaleString('en-US', {
-  timeZone: 'America/New_York',
+  timeZone: 'Europe/Paris',
   dateStyle: 'medium',
   timeStyle: 'short'
-})}
+})} CET
     `.trim();
 
     // Send to Telegram
