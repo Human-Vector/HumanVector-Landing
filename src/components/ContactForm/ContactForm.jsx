@@ -36,6 +36,21 @@ export default function ContactForm() {
       } else {
         video.addEventListener('canplaythrough', handleCanPlay, { once: true });
       }
+    } else {
+      // Mobile/Tablet: ensure video plays automatically
+      const playVideo = async () => {
+        try {
+          await video.play();
+        } catch (error) {
+          console.log('Autoplay prevented:', error);
+        }
+      };
+
+      if (video.readyState >= 3) {
+        playVideo();
+      } else {
+        video.addEventListener('canplaythrough', playVideo, { once: true });
+      }
     }
   }, [isTouchDevice]);
 
@@ -54,6 +69,7 @@ export default function ContactForm() {
   });
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const teamSizeOptions = [
     { value: '20-40', label: '20-40' },
@@ -158,6 +174,7 @@ export default function ContactForm() {
     const hasErrors = Object.values(newErrors).some(error => error !== '');
 
     if (!hasErrors) {
+      setIsSubmitting(true);
       try {
         const submissionData = {
           name: formData.name,
@@ -188,6 +205,7 @@ export default function ContactForm() {
           const errorData = await response.json();
           console.error('Edge Function error:', errorData);
           alert('Failed to submit form. Please try again.');
+          setIsSubmitting(false);
           return;
         }
 
@@ -196,9 +214,11 @@ export default function ContactForm() {
 
         // Show success modal
         setShowSuccessModal(true);
+        setIsSubmitting(false);
       } catch (error) {
         console.error('Submission error:', error);
         alert('Failed to submit form. Please try again.');
+        setIsSubmitting(false);
       }
     }
   };
@@ -338,8 +358,12 @@ export default function ContactForm() {
 
             {/* CTA Container */}
             <div className={styles.ctaContainer}>
-              <button type="submit" className={styles.submitButton}>
-                Book my demo
+              <button
+                type="submit"
+                className={styles.submitButton}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : 'Book my demo'}
               </button>
               <div className={styles.ctaInfo}>
                 <p className={styles.ctaTextTop}>

@@ -19,7 +19,7 @@
   align-items: flex-start;
   position: relative;
   z-index: 2;
-  margin-bottom: var(--spacing-48);
+  padding-bottom: var(--spacing-48);
   pointer-events: none;
 }
 
@@ -193,6 +193,17 @@
   transform: scale(0.98);
 }
 
+.submitButton:disabled {
+  background-color: #969696;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.submitButton:disabled:hover {
+  background-color: #969696;
+  transform: none;
+}
+
 .ctaInfo {
   display: flex;
   flex-direction: column;
@@ -244,18 +255,23 @@
 .decorativeImage {
   position: absolute;
   left: 40px;
-  top: 236.77px;
+  bottom: 0;
   width: 590px;
   height: 589px;
   pointer-events: auto;
   z-index: 1;
   cursor: pointer;
+  margin: 0;
+  padding: 0;
 }
 
 .decorativeVideo {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 /* Tablet Styles (768px - 1024px) */
@@ -267,6 +283,7 @@
   .content {
     flex-direction: column;
     gap: var(--spacing-32);
+    padding-bottom: var(--spacing-32);
     pointer-events: auto;
   }
 
@@ -281,13 +298,20 @@
   }
 
   .decorativeImage {
-    position: static;
-    width: 100%;
+    position: relative;
+    width: calc(100% + 64px);
     height: auto;
     aspect-ratio: 1896 / 1892;
-    margin-top: var(--spacing-32);
+    margin-left: -50px;
+    margin-right: -32px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
     pointer-events: auto;
     cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 10;
   }
 }
 
@@ -303,7 +327,7 @@
 
   .content {
     gap: var(--spacing-32);
-    margin-bottom: var(--spacing-32);
+    padding-bottom: var(--spacing-32);
     pointer-events: auto;
   }
 
@@ -330,12 +354,19 @@
   }
 
   .decorativeImage {
-    position: static;
-    width: 100%;
+    position: relative;
+    width: calc(100% + 36px);
     height: auto;
     aspect-ratio: 1896 / 1892;
-    margin: 0;
+    margin-left: -36px;
+    margin-right: -18px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
     pointer-events: auto;
     cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 10;
   }
 }

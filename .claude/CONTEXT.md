@@ -382,6 +382,32 @@ VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... (208 chars)
 ## 📝 Session Notes
 > Auto-update: Quick notes for next session
 
+**Session 2025-11-29 Late Night (Contact Form UI Improvements):**
+- ✅ **Button Loading State** (2025-11-29)
+  - Added loading state to "Book my demo" submit button
+  - Button shows "Sending..." while form is submitting
+  - Disabled state with gray background and reduced opacity
+  - Prevents multiple submissions while processing
+- ✅ **Telegram Message Format Update** (2025-11-29)
+  - Updated Telegram notification format with better structure
+  - New format: 👤 Name, 📧 Email, 💬 Messenger, 👥 Team size, 💡 Challenge, 📱 Device
+  - Improved readability with emoji icons and cleaner layout
+  - **Note:** Edge Function needs to be redeployed to Supabase for changes to take effect
+- ✅ **Contact Form Video Positioning** (2025-11-29)
+  - **Desktop:** Video positioned absolutely at left bottom (left: 40px, bottom: 0)
+  - **Tablet:** Full-width video at bottom with negative margins (-50px left, -32px right)
+  - **Mobile:** Full-width video at bottom with negative margins (-36px left, -18px right)
+  - Video extends beyond container padding to reach screen edges
+  - Form content has 48px bottom padding on desktop, 32px on tablet/mobile
+- ✅ **Video Interaction Improvements** (2025-11-29)
+  - Fixed autoplay on mobile/tablet devices - video plays automatically on page load
+  - Tap to pause/play functionality working on touch devices
+  - Added z-index: 10 to ensure video is clickable above other elements
+  - Added touch-action: manipulation for fast tap response without zoom delay
+  - Desktop: Video shows last frame, plays on hover, pauses on mouse leave
+  - Files modified: ContactForm.jsx, ContactForm.module.css
+- **Next:** Deploy Edge Function update to Supabase, test form submission end-to-end
+
 **Session 2025-11-29 Night (Final Working Solution - PRODUCTION READY):**
 - ✅ **Complete Secure Form Submission System** (2025-11-29)
   - **Architecture:** Frontend → Edge Function → Database (bypasses RLS with service role)
