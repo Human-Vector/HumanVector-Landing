@@ -382,6 +382,27 @@ VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... (208 chars)
 ## 📝 Session Notes
 > Auto-update: Quick notes for next session
 
+**Session 2025-11-29 Final (Favicon, OpenGraph & Telegram Fix):**
+- ✅ **Favicon & OpenGraph Setup** (2025-11-29)
+  - Added favicon: `/images/fav.png` to replace default vite.svg
+  - Added complete OpenGraph meta tags for social media sharing
+  - Added Twitter Card meta tags
+  - OpenGraph image: `/images/OpenGraph.png`
+  - Meta title: "Human Vector - Scale Your Business While Improving Profitability"
+  - Meta description: "A proven solution for scaling your business at 40+ employees"
+  - Files modified: index.html
+- ✅ **Telegram Edge Function Fixed** (2025-11-29)
+  - **Issue:** Telegram notifications stopped working after deployment
+  - **Root Cause:** Environment variables not working in Supabase Edge Functions
+  - **Solution:** Deployed Edge Function with hardcoded credentials (version 11)
+  - Message format now includes field names: "👤 Name:", "📧 Email:", etc.
+  - Bot Token: 8389547521:AAFqr0hOTebHQyXjoC6eOUVb8--2dRlT-zA
+  - Chat ID: 404180634
+  - Deployed via MCP tools (mcp__supabase__deploy_edge_function)
+  - **Status:** ✅ Working and tested successfully
+  - Files updated: supabase-edge-function-notify-telegram.ts
+- **Next:** Production deployment to Vercel
+
 **Session 2025-11-29 Late Night (Contact Form UI Improvements):**
 - ✅ **Button Loading State** (2025-11-29)
   - Added loading state to "Book my demo" submit button
