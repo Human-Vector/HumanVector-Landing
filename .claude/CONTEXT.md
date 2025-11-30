@@ -1099,12 +1099,16 @@ VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... (208 chars)
   - Reduced logo size by 40% on mobile: 96px → 58px
   - Applied to both .logoContainer and .logo classes
   - File modified: TwoQuotes/TwoQuotes.module.css
-- ✅ **ChooseScale Table Font Weight** (2025-11-30)
-  - Made all table content fonts bolder
-  - Changed .challengeCell and .columnCell from font-weight: 400 to 500
+- ✅ **ChooseScale Table Font Weight & Colors** (2025-11-30)
+  - Made all table content fonts bolder (font-weight: 400 → 500)
+  - Updated text colors for better contrast:
+    - Challenge column: white (was light-bg)
+    - Generic HR Tools column: white (was light-bg)
+    - Doing Nothing column: white (was light-bg)
+    - Human Vector column: black/dark (was dark-2)
   - Headers remain at 600 (SemiBold)
   - File modified: ChooseScale/ChooseScale.module.css
-- **Next:** Context updated, ready to push to GitHub
+- **Next:** All updates complete, ready for deployment
 
 **Earlier session (2025-11-26 AM):**
 - ✅ Extracted design tokens from Figma (colors, spacing, typography)

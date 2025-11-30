@@ -182,7 +182,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
-  color: var(--colors-light-bg);
+  color: var(--colors-white);
   margin: 0;
   flex-shrink: 0;
 }
@@ -192,7 +192,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
-  color: var(--colors-light-bg);
+  color: var(--colors-white);
   margin: 0;
   flex-shrink: 0;
 }
@@ -210,7 +210,7 @@
 }
 
 .humanVectorCell {
-  color: var(--colors-dark-2);
+  color: var(--colors-dark);
 }
 
 /* Divider */
