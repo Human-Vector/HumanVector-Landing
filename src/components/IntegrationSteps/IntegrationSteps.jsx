@@ -1,13 +1,6 @@
 import styles from './IntegrationSteps.module.css';
 
 const IntegrationSteps = () => {
-  const scrollToForm = () => {
-    const formSection = document.getElementById('contact-form');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
   const steps = [
     {
       number: '1',
@@ -22,7 +15,7 @@ const IntegrationSteps = () => {
     {
       number: '3',
       title: 'Week 1 Visibility',
-      description: 'Find who moves your business ahead and who keeps it stuck'
+      description: 'Find out who moves your business ahead and who keeps it stuck'
     },
     {
       number: '4',
@@ -38,16 +31,16 @@ const IntegrationSteps = () => {
           How we integrate this system into your business
         </h2>
 
-        <div className={styles.stepsGrid}>
+        <div className={styles.stepsContainer}>
           <div className={styles.row}>
             {steps.slice(0, 2).map((step) => (
-              <div key={step.number} className={styles.stepCard}>
-                <div className={styles.stepContent}>
-                  <h3 className={styles.stepTitle}>{step.title}</h3>
-                  <p className={styles.stepDescription}>{step.description}</p>
-                </div>
-                <div className={styles.numberContainer}>
-                  <span className={styles.stepNumber}>{step.number}</span>
+              <div key={step.number} className={styles.stepWrapper}>
+                <p className={styles.stepLabel}>Step {step.number}</p>
+                <div className={styles.stepCard}>
+                  <div className={styles.stepContent}>
+                    <h3 className={styles.stepTitle}>{step.title}</h3>
+                    <p className={styles.stepDescription}>{step.description}</p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -55,22 +48,18 @@ const IntegrationSteps = () => {
 
           <div className={styles.row}>
             {steps.slice(2, 4).map((step) => (
-              <div key={step.number} className={styles.stepCard}>
-                <div className={styles.stepContent}>
-                  <h3 className={styles.stepTitle}>{step.title}</h3>
-                  <p className={styles.stepDescription}>{step.description}</p>
-                </div>
-                <div className={styles.numberContainer}>
-                  <span className={styles.stepNumber}>{step.number}</span>
+              <div key={step.number} className={styles.stepWrapper}>
+                <p className={styles.stepLabel}>Step {step.number}</p>
+                <div className={styles.stepCard}>
+                  <div className={styles.stepContent}>
+                    <h3 className={styles.stepTitle}>{step.title}</h3>
+                    <p className={styles.stepDescription}>{step.description}</p>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-
-        <button className={styles.ctaButton} onClick={scrollToForm}>
-          Start with a Demo
-        </button>
       </div>
     </section>
   );

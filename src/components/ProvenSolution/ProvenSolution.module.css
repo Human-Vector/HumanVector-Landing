@@ -1,6 +1,6 @@
 /* ProvenSolution Section */
 .section {
-  background-color: var(--colors-light-bg);
+  background-color: var(--colors-white);
   padding: var(--spacing-48) 0 var(--spacing-40);
   position: relative;
 }

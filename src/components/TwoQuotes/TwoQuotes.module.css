@@ -22,7 +22,7 @@
 
 .topRow {
   display: flex;
-  gap: var(--spacing-32);
+  gap: var(--spacing-48);
   align-items: flex-start;
 }
 
@@ -40,8 +40,8 @@
 }
 
 .logo {
-  width: 72px;
-  height: 72px;
+  width: 106px;
+  height: 106px;
   object-fit: contain;
   display: block;
 }
@@ -122,8 +122,8 @@
   }
 
   .logoContainer {
-    width: 72px;
-    height: 72px;
+    width: 58px;
+    height: 58px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,8 +131,8 @@
   }
 
   .logo {
-    width: 72px;
-    height: 72px;
+    width: 58px;
+    height: 58px;
   }
 
   /* Show mobile attribution, hide desktop content */

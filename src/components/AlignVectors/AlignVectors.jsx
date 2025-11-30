@@ -35,11 +35,43 @@ export default function AlignVectors() {
             </div>
           </div>
 
-          {/* Quote Box */}
-          <div className={styles.quoteBox}>
-            <p className={styles.quoteText}>
-              It's easier to make specialist from right human than right human from specialist!
-            </p>
+          {/* Article Quote */}
+          <div className={styles.articleBox}>
+            <div className={styles.quoteIcon}>
+              <img
+                src="/images/quote/quote-icon.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+
+            <div className={styles.articleContent}>
+              <div className={styles.quoteContainer}>
+                <p className={styles.articleQuoteText}>
+                  It's easier to make specialist from right human than right human from specialist!
+                </p>
+              </div>
+
+              <div className={styles.authorContainer}>
+                <div className={styles.authorImage}>
+                  <img
+                    src="/images/article/author.png"
+                    alt="Aleh Kandrashou"
+                  />
+                </div>
+
+                <div className={styles.authorInfo}>
+                  <div className={styles.authorName}>
+                    <span>Aleh Kandrashou</span>
+                    <img
+                      src="/images/quote/verified-badge.svg"
+                      alt="Verified"
+                      className={styles.verifiedBadge}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Feature 2: Stop being the bottleneck */}

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './ContactForm.module.css';
 import SuccessModal from '../SuccessModal/SuccessModal';
 
@@ -11,48 +11,6 @@ export default function ContactForm() {
     challenge: ''
   });
 
-  const videoRef = useRef(null);
-  // Detect if device has touch capability (mobile/tablet)
-  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  const isDesktopRef = useRef(!isTouchDevice);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const isDesktop = !isTouchDevice;
-    isDesktopRef.current = isDesktop;
-
-    if (isDesktop) {
-      // Desktop: seek to last frame when ready
-      const handleCanPlay = () => {
-        if (video.duration && !isNaN(video.duration)) {
-          video.currentTime = video.duration - 0.1;
-        }
-      };
-
-      if (video.readyState >= 3) {
-        handleCanPlay();
-      } else {
-        video.addEventListener('canplaythrough', handleCanPlay, { once: true });
-      }
-    } else {
-      // Mobile/Tablet: ensure video plays automatically
-      const playVideo = async () => {
-        try {
-          await video.play();
-        } catch (error) {
-          console.log('Autoplay prevented:', error);
-        }
-      };
-
-      if (video.readyState >= 3) {
-        playVideo();
-      } else {
-        video.addEventListener('canplaythrough', playVideo, { once: true });
-      }
-    }
-  }, [isTouchDevice]);
 
   const [errors, setErrors] = useState({
     name: '',
@@ -125,36 +83,6 @@ export default function ContactForm() {
     setErrors(prev => ({ ...prev, [name]: validateField(name, value) }));
   };
 
-  const handleVideoClick = () => {
-    if (isDesktopRef.current) return;
-
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
-    }
-  };
-
-  const handleMouseEnter = () => {
-    if (!isDesktopRef.current) return;
-
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.play();
-  };
-
-  const handleMouseLeave = () => {
-    if (!isDesktopRef.current) return;
-
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.pause();
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -367,7 +295,7 @@ export default function ContactForm() {
               </button>
               <div className={styles.ctaInfo}>
                 <p className={styles.ctaTextTop}>
-                  30-minute call with <span className={styles.cofounderText}>co-founder</span>
+                  30-minute call with <span className={styles.cofounderText}>CEO and Co-founder</span>
                 </p>
                 <div className={styles.ctaFounderRow}>
                   <img
@@ -389,24 +317,13 @@ export default function ContactForm() {
           </form>
         </div>
 
-        {/* Decorative Video */}
-        <div
-          className={styles.decorativeImage}
-          onClick={handleVideoClick}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <video
-            ref={videoRef}
-            autoPlay={isTouchDevice}
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className={styles.decorativeVideo}
-          >
-            <source src="/images/contact-form/person-waving.mp4" type="video/mp4" />
-          </video>
+        {/* Decorative Image */}
+        <div className={styles.decorativeImage}>
+          <img
+            src="/images/contact-form/George pointing.png"
+            alt="George pointing"
+            className={styles.decorativeImg}
+          />
         </div>
       </div>
 

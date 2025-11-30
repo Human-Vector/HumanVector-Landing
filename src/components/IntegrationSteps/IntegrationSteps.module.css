@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 48px;
 }
 
 /* Main heading */
@@ -27,28 +27,44 @@
   margin: 0;
 }
 
-/* Steps grid */
-.stepsGrid {
+/* Steps container */
+.stepsContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 48px;
 }
 
 /* Row container */
 .row {
   display: flex;
-  gap: 24px;
+  gap: 32px;
   width: 100%;
+}
+
+/* Step wrapper (contains label + card) */
+.stepWrapper {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Step label (Step 1, Step 2, etc.) */
+.stepLabel {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.25;
+  color: var(--colors-accent);
+  margin: 0;
 }
 
 /* Step card */
 .stepCard {
-  flex: 1 1 0;
-  min-width: 0;
   display: flex;
   align-items: center;
-  gap: 24px;
   height: 120px;
   background-color: var(--colors-light-bg);
   border-radius: 6px;
@@ -83,52 +99,10 @@
   margin: 0;
 }
 
-/* Number container */
-.numberContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100%;
-  flex-shrink: 0;
-  padding-bottom: 6px;
-}
-
-/* Step number */
-.stepNumber {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 48px;
-  line-height: 1.25;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--colors-accent);
-  text-stroke: 1px var(--colors-accent);
-}
-
-/* CTA button */
-.ctaButton {
-  display: inline-block;
-  background-color: var(--colors-accent);
-  color: var(--colors-white);
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.3;
-  padding: 20px 40px;
-  border: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
-}
-
-.ctaButton:hover {
-  background-color: #d11929;
-}
-
 /* Desktop (1025px+) */
 @media (min-width: 1025px) {
   .section {
-    padding: 96px 0 56px 0; /* 56px + 40px top padding */
+    padding: 96px 0 56px 0;
   }
 }
 
@@ -136,10 +110,6 @@
 @media (max-width: 1024px) and (min-width: 768px) {
   .container {
     padding: 0 32px;
-  }
-
-  .stepCard {
-    align-items: flex-end;
   }
 }
 
@@ -158,26 +128,24 @@
     font-size: 28px;
   }
 
-  .stepsGrid {
-    gap: 16px;
+  .stepsContainer {
+    gap: 32px;
   }
 
   .row {
     flex-direction: column;
-    gap: 16px;
+    gap: 32px;
+  }
+
+  .stepLabel {
+    font-size: 20px;
   }
 
   .stepCard {
-    gap: 16px;
-    padding: 16px 16px 18px 16px;
-    align-items: flex-end;
+    padding: 16px;
   }
 
   .stepTitle {
     font-size: 20px;
-  }
-
-  .ctaButton {
-    width: 100%;
   }
 }

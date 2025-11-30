@@ -1031,6 +1031,81 @@ VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... (208 chars)
   - Reduced header link gap to 32px for better spacing
 - **Next:** Build Quote, Features, Form, and Footer sections
 
+**Session 2025-11-30 (Major UI Updates & Restructuring):**
+- ✅ **Updated Elon Musk Quote Attribution** (2025-11-30)
+  - Changed text from "(quote based on...)" to "(quote of Elon Musk based on...)"
+  - File modified: Quote/Quote.jsx
+- ✅ **Updated Hero Video** (2025-11-30)
+  - Changed from hero-video2.mp4 to hero-video.mp4
+  - Added 8px border radius to video
+  - Repositioned video: moved right +24px and bottom +24px
+  - Files modified: Hero/Hero.jsx, Hero/Hero.module.css
+- ✅ **Created Article Section with Aleh Kandrashou Quote** (2025-11-30)
+  - Converted quote callout to standalone article section based on Figma design (node-id: 210-893)
+  - Later moved inside AlignVectors section after first feature
+  - Quote text: "It's easier to make specialist from right human than right human from specialist!"
+  - Author: Aleh Kandrashou with verified badge
+  - Desktop: 64px padding, 40px gap, 56px quote icon
+  - Mobile: 16px padding, smaller icon and text
+  - Files created: Article component (later integrated into AlignVectors)
+  - Files modified: AlignVectors/AlignVectors.jsx, AlignVectors/AlignVectors.module.css
+- ✅ **Increased TwoQuotes Logo Sizes** (2025-11-30)
+  - Initial increase: Desktop 72px → 132px, Mobile 72px → 96px
+  - Final adjustment: Desktop 132px → 106px (20% reduction), Mobile 96px
+  - Increased gap between logos and text: 32px → 48px
+  - File modified: TwoQuotes/TwoQuotes.module.css
+- ✅ **Removed ProblemBlock Section** (2025-11-30)
+  - Removed entire ProblemBlock component from landing page
+  - Removed "The Problem" navigation link
+  - Files modified: Navigation/Navigation.jsx, LandingPage.jsx
+- ✅ **Removed ProvenSolution Background** (2025-11-30)
+  - Changed background from light-bg to white
+  - File modified: ProvenSolution/ProvenSolution.module.css
+- ✅ **Updated CTA Text Throughout Site** (2025-11-30)
+  - Changed "30-minute call with co-founder" to "30-minute call with CEO and Co-founder"
+  - Files modified: Hero/Hero.jsx, ProvenSolution/ProvenSolution.jsx, ContactForm/ContactForm.jsx
+- ✅ **Hero CTA Text Formatting** (2025-11-30)
+  - Made "CEO and Co-founder" bolder (using ctaTextBold class)
+  - Added line break: "CEO and" on first line, "Co-founder" on second line
+  - Adjusted max-width: 260px → 276px (final value)
+  - File modified: Hero/Hero.jsx, Hero/Hero.module.css
+- **Next:** Final testing and deployment preparation
+
+**Session 2025-11-30 Continued (UI Polish & Updates):**
+- ✅ **IntegrationSteps Redesign** (2025-11-30)
+  - Removed CTA button from bottom of section
+  - Removed inline numbers (large outlined numbers) from cards
+  - Added step labels ("Step 1", "Step 2", etc.) above each card
+  - Labels: 28px Poppins SemiBold, accent red color (#ed1d2d)
+  - Updated Step 3 description: "Find out who moves..." (added "out")
+  - Desktop: 2x2 grid layout / Mobile: vertical stack
+  - Files modified: IntegrationSteps/IntegrationSteps.jsx, IntegrationSteps/IntegrationSteps.module.css
+- ✅ **FAQ Answer Update** (2025-11-30)
+  - Updated "What if my team resists?" answer
+  - New text: "Transparency builds trust, not resentment. Employees see exactly how their salary is calculated. No more black boxes."
+  - File modified: FAQ/FAQ.jsx
+- ✅ **Contact Form Image Replacement** (2025-11-30)
+  - Replaced video with static image "George pointing.png"
+  - Removed all video-related JavaScript (useRef, useEffect, event handlers)
+  - Updated positioning to match Figma design (left: 31px, width: 650px, height: 569px)
+  - Hidden on tablet and mobile (display: none in media queries)
+  - Files modified: ContactForm/ContactForm.jsx, ContactForm/ContactForm.module.css
+- ✅ **Hero Mobile Layout Update** (2025-11-30)
+  - Ensured video appears below stats cards on mobile
+  - Added explicit flex-direction: column to .content on mobile
+  - Order: textContainer → ctaContainer → statsContainer → imageContainer/video
+  - File modified: Hero/Hero.module.css
+- ✅ **TwoQuotes Mobile Logo Adjustment** (2025-11-30)
+  - Reduced logo size by 40% on mobile: 96px → 58px
+  - Applied to both .logoContainer and .logo classes
+  - File modified: TwoQuotes/TwoQuotes.module.css
+- ✅ **ChooseScale Table Font Weight** (2025-11-30)
+  - Made all table content fonts bolder
+  - Changed .challengeCell and .columnCell from font-weight: 400 to 500
+  - Headers remain at 600 (SemiBold)
+  - File modified: ChooseScale/ChooseScale.module.css
+- **Next:** Context updated, ready to push to GitHub
+
 **Earlier session (2025-11-26 AM):**
 - ✅ Extracted design tokens from Figma (colors, spacing, typography)
 - ✅ Created CSS Variables system in `styles/variables.css`

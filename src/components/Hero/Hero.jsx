@@ -51,7 +51,8 @@ const Hero = () => {
                 />
               </div>
               <p className={styles.ctaText}>
-                <span className={styles.ctaTextLight}>30-minute call with co-founder </span>
+                <span className={styles.ctaTextLight}>30-minute call with </span>
+                <span className={styles.ctaTextBold}>CEO and<br />Co-founder </span>
                 <a
                   href="https://www.linkedin.com/in/georgekachanouski/"
                   target="_blank"
@@ -89,7 +90,7 @@ const Hero = () => {
         {/* Hero Video */}
         <div className={styles.imageContainer}>
           <video
-            src="/videos/hero-video2.mp4?v=4"
+            src="/videos/hero-video.mp4?v=5"
             autoPlay
             loop
             muted

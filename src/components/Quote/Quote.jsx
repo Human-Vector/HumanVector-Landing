@@ -19,7 +19,7 @@ export default function Quote() {
                 The outcome of any given company is the vector sum of the people within it. Improve the alignment of the individual vectors and their amplitude and the outcome will improve accordingly.
               </p>
               <p className={styles.attribution}>
-                (quote based on the «The Human Vector» by Oleg Kondrashov)
+                (quote of Elon Musk based on the «The Human Vector» by Oleg Kondrashov)
               </p>
             </div>
 

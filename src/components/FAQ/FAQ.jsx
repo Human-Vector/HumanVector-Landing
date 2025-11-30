@@ -13,7 +13,7 @@ const FAQ = () => {
     },
     {
       question: "What if my team resists?",
-      answer: "Yes. The methodology was developed during the shift to remote work. Planfix integration tracks work regardless of location."
+      answer: "Transparency builds trust, not resentment. Employees see exactly how their salary is calculated. No more black boxes."
     },
     {
       question: "Do you help with setup?",

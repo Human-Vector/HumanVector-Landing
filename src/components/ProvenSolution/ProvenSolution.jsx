@@ -40,7 +40,7 @@ export default function ProvenSolution() {
 
           <div className={styles.ctaInfo}>
             <p className={styles.ctaTextTop}>
-              30-minute call with <span className={styles.coFounder}>co-founder</span>
+              30-minute call with <span className={styles.coFounder}>CEO and Co-founder</span>
             </p>
             <div className={styles.ctaFounderRow}>
               <img
