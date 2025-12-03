@@ -382,6 +382,30 @@ VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... (208 chars)
 ## 📝 Session Notes
 > Auto-update: Quick notes for next session
 
+**Session 2025-12-03 (Name Consistency & Mobile Layout Fixes):**
+- ✅ **LinkedIn Link Added to AlignVectors Section** (2025-12-03)
+  - Added LinkedIn profile link to Oleg Kondrashov's quote in "Align the vectors" section
+  - Link text: "LinkedIn profile" with external link icon
+  - URL: https://www.linkedin.com/in/olegkondrashov/
+  - Styled with link-color, hover changes to accent red
+  - Files modified: AlignVectors/AlignVectors.jsx, AlignVectors/AlignVectors.module.css
+- ✅ **FAQ Answer Updated** (2025-12-03)
+  - Updated "Does this work for remote/hybrid teams?" answer
+  - Changed from "Planfix integration" to "Jira and other Task trackers integration"
+  - Files modified: FAQ/FAQ.jsx
+- ✅ **Name Consistency Update** (2025-12-03)
+  - Changed "Aleh Kandrashou" to "Oleg Kondrashov" in AlignVectors section
+  - All instances of name now use consistent format "Oleg Kondrashov" across entire site
+  - Files modified: AlignVectors/AlignVectors.jsx
+- ✅ **Hero Mobile Layout Redesign** (2025-12-03)
+  - Updated mobile CTA layout to match ProvenSolution section
+  - Layout: Text on top ("30-minute call with CEO and Co-founder"), then Avatar (24px) + "George Kachanouski" link in horizontal row below
+  - Desktop layout remains unchanged (avatar left, text right)
+  - Implementation: Used flex-wrap with `display: contents` on text wrapper, CSS ordering for proper layout
+  - Avatar size reduced to 24px on mobile, 4px gap between avatar and name
+  - Files modified: Hero/Hero.jsx, Hero/Hero.module.css
+- **Next:** Deploy to production
+
 **Session 2025-11-29 Updates (CET Timezone & Video Positioning):**
 - ✅ **Telegram Timezone Update** (2025-11-29)
   - Updated Telegram notification timestamp to CET timezone

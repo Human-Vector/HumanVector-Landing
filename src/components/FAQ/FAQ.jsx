@@ -9,7 +9,7 @@ const FAQ = () => {
     },
     {
       question: "Does this work for remote/hybrid teams?",
-      answer: "Yes. The methodology was developed during the shift to remote work. Planfix integration tracks work regardless of location."
+      answer: "Yes. The methodology was developed during the shift to remote work. Jira and other Task trackers integration tracks work regardless of location."
     },
     {
       question: "What if my team resists?",

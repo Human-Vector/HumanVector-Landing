@@ -56,19 +56,33 @@ export default function AlignVectors() {
                 <div className={styles.authorImage}>
                   <img
                     src="/images/article/author.png"
-                    alt="Aleh Kandrashou"
+                    alt="Oleg Kondrashov"
                   />
                 </div>
 
                 <div className={styles.authorInfo}>
                   <div className={styles.authorName}>
-                    <span>Aleh Kandrashou</span>
+                    <span>Oleg Kondrashov</span>
                     <img
                       src="/images/quote/verified-badge.svg"
                       alt="Verified"
                       className={styles.verifiedBadge}
                     />
                   </div>
+
+                  <a
+                    href="https://www.linkedin.com/in/olegkondrashov/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.linkedinLink}
+                  >
+                    <span>LinkedIn profile</span>
+                    <img
+                      src="/images/quote/external-link.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </a>
                 </div>
               </div>
             </div>

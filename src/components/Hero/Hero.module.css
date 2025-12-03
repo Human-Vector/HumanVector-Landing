@@ -88,16 +88,17 @@
   object-fit: cover;
 }
 
-.ctaText {
-  font-size: var(--font-size-16);
-  line-height: var(--line-height-loose);
-  max-width: 276px;
-  margin: 0;
+.ctaTextWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-.ctaTextLight {
-  font-weight: var(--font-weight-regular);
+.ctaTextTop {
+  font-size: var(--font-size-16);
+  line-height: 1.65;
   color: var(--colors-dark-2);
+  margin: 0;
 }
 
 .ctaTextBold {
@@ -217,16 +218,33 @@
   }
 
   .ctaInfo {
-    max-width: 280px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-4);
+    width: 100%;
+  }
+
+  .ctaTextWrapper {
+    display: contents;
+  }
+
+  .ctaTextTop {
+    flex-basis: 100%;
+    text-align: center;
+    font-size: var(--font-size-16);
+    order: 1;
   }
 
   .ctaAvatar {
-    width: 48px;
-    height: 48px;
+    width: 24px;
+    height: 24px;
+    order: 2;
   }
 
-  .ctaText {
-    font-size: var(--font-size-14);
+  .ctaLink {
+    order: 3;
   }
 
   /* Stats Container */
