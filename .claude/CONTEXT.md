@@ -274,8 +274,8 @@ VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... (208 chars)
 ```
 
 **Telegram Bot:**
-- Bot Token: 8389547521:AAFqr0hOTebHQyXjoC6eOUVb8--2dRlT-zA
-- Chat ID: 404180634
+- Bot Token: 8333552160:AAGWpnUGNc_Jo28cn5gx-xqWLVmIXaTHZHo
+- Chat ID: 243257249
 
 ---
 

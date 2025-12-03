@@ -5,8 +5,8 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 
 // Hardcoded credentials (env vars have issues in Supabase)
-const TELEGRAM_BOT_TOKEN = '8389547521:AAFqr0hOTebHQyXjoC6eOUVb8--2dRlT-zA';
-const TELEGRAM_CHAT_ID = '404180634';
+const TELEGRAM_BOT_TOKEN = '8333552160:AAGWpnUGNc_Jo28cn5gx-xqWLVmIXaTHZHo';
+const TELEGRAM_CHAT_ID = '243257249';
 
 serve(async (req) => {
   try {
