@@ -1,12 +1,8 @@
+import { useScrollToForm } from '../../hooks/useScrollToForm';
 import styles from './ProvenSolution.module.css';
 
 export default function ProvenSolution() {
-  const scrollToForm = () => {
-    const formSection = document.getElementById('contact-form');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+  const scrollToForm = useScrollToForm();
 
   return (
     <section id="solution" className={styles.section}>

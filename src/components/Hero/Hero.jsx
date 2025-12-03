@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../Button/Button';
 import StatsCard from '../StatsCard/StatsCard';
+import { useScrollToForm } from '../../hooks/useScrollToForm';
 import styles from './Hero.module.css';
 
 /**
@@ -8,12 +9,7 @@ import styles from './Hero.module.css';
  * Main hero section with headline, CTA, stats, and hero image
  */
 const Hero = () => {
-  const scrollToForm = () => {
-    const formSection = document.getElementById('contact-form');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+  const scrollToForm = useScrollToForm();
 
   return (
     <section className={styles.hero}>

@@ -22,10 +22,14 @@
 }
 
 .iconLink {
-  cursor: pointer !important;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.card .iconLink {
+  cursor: pointer;
 }
 
 .linkPrefix {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../Button/Button';
+import { useScrollToForm } from '../../hooks/useScrollToForm';
 import styles from './Navigation.module.css';
 
 /**
@@ -8,13 +9,7 @@ import styles from './Navigation.module.css';
  */
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const scrollToForm = () => {
-    const formSection = document.getElementById('contact-form');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+  const scrollToForm = useScrollToForm();
 
   const navLinks = [
     { label: 'The Solution', href: '#solution' },

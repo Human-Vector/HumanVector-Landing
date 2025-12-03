@@ -106,8 +106,9 @@
   border-color: var(--colors-dark);
 }
 
-.inputError {
-  border-color: var(--colors-accent) !important;
+.formCard .inputError,
+.formCard .inputError:focus {
+  border-color: var(--colors-accent);
 }
 
 .errorMessage {
