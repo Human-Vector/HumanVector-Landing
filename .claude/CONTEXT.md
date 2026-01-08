@@ -52,7 +52,7 @@
 │   │   ├── ProgressiveImage/ # Progressive loading image component
 │   │   └── ScrollToTop.jsx  # Route change scroll handler
 │   ├── hooks/
-│   │   ├── useScrollToForm.js  # Smooth scroll to contact form
+│   │   ├── useScrollToForm.js  # Two-step scroll to contact form (handles animation layout shifts)
 │   │   └── useScrollAnimation.js # Scroll-triggered animations (Intersection Observer)
 │   ├── lib/
 │   │   └── supabaseClient.js   # Supabase client config
@@ -239,10 +239,17 @@ grep -r "ComponentName" src/
 ## Notes
 
 - ProblemBlock component exists but is removed from LandingPage
-- All CTA buttons scroll to #contact-form section
+- All CTA buttons scroll to #contact-form section using two-step scroll (see below)
 - Navigation links use smooth scroll to section IDs
 - Hero video has 8px border radius, `object-fit: cover`
 - Contact form image (George pointing) hidden on mobile/tablet
+
+### CTA Scroll Behavior
+The `useScrollToForm` hook uses a two-step scroll approach to handle layout shifts:
+1. Instantly jumps 200px above the target to trigger animations in that area
+2. After 50ms delay, smooth scrolls to the final recalculated position
+
+This prevents incorrect scroll positioning caused by animation-triggered layout shifts on first page load.
 
 ---
 
