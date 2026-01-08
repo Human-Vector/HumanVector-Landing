@@ -46,7 +46,7 @@ export default function AlignVectors() {
               </ul>
             </div>
             <div className={styles.featureImage}>
-              <ProgressiveImage src="/images/align-vectors/feature-1.webp" alt="Employee tracking dashboard" />
+              <ProgressiveImage src="/images/align-vectors/feature-1.webp" alt="Employee tracking dashboard" style={{ aspectRatio: '2556 / 1434' }} />
             </div>
           </div>
 
@@ -113,7 +113,7 @@ export default function AlignVectors() {
             className={`${styles.featureRow} animate-on-scroll animate-fade-up ${feature2Visible ? 'is-visible' : ''}`}
           >
             <div className={styles.featureImage}>
-              <ProgressiveImage src="/images/align-vectors/feature-2.webp" alt="Department work schedule settings" />
+              <ProgressiveImage src="/images/align-vectors/feature-2.webp" alt="Department work schedule settings" style={{ aspectRatio: '1416 / 676' }} />
             </div>
             <div className={styles.featureText}>
               <h3 className={styles.featureHeading}>
@@ -155,7 +155,7 @@ export default function AlignVectors() {
               </ul>
             </div>
             <div className={styles.featureImage}>
-              <ProgressiveImage src="/images/align-vectors/feature-3.webp" alt="Payroll tracking interface" />
+              <ProgressiveImage src="/images/align-vectors/feature-3.webp" alt="Payroll tracking interface" style={{ aspectRatio: '2560 / 1433' }} />
             </div>
           </div>
 
@@ -165,7 +165,7 @@ export default function AlignVectors() {
             className={`${styles.featureRow} animate-on-scroll animate-fade-up ${feature4Visible ? 'is-visible' : ''}`}
           >
             <div className={styles.featureImage}>
-              <ProgressiveImage src="/images/align-vectors/feature-4.webp" alt="Employee suggestions dashboard" />
+              <ProgressiveImage src="/images/align-vectors/feature-4.webp" alt="Employee suggestions dashboard" style={{ aspectRatio: '1416 / 794' }} />
             </div>
             <div className={styles.featureText}>
               <h3 className={styles.featureHeading}>

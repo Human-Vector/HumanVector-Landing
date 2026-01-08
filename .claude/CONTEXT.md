@@ -52,7 +52,7 @@
 │   │   ├── ProgressiveImage/ # Progressive loading image component
 │   │   └── ScrollToTop.jsx  # Route change scroll handler
 │   ├── hooks/
-│   │   ├── useScrollToForm.js  # Two-step scroll to contact form (handles animation layout shifts)
+│   │   ├── useScrollToForm.js  # CTA scroll to contact form (triggers all animations first)
 │   │   └── useScrollAnimation.js # Scroll-triggered animations (Intersection Observer)
 │   ├── lib/
 │   │   └── supabaseClient.js   # Supabase client config
@@ -231,6 +231,7 @@ grep -r "ComponentName" src/
 - Uses Intersection Observer with rootMargin
 - Smooth fade-in transition on load
 - Applied to: AlignVectors features, ProvenSolution dashboard, ContactForm image
+- **Aspect-ratio preserved:** All ProgressiveImages have explicit `aspect-ratio` style to prevent layout shifts during scroll (prevents CTA scroll bug on first click)
 
 **Total asset reduction:** ~17MB → ~2.5MB (85% smaller initial load)
 
@@ -239,17 +240,17 @@ grep -r "ComponentName" src/
 ## Notes
 
 - ProblemBlock component exists but is removed from LandingPage
-- All CTA buttons scroll to #contact-form section using two-step scroll (see below)
+- All CTA buttons scroll to #contact-form section (see CTA Scroll Behavior below)
 - Navigation links use smooth scroll to section IDs
 - Hero video has 8px border radius, `object-fit: cover`
 - Contact form image (George pointing) hidden on mobile/tablet
 
 ### CTA Scroll Behavior
-The `useScrollToForm` hook uses a two-step scroll approach to handle layout shifts:
-1. Instantly jumps 200px above the target to trigger animations in that area
-2. After 50ms delay, smooth scrolls to the final recalculated position
+The `useScrollToForm` hook handles scroll-triggered animation layout shifts:
+1. **Triggers all animations first** - Adds `is-visible` class to all `.animate-on-scroll` elements
+2. **Then smooth scrolls** - Uses native `scrollIntoView({ behavior: 'smooth' })`
 
-This prevents incorrect scroll positioning caused by animation-triggered layout shifts on first page load.
+This ensures the page layout is stable before scrolling, preventing incorrect positioning on first click when animations haven't triggered yet.
 
 ---
 

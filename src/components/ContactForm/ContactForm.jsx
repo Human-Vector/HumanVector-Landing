@@ -323,6 +323,7 @@ export default function ContactForm() {
             src="/images/contact-form/george-pointing.webp"
             alt="George pointing"
             className={styles.decorativeImg}
+            style={{ aspectRatio: '975 / 854' }}
           />
         </div>
       </div>

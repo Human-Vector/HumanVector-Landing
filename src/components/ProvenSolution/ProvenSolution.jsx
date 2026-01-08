@@ -34,6 +34,7 @@ export default function ProvenSolution() {
             src="/images/proven-solution/dashboard-screenshot.webp"
             alt="Human Vector dashboard showing employee tracking and work schedule management"
             className={styles.image}
+            style={{ aspectRatio: '1800 / 860' }}
           />
         </div>
 
