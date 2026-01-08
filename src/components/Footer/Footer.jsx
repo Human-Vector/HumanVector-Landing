@@ -1,10 +1,16 @@
 import { Link } from 'react-router-dom';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import styles from './Footer.module.css';
 
 const Footer = () => {
+  const { ref: footerRef, isVisible: footerVisible } = useScrollAnimation({ threshold: 0.3 });
+
   return (
     <footer className={styles.footer}>
-      <div className={styles.container}>
+      <div
+        ref={footerRef}
+        className={`${styles.container} animate-on-scroll animate-fade-in ${footerVisible ? 'is-visible' : ''}`}
+      >
         <p className={styles.copyright}>© 2025 Human Vector</p>
 
         <img

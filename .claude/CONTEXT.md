@@ -52,7 +52,8 @@
 │   │   ├── ProgressiveImage/ # Progressive loading image component
 │   │   └── ScrollToTop.jsx  # Route change scroll handler
 │   ├── hooks/
-│   │   └── useScrollToForm.js  # Smooth scroll to contact form
+│   │   ├── useScrollToForm.js  # Smooth scroll to contact form
+│   │   └── useScrollAnimation.js # Scroll-triggered animations (Intersection Observer)
 │   ├── lib/
 │   │   └── supabaseClient.js   # Supabase client config
 │   ├── pages/
@@ -246,7 +247,30 @@ grep -r "ComponentName" src/
 - Content fades in from below (0.8s, cubic-bezier easing)
 - Video fades in from right with 0.2s delay
 
-**Quote Section:** Fade-in animation from below (0.8s)
+**Scroll-Triggered Animations:** All sections below Hero animate when entering viewport
+- Uses `useScrollAnimation` hook with Intersection Observer
+- Premium cubic-bezier easing (`0.22, 1, 0.36, 1`)
+- One-time trigger (won't re-animate on scroll back)
+- Respects `prefers-reduced-motion` for accessibility
+
+| Section | Animation Type |
+|---------|---------------|
+| Quote | Fade up |
+| AlignVectors | Title + each feature row + article (fade up) |
+| TwoQuotes | Each quote block with staggered delay |
+| ProvenSolution | Heading (fade up) + dashboard (scale in) + CTA (fade up) |
+| IntegrationSteps | Heading + steps container (fade up) |
+| ChooseScale | Heading + table (fade up) |
+| ContactForm | Content area (fade up) |
+| FAQ | FAQ container (fade up) |
+| Footer | Simple fade in |
+
+**Animation CSS Classes** (in `global.css`):
+- `animate-on-scroll` - Base class (hidden state)
+- `animate-fade-up` / `animate-fade-left` / `animate-fade-right` - Direction variants
+- `animate-scale-in` / `animate-fade-in` - Other effects
+- `animate-delay-100` to `animate-delay-500` - Stagger delays
+- `is-visible` - Applied via hook when element enters viewport
 
 ---
 

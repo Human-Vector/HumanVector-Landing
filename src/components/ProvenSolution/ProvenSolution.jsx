@@ -1,9 +1,13 @@
 import { useScrollToForm } from '../../hooks/useScrollToForm';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import styles from './ProvenSolution.module.css';
 import ProgressiveImage from '../ProgressiveImage/ProgressiveImage';
 
 export default function ProvenSolution() {
   const scrollToForm = useScrollToForm();
+  const { ref: headingRef, isVisible: headingVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: imageRef, isVisible: imageVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation({ threshold: 0.3 });
 
   return (
     <section id="solution" className={styles.section}>
@@ -13,13 +17,19 @@ export default function ProvenSolution() {
       </div>
 
       <div className={styles.container}>
-        <h2 className={styles.heading}>
+        <h2
+          ref={headingRef}
+          className={`${styles.heading} animate-on-scroll animate-fade-up ${headingVisible ? 'is-visible' : ''}`}
+        >
           <span className={styles.headingGray}>Human Vector is a proven solution for </span>
           <span className={styles.headingDark}>scaling your business</span>
           <span className={styles.headingGray}> while improving profitability</span>
         </h2>
 
-        <div className={styles.imageWrapper}>
+        <div
+          ref={imageRef}
+          className={`${styles.imageWrapper} animate-on-scroll animate-scale-in ${imageVisible ? 'is-visible' : ''}`}
+        >
           <ProgressiveImage
             src="/images/proven-solution/dashboard-screenshot.webp"
             alt="Human Vector dashboard showing employee tracking and work schedule management"
@@ -27,7 +37,10 @@ export default function ProvenSolution() {
           />
         </div>
 
-        <div className={styles.ctaContainer}>
+        <div
+          ref={ctaRef}
+          className={`${styles.ctaContainer} animate-on-scroll animate-fade-up ${ctaVisible ? 'is-visible' : ''}`}
+        >
           <button
             onClick={scrollToForm}
             className={styles.ctaButton}

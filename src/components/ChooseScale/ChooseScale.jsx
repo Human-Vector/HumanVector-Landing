@@ -1,6 +1,10 @@
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import styles from './ChooseScale.module.css';
 
 function ChooseScale() {
+  const { ref: headingRef, isVisible: headingVisible } = useScrollAnimation({ threshold: 0.3 });
+  const { ref: tableRef, isVisible: tableVisible } = useScrollAnimation({ threshold: 0.1 });
+
   const comparisonData = [
     {
       challenge: 'Culture at scale',
@@ -37,9 +41,17 @@ function ChooseScale() {
   return (
     <section className={styles.chooseScale}>
       <div className={styles.container}>
-        <h2 className={styles.heading}>Choose how you want to scale</h2>
+        <h2
+          ref={headingRef}
+          className={`${styles.heading} animate-on-scroll animate-fade-up ${headingVisible ? 'is-visible' : ''}`}
+        >
+          Choose how you want to scale
+        </h2>
 
-        <div className={styles.tableScrollContainer}>
+        <div
+          ref={tableRef}
+          className={`${styles.tableScrollContainer} animate-on-scroll animate-fade-up ${tableVisible ? 'is-visible' : ''}`}
+        >
           <div className={styles.tableWrapper}>
             {/* Background boxes */}
             <div className={styles.redOverlayBox}></div>

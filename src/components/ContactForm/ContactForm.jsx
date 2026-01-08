@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import styles from './ContactForm.module.css';
 import SuccessModal from '../SuccessModal/SuccessModal';
 import ProgressiveImage from '../ProgressiveImage/ProgressiveImage';
 
 export default function ContactForm() {
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation({ threshold: 0.1 });
   const [formData, setFormData] = useState({
     name: '',
     messengerContact: '',
@@ -163,7 +165,10 @@ export default function ContactForm() {
   return (
     <section id="contact-form" className={styles.contactFormSection}>
       <div className={styles.container}>
-        <div className={styles.content}>
+        <div
+          ref={contentRef}
+          className={`${styles.content} animate-on-scroll animate-fade-up ${contentVisible ? 'is-visible' : ''}`}
+        >
           <h2 className={styles.heading}>
             Let's have a demo call and get to know each other
           </h2>

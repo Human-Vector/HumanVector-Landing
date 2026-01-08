@@ -1,19 +1,33 @@
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import styles from './AlignVectors.module.css';
 import ProgressiveImage from '../ProgressiveImage/ProgressiveImage';
 
 export default function AlignVectors() {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: feature1Ref, isVisible: feature1Visible } = useScrollAnimation({ threshold: 0.15 });
+  const { ref: articleRef, isVisible: articleVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: feature2Ref, isVisible: feature2Visible } = useScrollAnimation({ threshold: 0.15 });
+  const { ref: feature3Ref, isVisible: feature3Visible } = useScrollAnimation({ threshold: 0.15 });
+  const { ref: feature4Ref, isVisible: feature4Visible } = useScrollAnimation({ threshold: 0.15 });
+
   return (
     <section id="how-it-works" className={styles.section}>
       <div className={styles.container}>
         {/* Section Title */}
-        <h2 className={styles.title}>
+        <h2
+          ref={titleRef}
+          className={`${styles.title} animate-on-scroll animate-fade-up ${titleVisible ? 'is-visible' : ''}`}
+        >
           <span className={styles.titleDark}>Align the vectors.</span>{' '}
           <span className={styles.titleGray}>Remove underperformers before they hurt your business</span>
         </h2>
 
         <div className={styles.content}>
           {/* Feature 1: Turn middle performers */}
-          <div className={styles.featureRow}>
+          <div
+            ref={feature1Ref}
+            className={`${styles.featureRow} animate-on-scroll animate-fade-up ${feature1Visible ? 'is-visible' : ''}`}
+          >
             <div className={styles.featureText}>
               <h3 className={styles.featureHeading}>
                 <span className={styles.textGray}>Turn </span>
@@ -37,7 +51,10 @@ export default function AlignVectors() {
           </div>
 
           {/* Article Quote */}
-          <div className={styles.articleBox}>
+          <div
+            ref={articleRef}
+            className={`${styles.articleBox} animate-on-scroll animate-fade-up ${articleVisible ? 'is-visible' : ''}`}
+          >
             <div className={styles.quoteIcon}>
               <img
                 src="/images/quote/quote-icon.svg"
@@ -91,7 +108,10 @@ export default function AlignVectors() {
           </div>
 
           {/* Feature 2: Stop being the bottleneck */}
-          <div className={styles.featureRow}>
+          <div
+            ref={feature2Ref}
+            className={`${styles.featureRow} animate-on-scroll animate-fade-up ${feature2Visible ? 'is-visible' : ''}`}
+          >
             <div className={styles.featureImage}>
               <ProgressiveImage src="/images/align-vectors/feature-2.webp" alt="Department work schedule settings" />
             </div>
@@ -114,7 +134,10 @@ export default function AlignVectors() {
           </div>
 
           {/* Feature 3: Know exactly where every payroll dollar goes */}
-          <div className={styles.featureRow}>
+          <div
+            ref={feature3Ref}
+            className={`${styles.featureRow} animate-on-scroll animate-fade-up ${feature3Visible ? 'is-visible' : ''}`}
+          >
             <div className={styles.featureText}>
               <h3 className={styles.featureHeading}>
                 <span className={styles.textGray}>Know exactly </span>
@@ -137,7 +160,10 @@ export default function AlignVectors() {
           </div>
 
           {/* Feature 4: Build a culture that scales */}
-          <div className={styles.featureRow}>
+          <div
+            ref={feature4Ref}
+            className={`${styles.featureRow} animate-on-scroll animate-fade-up ${feature4Visible ? 'is-visible' : ''}`}
+          >
             <div className={styles.featureImage}>
               <ProgressiveImage src="/images/align-vectors/feature-4.webp" alt="Employee suggestions dashboard" />
             </div>

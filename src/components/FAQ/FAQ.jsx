@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import styles from './FAQ.module.css';
 
 const FAQ = () => {
+  const { ref: faqRef, isVisible: faqVisible } = useScrollAnimation({ threshold: 0.1 });
   const faqData = [
     {
       question: "Will this slow us down?",
@@ -35,7 +37,10 @@ const FAQ = () => {
   return (
     <section id="faq" className={styles.faqSection}>
       <div className={styles.container}>
-        <div className={styles.faqContainer}>
+        <div
+          ref={faqRef}
+          className={`${styles.faqContainer} animate-on-scroll animate-fade-up ${faqVisible ? 'is-visible' : ''}`}
+        >
           {faqData.map((faq, index) => (
             <div
               key={index}

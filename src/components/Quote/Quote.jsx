@@ -1,10 +1,16 @@
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import styles from './Quote.module.css';
 
 export default function Quote() {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
+
   return (
     <section className={styles.quote}>
       <div className={styles.container}>
-        <div className={styles.quoteSection}>
+        <div
+          ref={ref}
+          className={`${styles.quoteSection} animate-on-scroll animate-fade-up ${isVisible ? 'is-visible' : ''}`}
+        >
           <div className={styles.quoteIcon}>
             <img
               src="/images/quote/quote-icon.svg"

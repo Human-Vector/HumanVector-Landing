@@ -1,11 +1,18 @@
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import styles from './TwoQuotes.module.css';
 
 export default function TwoQuotes() {
+  const { ref: quote1Ref, isVisible: quote1Visible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: quote2Ref, isVisible: quote2Visible } = useScrollAnimation({ threshold: 0.2 });
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
         {/* Quote 1: Sundar Pichai */}
-        <div className={styles.quoteBlock}>
+        <div
+          ref={quote1Ref}
+          className={`${styles.quoteBlock} animate-on-scroll animate-fade-up ${quote1Visible ? 'is-visible' : ''}`}
+        >
           <div className={styles.topRow}>
             <div className={styles.logoContainer}>
               <img
@@ -32,7 +39,10 @@ export default function TwoQuotes() {
         </div>
 
         {/* Quote 2: Jack Ma */}
-        <div className={styles.quoteBlock}>
+        <div
+          ref={quote2Ref}
+          className={`${styles.quoteBlock} animate-on-scroll animate-fade-up animate-delay-200 ${quote2Visible ? 'is-visible' : ''}`}
+        >
           <div className={styles.topRow}>
             <div className={styles.logoContainer}>
               <img

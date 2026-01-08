@@ -1,6 +1,10 @@
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import styles from './IntegrationSteps.module.css';
 
 const IntegrationSteps = () => {
+  const { ref: headingRef, isVisible: headingVisible } = useScrollAnimation({ threshold: 0.3 });
+  const { ref: stepsRef, isVisible: stepsVisible } = useScrollAnimation({ threshold: 0.1 });
+
   const steps = [
     {
       number: '1',
@@ -27,11 +31,17 @@ const IntegrationSteps = () => {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.heading}>
+        <h2
+          ref={headingRef}
+          className={`${styles.heading} animate-on-scroll animate-fade-up ${headingVisible ? 'is-visible' : ''}`}
+        >
           How we integrate this system into your business
         </h2>
 
-        <div className={styles.stepsContainer}>
+        <div
+          ref={stepsRef}
+          className={`${styles.stepsContainer} animate-on-scroll animate-fade-up ${stepsVisible ? 'is-visible' : ''}`}
+        >
           <div className={styles.row}>
             {steps.slice(0, 2).map((step) => (
               <div key={step.number} className={styles.stepWrapper}>
