@@ -65,9 +65,14 @@
 │   ├── App.jsx                 # Router configuration
 │   └── main.jsx                # Entry point
 ├── public/
-│   └── images/                 # All static assets by section
+│   ├── images/                 # All static assets by section
+│   ├── videos/                 # Hero video (compressed)
+│   ├── robots.txt              # Crawler instructions
+│   ├── sitemap.xml             # Search engine sitemap
+│   ├── llms.txt                # AI/LLM summary
+│   └── llms-full.txt           # Detailed AI context
 ├── supabase-edge-function-notify-telegram.ts  # Telegram webhook code
-└── index.html                  # HTML entry + meta tags
+└── index.html                  # HTML entry + meta tags + structured data
 ```
 
 ---
