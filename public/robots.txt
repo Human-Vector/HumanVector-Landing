@@ -1,0 +1,13 @@
+# Human Vector - Robots.txt
+# https://human-vector.work
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://human-vector.work/sitemap.xml
+
+# AI/LLM Crawlers
+# These files help AI models understand our content
+# llms.txt: https://human-vector.work/llms.txt
+# llms-full.txt: https://human-vector.work/llms-full.txt

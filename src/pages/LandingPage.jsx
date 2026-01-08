@@ -14,15 +14,17 @@ const LandingPage = () => {
   return (
     <>
       <Navigation />
-      <Hero />
-      <Quote />
-      <AlignVectors />
-      <TwoQuotes />
-      <ProvenSolution />
-      <IntegrationSteps />
-      <ChooseScale />
-      <ContactForm />
-      <FAQ />
+      <main>
+        <Hero />
+        <Quote />
+        <AlignVectors />
+        <TwoQuotes />
+        <ProvenSolution />
+        <IntegrationSteps />
+        <ChooseScale />
+        <ContactForm />
+        <FAQ />
+      </main>
       <Footer />
     </>
   );

@@ -1,0 +1,47 @@
+# Human Vector
+
+> Business scaling solution for companies with 40+ employees
+
+Human Vector helps growth-stage companies overcome the organizational bottlenecks that appear at 40+ employees. Based on Oleg Kondrashov's methodology from scaling EnCata over 15 years.
+
+## What We Solve
+
+- Companies stuck at 40-100 employees unable to grow profitably
+- Founder bottlenecks and delegation failures
+- Misaligned teams working against each other ("vectors pointing in different directions")
+- Scaling costs outpacing revenue growth
+- Lack of visibility into where payroll dollars go
+- Middle performers who could become top performers with proper tracking
+- Remote/hybrid team accountability challenges
+
+## Our Solution
+
+A proven system that aligns team efforts ("vectors") toward profitable growth, not just headcount growth.
+
+Key capabilities:
+- Employee Vector tracking (Skills, Loyalty, Gravity, Integration, Speed)
+- Real-time time tracking with overtime visibility
+- Transparent salary calculations employees can verify
+- Department self-service reporting
+- Task tracker integration (Jira and others)
+- Employee suggestion tracking with status updates
+
+## Proof Points
+
+- EnCata (30+ portfolio companies) scaled profitably using this methodology
+- Book: "Human Vector: Pivot to Profitability" by Oleg Kondrashov (Amazon)
+- 15+ years of real-world application
+- Founders report saving 10-15 hours/week within month one
+- ~32% less turnover with transparent suggestion tracking
+
+## Contact
+
+- Website: https://human-vector.work
+- Email: go@human-vector.work
+- Book demo: https://calendly.com/georgekachanouski/30min
+- CEO: George Kachanouski (LinkedIn: /in/georgekachanouski/)
+- Founder: Oleg Kondrashov (LinkedIn: /in/olegkondrashov/)
+
+## Learn More
+
+- /llms-full.txt - Detailed methodology, integration steps, FAQ, and comparisons

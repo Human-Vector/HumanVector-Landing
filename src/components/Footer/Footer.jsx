@@ -11,7 +11,7 @@ const Footer = () => {
         ref={footerRef}
         className={`${styles.container} animate-on-scroll animate-fade-in ${footerVisible ? 'is-visible' : ''}`}
       >
-        <p className={styles.copyright}>© 2025 Human Vector</p>
+        <p className={styles.copyright}>© 2026 Human Vector</p>
 
         <img
           src="/images/faq/dot.svg"

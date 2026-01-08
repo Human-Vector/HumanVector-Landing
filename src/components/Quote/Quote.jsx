@@ -20,14 +20,14 @@ export default function Quote() {
           </div>
 
           <div className={styles.quoteContent}>
-            <div className={styles.quoteTextContainer}>
+            <blockquote className={styles.quoteTextContainer} cite="https://x.com/elonmusk/status/1871997501970235656">
               <p className={styles.quoteText}>
                 The outcome of any given company is the vector sum of the people within it. Improve the alignment of the individual vectors and their amplitude and the outcome will improve accordingly.
               </p>
               <p className={styles.attribution}>
                 (quote of Elon Musk based on the «The Human Vector» by Oleg Kondrashov)
               </p>
-            </div>
+            </blockquote>
 
             <div className={styles.authorContainer}>
               <div className={styles.authorImage}>

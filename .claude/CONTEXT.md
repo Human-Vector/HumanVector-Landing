@@ -283,3 +283,32 @@ grep -r "ComponentName" src/
 - CTA button fixed at bottom of viewport
 - Menu links centered vertically
 - `viewport-fit=cover` and safe area padding for notched devices
+
+---
+
+## SEO & AI Optimization
+
+### Meta Tags
+- Title, description, canonical URL, robots, author, keywords
+- OpenGraph and Twitter Card tags for social sharing
+
+### Structured Data (JSON-LD)
+4 schemas in `index.html`:
+- **Organization** - Company info, founder, contact
+- **Book** - "Human Vector: Pivot to Profitability" by Oleg Kondrashov
+- **FAQPage** - All 5 FAQ items for rich snippets
+- **SoftwareApplication** - Product features and capabilities
+
+### Static Files (`/public`)
+| File | Purpose |
+|------|---------|
+| `robots.txt` | Crawler instructions, sitemap reference |
+| `sitemap.xml` | Page index for search engines |
+| `llms.txt` | AI/LLM summary (~200 words) |
+| `llms-full.txt` | Detailed AI context (~1500 words) |
+
+### Semantic HTML
+- `<main>` wrapper around page content
+- `<footer>` element for footer
+- `<blockquote cite="...">` for quotes
+- Proper H1 → H2 → H3 heading hierarchy

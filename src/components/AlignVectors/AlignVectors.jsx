@@ -64,11 +64,11 @@ export default function AlignVectors() {
             </div>
 
             <div className={styles.articleContent}>
-              <div className={styles.quoteContainer}>
+              <blockquote className={styles.quoteContainer}>
                 <p className={styles.articleQuoteText}>
                   It's easier to make specialist from right human than right human from specialist!
                 </p>
-              </div>
+              </blockquote>
 
               <div className={styles.authorContainer}>
                 <div className={styles.authorImage}>
