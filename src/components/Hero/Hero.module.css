@@ -5,6 +5,29 @@
   overflow: hidden;
 }
 
+/* Premium fade-in animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -21,6 +44,7 @@
   gap: var(--spacing-64);
   width: 700px;
   flex-shrink: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 /* Text Container */
@@ -127,19 +151,22 @@
 /* Hero Image */
 .imageContainer {
   position: absolute;
-  left: 730px;
+  left: 732px;
   top: -56px;
-  width: 766px;
+  width: 764px;
   height: 709px;
+  animation: fadeInRight 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  opacity: 0;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .heroImage {
-  width: 100%;
+  width: calc(100% + 3px);
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 8px;
-  -webkit-mask-image: radial-gradient(ellipse 85% 85% at center, black 60%, transparent 100%);
-  mask-image: radial-gradient(ellipse 85% 85% at center, black 60%, transparent 100%);
+  margin-left: -3px;
 }
 
 /* Tablet Responsive (768px - 1024px) */

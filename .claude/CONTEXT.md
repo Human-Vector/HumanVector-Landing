@@ -235,5 +235,27 @@ grep -r "ComponentName" src/
 - ProblemBlock component exists but is removed from LandingPage
 - All CTA buttons scroll to #contact-form section
 - Navigation links use smooth scroll to section IDs
-- Video in Hero has edge blur/vignette effect
+- Hero video has 8px border radius, `object-fit: cover`
 - Contact form image (George pointing) hidden on mobile/tablet
+
+---
+
+## Animations
+
+**Hero Section:** Premium fade-in animations on page load
+- Content fades in from below (0.8s, cubic-bezier easing)
+- Video fades in from right with 0.2s delay
+
+**Quote Section:** Fade-in animation from below (0.8s)
+
+---
+
+## Mobile Menu
+
+- Full-screen overlay with dark background (`#1a2b32`)
+- Prevents body scroll when open (`overflow: hidden` on body)
+- Dynamic `theme-color` meta tag for iOS browser UI
+- Extended backdrop (10000px height) covers entire page for iOS liquid glass UI compatibility
+- CTA button fixed at bottom of viewport
+- Menu links centered vertically
+- `viewport-fit=cover` and safe area padding for notched devices
