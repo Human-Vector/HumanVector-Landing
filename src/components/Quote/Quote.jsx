@@ -26,8 +26,9 @@ export default function Quote() {
             <div className={styles.authorContainer}>
               <div className={styles.authorImage}>
                 <img
-                  src="/images/quote/author.png"
+                  src="/images/quote/author.webp"
                   alt="Elon Musk"
+                  loading="lazy"
                 />
               </div>
 

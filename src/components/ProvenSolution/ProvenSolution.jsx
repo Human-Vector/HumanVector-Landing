@@ -1,5 +1,6 @@
 import { useScrollToForm } from '../../hooks/useScrollToForm';
 import styles from './ProvenSolution.module.css';
+import ProgressiveImage from '../ProgressiveImage/ProgressiveImage';
 
 export default function ProvenSolution() {
   const scrollToForm = useScrollToForm();
@@ -19,8 +20,8 @@ export default function ProvenSolution() {
         </h2>
 
         <div className={styles.imageWrapper}>
-          <img
-            src="/images/proven-solution/dashboard-screenshot.png"
+          <ProgressiveImage
+            src="/images/proven-solution/dashboard-screenshot.webp"
             alt="Human Vector dashboard showing employee tracking and work schedule management"
             className={styles.image}
           />
@@ -40,7 +41,7 @@ export default function ProvenSolution() {
             </p>
             <div className={styles.ctaFounderRow}>
               <img
-                src="/images/proven-solution/george-avatar.png"
+                src="/images/proven-solution/george-avatar.webp"
                 alt="George Kachanouski"
                 className={styles.avatar}
               />

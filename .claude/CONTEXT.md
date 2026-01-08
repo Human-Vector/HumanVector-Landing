@@ -1,1143 +1,239 @@
 # Human Vector Landing - Project Context
 
-> **🤖 CLAUDE AUTO-UPDATE INSTRUCTIONS:**
-> Update this file automatically after ANY significant action:
-> - Creating/modifying key files
-> - Making architectural decisions
-> - Completing features
-> - Changing dependencies
-> - Deployment/config changes
->
-> **Update without asking.** Keep it concise. Remove outdated info.
+> **Auto-Update Instructions:** Update this file after significant changes. Keep concise.
 
 ---
 
-## 📍 Current Focus
-**Session Goal:** ✅ COMPLETED - Secure form submission with Telegram notifications
-- Status: ✅ Production-ready with full security
-- Backend: ✅ Supabase Edge Function with service role (bypasses RLS)
-- Frontend: ✅ Form calls Edge Function (not direct database access)
-- Security: ✅ RLS enabled, only authenticated users can read data
-- Telegram: ✅ Webhook notifications working via notify-telegram Edge Function
-- Next: Deploy to production (Vercel auto-deploys from main branch)
+## Overview
 
----
+**Human Vector** is a B2B SaaS landing page for a business scaling solution targeting companies with 40+ employees. The page collects demo requests via a contact form with Telegram notifications.
 
-## 🏗️ Stack & Setup
-**Framework:** Vite + React 18
-**Routing:** React Router DOM v6
-**Backend:** Supabase (forms, data)
-**Styling:** Custom CSS (from Figma design tokens)
-**Deployment:** Vercel
+**Live URL:** Deployed on Vercel (auto-deploy from main)
 **Repository:** https://github.com/Human-Vector/HumanVector-Landing
-
-**Dev Server:** http://localhost:5173
-
----
-
-## 📐 Page Structure
-**From Figma:** Human Vector Landing Page (node-id: 75-21)
-
-### Sections:
-- [x] **Hero Section** - Desktop + Mobile responsive
-  - Navigation with logo, links, CTA (full-screen overlay on mobile)
-  - Headline, subheadline, CTA buttons
-  - Hero video (autoplay, loop, muted)
-  - Stats cards (ENCATA logo, book)
-- [x] **Quote Section** - Desktop + Mobile responsive
-  - Quote icon (desktop only)
-  - Quote text with attribution
-  - Author image, name with verified badge
-  - Link to X/Twitter post
-- [x] **AlignVectors Section** - Desktop + Mobile responsive
-  - Main heading with two-tone color
-  - 4 feature sections with alternating layouts (text/image)
-  - Quote callout box with light background
-  - Bullet points with mixed font weights for emphasis
-  - Responsive: desktop (text-image rows) / mobile (vertical stack, image first)
-- [x] **TwoQuotes Section** - Desktop + Mobile responsive
-  - Dark background with 2 CEO quotes (Sundar Pichai, Jack Ma)
-  - Photo + quote + attribution with company icons
-  - Desktop: Photo left, quote/attribution right
-  - Mobile: Photo + attribution row on top, quote text below
-  - Poppins Italic 32px desktop / 24px mobile
-- [x] **ProblemBlock Section** - Desktop + Mobile responsive
-  - Three subsections with updated messaging
-  - 6 problem/solution cards in light-bg background
-  - Decorative SVG brackets on the left (gray and red)
-  - Desktop: 3 cards per row / Mobile: stacked vertical
-  - Headings: 28px desktop / 20px mobile, SemiBold (600)
-- [x] **ProvenSolution Section** - Desktop + Mobile responsive
-  - Light background section showcasing Human Vector dashboard
-  - Heading: Mixed colors (dark-2 and dark), 56px desktop / 28px mobile
-  - Large dashboard screenshot with rounded corners
-  - CTA button: "See how It works" linking to Calendly
-  - Co-founder info with George Kachanouski LinkedIn link and avatar
-  - Desktop: 1200px max-width, 56px gap / Mobile: full width, 24px gap
-- [x] **IntegrationSteps Section** - Desktop + Mobile responsive
-  - "How we integrate this system into your business" heading
-  - 4 step cards in 2x2 grid layout (desktop) / vertical stack (mobile)
-  - Each card: number, title, description with light background
-  - Heading: 48px desktop / 28px mobile
-  - Step titles: 28px desktop / 20px mobile, SemiBold (600)
-  - Step numbers: 56px, accent red, positioned on right
-  - Card height: 120px, rounded corners (6px)
-  - CTA button: "Start with a Demo" linking to Calendly
-  - Desktop: 24px gaps / Mobile: 16px gaps
-- [x] **ChooseScale Section** - Desktop + Mobile responsive
-  - "Choose how you want to scale" heading
-  - Comparison table: Challenge vs Generic HR Tools vs Doing Nothing vs Human Vector
-  - 5 comparison rows: Culture, Performance, Feedback, Team Composition, Accountability
-  - Dark gray table background (#48555b)
-  - Background boxes: red overlay (rgba(237,39,55,0.8)) for "Doing Nothing" column, white for "Human Vector" column
-  - Text colors: white/light-bg on dark background, dark on white background
-  - Heading: 48px desktop / 28px mobile, Medium (500)
-  - Content: Poppins Regular/SemiBold 16px
-  - Divider lines between rows
-  - Desktop: 156px gap between challenge and columns, 96px gap between columns
-  - Mobile: 56px gaps, horizontal scroll support
-- [x] **ContactForm Section** - Desktop + Mobile responsive
-  - "Let's have a demo call and get to know each other" heading
-  - Form fields: Name, Messenger contact, Email, Team size (dropdown), Biggest challenge (optional textarea)
-  - Client-side validation: required fields (name, messenger contact, email, team size), email format validation
-  - Error messages display on blur and invalid submission
-  - Team size options: 20-40, 40-60, 60-100, 100+
-  - "Book my demo" submit button
-  - George Kachanouski info with LinkedIn link and avatar
-  - Desktop: Two-column layout (heading left, form right), 64px gap
-  - Mobile: Vertical stack, full-width form
-  - Form styling: White card, dark-2 border, 6px border radius, 18px gap (desktop) / 12px gap (mobile)
-  - Form fields wrapper: 12px gap (desktop) / 8px gap (mobile)
-  - Heading: 48px desktop / 28px mobile, Medium (500)
-  - Decorative person waving video with interactive hover/click behavior
-  - Success modal displays after valid form submission with user's name
-- [x] **FAQ Section** - Desktop + Mobile responsive
-  - 5 expandable/collapsible FAQ items with questions and answers
-  - First question always open by default
-  - Chevron icon (32px) rotates when expanded/collapsed
-  - Desktop: 28px questions, centered layout (900px max)
-  - Mobile: 20px questions
-  - Light-bg background cards with 6px border radius
-  - 120px gap before Footer (desktop), 80px (mobile)
-- [x] **Footer** - Desktop + Mobile responsive
-  - Copyright "© 2025 Human Vector"
-  - Built on Oleg Kondrashov's book and 15+ years scaling EnCata
-  - Privacy Policy
-  - Desktop: Horizontal layout with dot separators
-  - Mobile: Vertical centered layout with dot separators
-  - 16px Regular text in dark-2 color
-
-### Pages:
-- `LandingPage` - Main landing page with all sections
-- `PrivacyPolicy` - Standard privacy policy page
-
-### Reusable Components Created:
-- `Button` - Primary/secondary variants, responsive
-- `StatsCard` - Icon + text stats display, improved layout
-- `Navigation` - Desktop nav + mobile overlay menu with animations
-- `Hero` - Complete hero section with video
-- `Quote` - Quote section with author info and link
-- `AlignVectors` - Features section with alternating layouts and quote callout
-- `TwoQuotes` - CEO quotes section with dark background
-- `ProblemBlock` - Problem/solution cards with decorative brackets
-- `ProvenSolution` - Dashboard showcase with CTA and founder info
-- `IntegrationSteps` - 4-step integration process with numbered cards
-- `ChooseScale` - Comparison table with 3 solution approaches
-- `ContactForm` - Demo booking form with validation
-- `SuccessModal` - Success modal after form submission with personalized message
-- `FAQ` - Expandable/collapsible FAQ items, can close all questions
-- `Footer` - Footer with copyright, text, and clickable privacy policy link
-- `ScrollToTop` - Utility component that scrolls to top on route change
+**Figma Source:** Human Vector Landing Page (node-id: 75-21)
 
 ---
 
-## 📁 Key Files
+## Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Framework | Vite + React 18 |
+| Routing | React Router DOM v7 |
+| Backend | Supabase (Edge Functions + PostgreSQL) |
+| Styling | CSS Modules + CSS Variables |
+| Deployment | Vercel |
+
+**Dev Server:** `npm run dev` → http://localhost:5173
+
+---
+
+## Project Structure
 
 ```
-/
 ├── src/
+│   ├── components/          # All UI components (CSS Modules)
+│   │   ├── Navigation/      # Header nav + mobile overlay menu
+│   │   ├── Hero/            # Hero section with video
+│   │   ├── Quote/           # Elon Musk quote section
+│   │   ├── AlignVectors/    # 4 feature sections + Oleg quote
+│   │   ├── TwoQuotes/       # Sundar Pichai & Jack Ma quotes
+│   │   ├── ProvenSolution/  # Dashboard showcase + CTA
+│   │   ├── IntegrationSteps/# 4-step integration process
+│   │   ├── ChooseScale/     # Comparison table
+│   │   ├── ContactForm/     # Demo request form
+│   │   ├── SuccessModal/    # Form success confirmation
+│   │   ├── FAQ/             # Expandable FAQ items
+│   │   ├── Footer/          # Copyright + privacy link
+│   │   ├── Button/          # Reusable button component
+│   │   ├── StatsCard/       # Stats display cards
+│   │   ├── Article/         # Quote article component
+│   │   ├── ProblemBlock/    # (Removed from page, files exist)
+│   │   ├── ProgressiveImage/ # Progressive loading image component
+│   │   └── ScrollToTop.jsx  # Route change scroll handler
+│   ├── hooks/
+│   │   └── useScrollToForm.js  # Smooth scroll to contact form
 │   ├── lib/
-│   │   └── supabaseClient.js  # ✓ Supabase client configuration
-│   ├── styles/
-│   │   ├── variables.css      # ✓ Design tokens (colors, spacing, typography)
-│   │   └── global.css         # ✓ Global styles, resets, font imports
-│   ├── components/
-│   │   ├── Button/
-│   │   │   ├── Button.jsx
-│   │   │   └── Button.module.css
-│   │   ├── StatsCard/
-│   │   │   ├── StatsCard.jsx
-│   │   │   └── StatsCard.module.css
-│   │   ├── Navigation/
-│   │   │   ├── Navigation.jsx
-│   │   │   └── Navigation.module.css
-│   │   ├── Hero/
-│   │   │   ├── Hero.jsx
-│   │   │   └── Hero.module.css
-│   │   ├── Quote/
-│   │   │   ├── Quote.jsx
-│   │   │   └── Quote.module.css
-│   │   ├── AlignVectors/
-│   │   │   ├── AlignVectors.jsx
-│   │   │   └── AlignVectors.module.css
-│   │   ├── TwoQuotes/
-│   │   │   ├── TwoQuotes.jsx
-│   │   │   └── TwoQuotes.module.css
-│   │   ├── ProblemBlock/
-│   │   │   ├── ProblemBlock.jsx
-│   │   │   └── ProblemBlock.module.css
-│   │   ├── ProvenSolution/
-│   │   │   ├── ProvenSolution.jsx
-│   │   │   └── ProvenSolution.module.css
-│   │   ├── IntegrationSteps/
-│   │   │   ├── IntegrationSteps.jsx
-│   │   │   └── IntegrationSteps.module.css
-│   │   ├── ChooseScale/
-│   │   │   ├── ChooseScale.jsx
-│   │   │   └── ChooseScale.module.css
-│   │   ├── ContactForm/
-│   │       │   ├── ContactForm.jsx
-│   │       │   └── ContactForm.module.css
-│   │   ├── SuccessModal/
-│   │       │   ├── SuccessModal.jsx
-│   │       │   └── SuccessModal.module.css
-│   │   ├── FAQ/
-│   │       │   ├── FAQ.jsx
-│   │       │   └── FAQ.module.css
-│   │   ├── Footer/
-│   │   │   ├── Footer.jsx
-│   │   │   └── Footer.module.css
-│   │   └── ScrollToTop.jsx  # ✓ Utility component for route changes
+│   │   └── supabaseClient.js   # Supabase client config
 │   ├── pages/
-│   │   ├── LandingPage.jsx  # ✓ Main landing page
-│   │   ├── PrivacyPolicy.jsx # ✓ Privacy policy page
-│   │   └── PrivacyPolicy.module.css
-│   ├── App.jsx              # ✓ Router configuration
-│   ├── App.css              # ✓ App-level styles
-│   └── main.jsx             # ✓ Entry point with BrowserRouter
+│   │   ├── LandingPage.jsx     # Main landing page
+│   │   └── PrivacyPolicy.jsx   # Privacy policy page
+│   ├── styles/
+│   │   ├── variables.css       # Design tokens
+│   │   └── global.css          # Global styles + fonts
+│   ├── App.jsx                 # Router configuration
+│   └── main.jsx                # Entry point
 ├── public/
-│   ├── videos/
-│   │   └── hero-video.mp4   # ✓ Hero video
-│   └── images/
-│       ├── hero/            # ✓ Hero section images (logo, ENCATA, book, avatar)
-│       ├── quote/           # ✓ Quote section images and icons
-│       ├── align-vectors/   # ✓ AlignVectors section feature images (4 screenshots)
-│       ├── quotes/          # ✓ TwoQuotes section CEO photos
-│       ├── proven-solution/ # ✓ ProvenSolution section dashboard screenshot and avatar
-│       ├── choose-scale/    # ✓ ChooseScale section divider line SVG
-│       ├── contact-form/    # ✓ ContactForm section icons and person waving video
-│       ├── modal/           # ✓ SuccessModal icons (checkmark, close)
-│       └── faq/             # ✓ FAQ section icons (chevron, dot separator)
-├── index.html               # ✓ HTML entry
-├── vite.config.js           # ✓ Vite configuration
-├── package.json             # ✓ Dependencies
-└── .gitignore               # ✓ Git ignore rules
+│   └── images/                 # All static assets by section
+├── supabase-edge-function-notify-telegram.ts  # Telegram webhook code
+└── index.html                  # HTML entry + meta tags
 ```
 
 ---
 
-## 🗄️ Supabase Schema
+## Page Sections (in order)
+
+1. **Navigation** - Logo, links (Solution/How It Works/FAQ), CTA button
+2. **Hero** - Headline, subheadline, video, stats cards (ENCATA, book)
+3. **Quote** - Elon Musk quote with X/Twitter link
+4. **AlignVectors** - 4 features with alternating layouts + Oleg Kondrashov quote
+5. **TwoQuotes** - Google & Alibaba CEO quotes (dark bg)
+6. **ProvenSolution** - Dashboard screenshot + demo CTA
+7. **IntegrationSteps** - 4 numbered steps (Request → Pilot → Week 1 → Month 3)
+8. **ChooseScale** - Comparison table (Generic HR vs Doing Nothing vs Human Vector)
+9. **ContactForm** - Demo booking form with George Kachanouski CTA
+10. **FAQ** - 5 expandable questions
+11. **Footer** - Copyright, privacy policy link
+
+**Routes:**
+- `/` - Landing page
+- `/privacy-policy` - Privacy policy
+
+---
+
+## Design System
+
+**CSS Variables:** `src/styles/variables.css`
+
+| Token | Value |
+|-------|-------|
+| `--colors-accent` | #ed1d2d (red) |
+| `--colors-dark` | #1a2b32 |
+| `--colors-dark-2` | #48555b |
+| `--colors-light-bg` | #f8f6f2 |
+| `--colors-white` | #ffffff |
+| `--colors-link-color` | #02669f |
+
+**Typography:** Poppins (400/500/600)
+**Breakpoints:** Mobile 390px, Tablet 768px, Desktop 1280px
+
+---
+
+## Supabase Configuration
+
 **Project URL:** https://vkjndyldfpulotwyfrss.supabase.co
 
-**Tables:**
+### Database Schema
 ```sql
--- form_submissions table (6 fields + 2 auto-generated)
 CREATE TABLE form_submissions (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-
-  -- Form data (6 fields)
   name TEXT NOT NULL,
   messenger_contact TEXT NOT NULL,
   email TEXT NOT NULL,
   team_size TEXT NOT NULL,
   biggest_challenge TEXT,
   device_type TEXT,
-
-  -- Auto-generated
   submitted_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- RLS Policies
+-- RLS: Only authenticated users can SELECT
 ALTER TABLE form_submissions ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "Allow anonymous inserts" ON form_submissions FOR INSERT TO anon WITH CHECK (true);
-CREATE POLICY "Allow authenticated reads" ON form_submissions FOR SELECT TO authenticated USING (true);
 ```
 
-**Edge Functions:**
-- `submit-form` - Handles form submissions with validation, database insert (service role), and returns success
-- `notify-telegram` - Sends Telegram notifications triggered by database webhook on INSERT
+### Edge Functions
+| Function | Purpose |
+|----------|---------|
+| `submit-form` | Validates & inserts form data (service role) |
+| `notify-telegram` | Sends Telegram notification on INSERT |
 
-**Environment Variables:**
-```
+### Telegram Bot
+- **Bot Token:** `8333552160:AAGWpnUGNc_Jo28cn5gx-xqWLVmIXaTHZHo`
+- **Chat ID:** `243257249`
+
+### Environment Variables
+```env
 VITE_SUPABASE_URL=https://vkjndyldfpulotwyfrss.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... (208 chars)
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
-**Telegram Bot:**
-- Bot Token: 8333552160:AAGWpnUGNc_Jo28cn5gx-xqWLVmIXaTHZHo
-- Chat ID: 243257249
+---
+
+## Form Submission Flow
+
+```
+User submits form
+    ↓
+ContactForm.jsx validates client-side
+    ↓
+POST to Edge Function: /functions/v1/submit-form
+    ↓
+Edge Function validates + inserts with service role
+    ↓
+Database webhook triggers notify-telegram
+    ↓
+Telegram bot sends notification (CET timezone)
+    ↓
+SuccessModal shown to user
+```
 
 ---
 
-## 🎨 Design System
-**Implementation:** CSS Variables in `src/styles/variables.css`
+## Key External Links
 
-**Colors:**
-- Primary: `--colors-accent` (#ed1d2d)
-- Dark: `--colors-dark` (#1a2b32)
-- Dark-2: `--colors-dark-2` (#48555b)
-- Light BG: `--colors-light-bg` (#f8f6f2)
-- White: `--colors-white` (#ffffff)
-- Link: `--colors-link-color` (#02669f)
-
-**Typography:**
-- Font: Poppins (Regular 400, Medium 500, SemiBold 600)
-- Sizes: 14px, 16px, 24px, 28px, 32px, 48px, 56px
-- Line Heights: 1.2 (tight), 1.25 (snug), 1.3 (normal), 1.4 (relaxed), 1.5 (loose)
-
-**Spacing Scale:**
-- 4, 6, 8, 12, 16, 18, 24, 32, 40, 48, 56, 64, 72, 80, 104, 120px
+| Purpose | URL |
+|---------|-----|
+| George LinkedIn | https://www.linkedin.com/in/georgekachanouski/ |
+| Oleg LinkedIn | https://www.linkedin.com/in/olegkondrashov/ |
+| Book (Amazon) | https://www.amazon.ca/Human-Vector-Pivot-Profitability/dp/1642251534 |
+| Demo Calendly | https://calendly.com/georgekachanouski/30min |
+| Contact Email | go@human-vector.work |
 
 ---
 
-## ✅ Features Completed
+## Key Decisions
 
-- [x] Project initialization
-- [x] **Design system** - CSS variables with Figma tokens
-- [x] **Hero Section** - Desktop + Mobile responsive
-  - Navigation with full-screen overlay menu (mobile)
-  - Hamburger to X animation
-  - Hero headline and subheadline
-  - CTA buttons with hover states
-  - Hero video (autoplay, loop, muted, poster fallback)
-  - Stats cards with ENCATA logo and book
-  - Improved card layouts and image quality
-- [x] **Reusable components** - Button, StatsCard, Navigation, Quote, AlignVectors, TwoQuotes
-- [x] **CSS Modules** - Scoped styling for all components
-- [x] **Quote section** - Desktop + Mobile responsive
-  - Elon Musk quote with attribution
-  - Author image with verified badge
-  - Link to X/Twitter post with external link icon
-  - Quote icon on desktop, hidden on mobile
-- [x] **AlignVectors section** - Desktop + Mobile responsive
-  - 4 feature sections with alternating image-text layouts
-  - Quote callout box with light background
-  - Mixed font weights for emphasis in bullet points
-  - Responsive layouts: desktop rows / mobile vertical stacks
-  - Inter font for quote text
-- [x] **TwoQuotes section** - Desktop + Mobile responsive
-  - Dark background with 2 CEO quotes
-  - Sundar Pichai (Google) and Jack Ma (Alibaba)
-  - Photos with company icons and attributions
-  - Desktop: horizontal layout / Mobile: vertical with photo-attribution row
-  - Italic quotes with semibold attributions
-- [x] **ContactForm section** - Desktop + Mobile responsive
-  - Demo booking form with client-side validation
-  - 4 form fields with error handling
-  - Team size dropdown with 4 options
-  - George Kachanouski CTA with LinkedIn link
-- [x] **FAQ section** - Desktop + Mobile responsive
-  - 5 expandable/collapsible FAQ items
-  - First question always open by default
-  - Smooth chevron rotation animation
-  - Responsive typography and spacing
-- [x] **Footer** - Desktop + Mobile responsive
-  - Copyright, company info, privacy policy
-  - Horizontal layout (desktop) / Vertical layout (mobile)
-  - Dot separators between items
-- [ ] Final deployment
+| Decision | Reasoning |
+|----------|-----------|
+| Vite + React | Fast builds, no SSR needed |
+| CSS Modules | Scoped styling, no Tailwind (design exists in Figma) |
+| Edge Functions for form | Secure server-side validation, RLS bypass |
+| Telegram notifications | Real-time lead alerts for sales team |
+| Hardcoded Telegram creds | Supabase env vars had issues |
 
 ---
 
-## 🧠 Decisions Log
-> Auto-update: Add every time we make a choice
+## Common Tasks
 
-| Date | Decision | Reasoning |
-|------|----------|-----------|
-| 2025-11-26 | Created context file | Efficient session restarts |
-| 2025-11-26 | Vite + React stack | Fast builds, minimal bundle, no SSR needed |
-| 2025-11-26 | Skip Tailwind | Complete design system exists in Figma |
-| 2025-11-26 | CSS Modules + CSS Variables | Fast, scoped styling with design tokens |
-| 2025-11-26 | Component-first architecture | Reusable Button, StatsCard for scalability |
-| 2025-11-26 | Mobile-first responsive | Match Figma mobile (390px) and desktop (1280px) designs |
-| 2025-11-26 | Video hero instead of static image | Better engagement, shows product in action |
-| 2025-11-26 | Full-screen mobile menu overlay | Better UX than dropdown, more immersive |
+**Start dev server:**
+```bash
+npm run dev
+```
 
----
+**Build for production:**
+```bash
+npm run build
+```
 
-## 🔍 Quick Reference
-**Find component by name:** `grep -r "ComponentName" .`
-**Find text from page:** `grep -r "specific text" .`
-**See recent changes:** `git log --oneline -10`
+**Find component:**
+```bash
+grep -r "ComponentName" src/
+```
+
+**Deploy:** Push to main branch (Vercel auto-deploys)
 
 ---
 
-## 🚀 Deployment
-**Vercel Project:** [URL when deployed]
-**Live URL:** [URL when deployed]
-**Last Deploy:** [Auto-update on deploy]
+## Performance Optimizations
+
+**Image Format:** All heavy images converted to WebP (85-90% size reduction)
+- Avatars, feature images, dashboard screenshots use `.webp`
+- Original PNGs kept as local backups (not in production)
+
+**Video Compression:** Hero video compressed from 7.7MB → 1.9MB (75% reduction)
+
+**Progressive Loading:** `ProgressiveImage` component preloads images 500px before viewport
+- Uses Intersection Observer with rootMargin
+- Smooth fade-in transition on load
+- Applied to: AlignVectors features, ProvenSolution dashboard, ContactForm image
+
+**Total asset reduction:** ~17MB → ~2.5MB (85% smaller initial load)
 
 ---
 
-## 📝 Session Notes
-> Auto-update: Quick notes for next session
+## Notes
 
-**Session 2025-12-03 (Name Consistency & Mobile Layout Fixes):**
-- ✅ **LinkedIn Link Added to AlignVectors Section** (2025-12-03)
-  - Added LinkedIn profile link to Oleg Kondrashov's quote in "Align the vectors" section
-  - Link text: "LinkedIn profile" with external link icon
-  - URL: https://www.linkedin.com/in/olegkondrashov/
-  - Styled with link-color, hover changes to accent red
-  - Files modified: AlignVectors/AlignVectors.jsx, AlignVectors/AlignVectors.module.css
-- ✅ **FAQ Answer Updated** (2025-12-03)
-  - Updated "Does this work for remote/hybrid teams?" answer
-  - Changed from "Planfix integration" to "Jira and other Task trackers integration"
-  - Files modified: FAQ/FAQ.jsx
-- ✅ **Name Consistency Update** (2025-12-03)
-  - Changed "Aleh Kandrashou" to "Oleg Kondrashov" in AlignVectors section
-  - All instances of name now use consistent format "Oleg Kondrashov" across entire site
-  - Files modified: AlignVectors/AlignVectors.jsx
-- ✅ **Hero Mobile Layout Redesign** (2025-12-03)
-  - Updated mobile CTA layout to match ProvenSolution section
-  - Layout: Text on top ("30-minute call with CEO and Co-founder"), then Avatar (24px) + "George Kachanouski" link in horizontal row below
-  - Desktop layout remains unchanged (avatar left, text right)
-  - Implementation: Used flex-wrap with `display: contents` on text wrapper, CSS ordering for proper layout
-  - Avatar size reduced to 24px on mobile, 4px gap between avatar and name
-  - Files modified: Hero/Hero.jsx, Hero/Hero.module.css
-- **Next:** Deploy to production
-
-**Session 2025-11-29 Updates (CET Timezone & Video Positioning):**
-- ✅ **Telegram Timezone Update** (2025-11-29)
-  - Updated Telegram notification timestamp to CET timezone
-  - Changed from America/New_York to Europe/Paris
-  - Added "CET" label to timestamp for clarity
-  - Deployed Edge Function version 12 via MCP tools
-  - Files updated: supabase-edge-function-notify-telegram.ts
-- ✅ **Contact Form Video Repositioning** (2025-11-29)
-  - Moved video 24px further to the left on tablet and mobile
-  - **Tablet:** margin-left changed from -50px to -74px
-  - **Mobile:** margin-left changed from -36px to -60px
-  - Better alignment with design on smaller viewports
-  - Files modified: ContactForm.module.css
-
-**Session 2025-11-29 Final (Favicon, OpenGraph & Telegram Fix):**
-- ✅ **Favicon & OpenGraph Setup** (2025-11-29)
-  - Added favicon: `/images/fav.png` to replace default vite.svg
-  - Added complete OpenGraph meta tags for social media sharing
-  - Added Twitter Card meta tags
-  - OpenGraph image: `/images/OpenGraph.png`
-  - Meta title: "Human Vector - Scale Your Business While Improving Profitability"
-  - Meta description: "A proven solution for scaling your business at 40+ employees"
-  - Files modified: index.html
-- ✅ **Telegram Edge Function Fixed** (2025-11-29)
-  - **Issue:** Telegram notifications stopped working after deployment
-  - **Root Cause:** Environment variables not working in Supabase Edge Functions
-  - **Solution:** Deployed Edge Function with hardcoded credentials (version 11)
-  - Message format now includes field names: "👤 Name:", "📧 Email:", etc.
-  - Bot Token: 8389547521:AAFqr0hOTebHQyXjoC6eOUVb8--2dRlT-zA
-  - Chat ID: 404180634
-  - Deployed via MCP tools (mcp__supabase__deploy_edge_function)
-  - **Status:** ✅ Working and tested successfully
-  - Files updated: supabase-edge-function-notify-telegram.ts
-
-**Session 2025-11-29 Late Night (Contact Form UI Improvements):**
-- ✅ **Button Loading State** (2025-11-29)
-  - Added loading state to "Book my demo" submit button
-  - Button shows "Sending..." while form is submitting
-  - Disabled state with gray background and reduced opacity
-  - Prevents multiple submissions while processing
-- ✅ **Telegram Message Format Update** (2025-11-29)
-  - Updated Telegram notification format with better structure
-  - New format: 👤 Name, 📧 Email, 💬 Messenger, 👥 Team size, 💡 Challenge, 📱 Device
-  - Improved readability with emoji icons and cleaner layout
-  - **Note:** Edge Function needs to be redeployed to Supabase for changes to take effect
-- ✅ **Contact Form Video Positioning** (2025-11-29)
-  - **Desktop:** Video positioned absolutely at left bottom (left: 40px, bottom: 0)
-  - **Tablet:** Full-width video at bottom with negative margins (-50px left, -32px right)
-  - **Mobile:** Full-width video at bottom with negative margins (-36px left, -18px right)
-  - Video extends beyond container padding to reach screen edges
-  - Form content has 48px bottom padding on desktop, 32px on tablet/mobile
-- ✅ **Video Interaction Improvements** (2025-11-29)
-  - Fixed autoplay on mobile/tablet devices - video plays automatically on page load
-  - Tap to pause/play functionality working on touch devices
-  - Added z-index: 10 to ensure video is clickable above other elements
-  - Added touch-action: manipulation for fast tap response without zoom delay
-  - Desktop: Video shows last frame, plays on hover, pauses on mouse leave
-  - Files modified: ContactForm.jsx, ContactForm.module.css
-- **Next:** Deploy Edge Function update to Supabase, test form submission end-to-end
-
-**Session 2025-11-29 Night (Final Working Solution - PRODUCTION READY):**
-- ✅ **Complete Secure Form Submission System** (2025-11-29)
-  - **Architecture:** Frontend → Edge Function → Database (bypasses RLS with service role)
-  - Created `submit-form` Edge Function with validation and sanitization
-  - RLS enabled with policy: only authenticated users can SELECT
-  - No public INSERT policy needed (Edge Function uses service role)
-  - Form now calls Edge Function instead of direct Supabase client
-  - **Security:** Input validation, email format check, data sanitization (trim, lowercase)
-- ✅ **Telegram Notifications Working** (2025-11-29)
-  - Database webhook triggers `notify-telegram` Edge Function on INSERT
-  - Webhook URL: https://vkjndyldfpulotwyfrss.supabase.co/functions/v1/notify-telegram
-  - Sends formatted message with 6 fields to Telegram
-  - Bot: @HMVectortest_bot (Human Vector Test)
-  - Chat ID: 404180634
-  - **Working with hardcoded credentials** (env vars had issues)
-- ✅ **Files Updated:**
-  - ContactForm.jsx: Now calls Edge Function via fetch (removed direct Supabase client)
-  - Removed unused getDeviceType helper (Edge Function detects device)
-  - Simplified imports (no longer needs supabaseClient)
-- ✅ **Production Ready:**
-  - Form submission: ✅ Working
-  - Validation: ✅ Working
-  - Database insert: ✅ Working
-  - Telegram notifications: ✅ Working
-  - Security (RLS): ✅ Enabled
-  - **Ready to deploy to Vercel**
-
-**Session 2025-11-29 Late Evening (Schema Simplification):**
-- ✅ **Simplified Database Schema** (2025-11-29)
-  - Reduced from 17 fields to 6 fields + 2 auto-generated
-  - **Removed:** browser, os, country, city, language, timezone, referrer, screen_resolution, ip_address
-  - **Kept:** name, messenger_contact, email, team_size, biggest_challenge, device_type
-  - Created complete table recreation SQL: `supabase-recreate-table.sql`
-  - Updated ContactForm.jsx to remove all metadata collection helpers
-  - Updated Edge Function to send only 6 fields in Telegram notifications
-  - **Approach:** Drop old table, create fresh new one with correct schema and RLS policies
-  - **Next:** Run `supabase-recreate-table.sql` in Supabase SQL Editor, update Edge Function, recreate webhook
-
-**Session 2025-11-29 Evening (Supabase Integration - Latest):**
-- ✅ **Supabase Database Setup** (2025-11-29)
-  - Created `form_submissions` table with 17 fields (form data + metadata)
-  - Set up Row Level Security (RLS) policies
-    - Anonymous users can INSERT (for public form submissions)
-    - Authenticated users can SELECT (for viewing submissions)
-  - Database migration: `create_form_submissions_table`
-  - RLS migration: `setup_form_submissions_rls`
-- ✅ **Supabase Client Integration** (2025-11-29)
-  - Installed @supabase/supabase-js (v2.39.0)
-  - Created `src/lib/supabaseClient.js` with environment variable configuration
-  - Added `.env` file with Supabase credentials (git-ignored)
-  - Environment variables: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`
-- ✅ **ContactForm Data Collection** (2025-11-29)
-  - **UPDATED:** Simplified to collect only 6 fields (name, messenger_contact, email, team_size, biggest_challenge, device_type)
-  - Removed unnecessary metadata collection (browser, os, language, timezone, referrer, screen_resolution, location data)
-  - Cleaner, more privacy-focused approach
-  - Added `.trim()` to environment variables to prevent header errors
-- ✅ **Telegram Bot Integration** (2025-11-29)
-  - Created Telegram bot via @BotFather
-  - Bot Token: 8389547521:AAFqr0hOTebHQyXjoC6eOUVb8--2dRlT-zA
-  - Chat ID: 404180634
-  - Created Supabase Edge Function: `notify-telegram`
-  - Configured Database Webhook to trigger Edge Function on INSERT
-  - **UPDATED:** Telegram message format includes only 6 fields with emojis (simplified)
-- ✅ **Vercel Deployment** (2025-11-29)
-  - Committed and pushed Supabase integration to GitHub
-  - Deployed to Vercel (auto-deploy from main branch)
-  - Added environment variables to Vercel dashboard
-  - Fixed environment variable whitespace/newline issues
-- ⚠️ **RLS Security Issue** (2025-11-29 - UNRESOLVED - CRITICAL)
-  - **Root Cause:** Row Level Security policy blocking anonymous inserts
-  - **Error:** "new row violates row-level security policy" (code 42501)
-  - **Diagnosis:** Created diagnostic test page (test-supabase.html)
-  - **Tests:** Connection ✅, Database ✅, Policies exist ✅, But INSERT ❌
-  - **Attempts:** Tried 6+ different policy configurations - all failed
-  - **Workaround:** RLS disabled temporarily to unblock form submissions
-  - **Status:** Form working locally with RLS disabled
-  - **Security Risk:** ALL data publicly readable/writable without RLS
-  - **Files Created:**
-    - `test-supabase.html` - Diagnostic test page
-    - `RLS_DEBUG_SESSION.md` - Complete debugging report
-  - **Next Steps:**
-    1. Try creating policy via Supabase Dashboard UI (not SQL)
-    2. If fails, create Supabase support ticket
-    3. **DO NOT** deploy to production with RLS disabled
-  - **See:** RLS_DEBUG_SESSION.md for complete technical details
-
-**Session 2025-11-29 PM (ContactForm Updates):**
-- ✅ Added "Messenger contact" field to ContactForm (2025-11-29)
-  - Fetched updated designs from Figma (node-id: 113-355 desktop, 179-751 mobile)
-  - New field positioned between Name and Email fields
-  - Label: "Messenger contact"
-  - Placeholder: "Telegram/WhatsApp/other"
-  - Required field with validation
-  - **Form Field Order:** Name → Messenger contact → Email → Team size → Biggest challenge
-  - Added to form state, validation, error handling, and reset logic
-- ✅ Updated ContactForm spacing (2025-11-29)
-  - Wrapped form fields in `.formFieldsWrapper` container
-  - Desktop spacing: Form card 18px gap (was 29px), fields wrapper 12px gap
-  - Mobile spacing: Form card 12px gap (was 24px), fields wrapper 8px gap
-  - Matches Figma design specifications exactly
-  - Files modified: ContactForm.jsx, ContactForm.module.css
-- **Next:** Final testing and deployment
-
-**Session 2025-11-29 AM (Success Modal & Polish):**
-- ✅ Built SuccessModal component (2025-11-29)
-  - Fetched design from Figma (node-id: 194-67)
-  - Created SuccessModal component with CSS Modules
-  - **Modal Features:**
-    - Semi-transparent backdrop with blur effect (rgba(0,0,0,0.5), 4px blur)
-    - White modal card with 8px border radius and shadow
-    - Green checkmark circle icon (48px)
-    - Personalized heading: "You're all set, {UserName}!" (28px Medium, dark)
-    - Description text with bold "within 24 hours" (16px Regular, dark-2)
-    - Red CTA button: "Cool, see you soon" (full width, accent red)
-    - Close X icon in top right corner (24px, dark-2)
-  - **Functionality:**
-    - Shows after successful form submission with user's name from form
-    - Closes on: backdrop click, close button click, Escape key press
-    - Prevents body scroll when modal is open
-    - Auto-resets form when modal closes
-  - **Responsive:**
-    - Desktop: 668px max-width, 80px horizontal padding, 32px/56px vertical padding
-    - Mobile: Full width with 18px padding, reduced font sizes (24px heading, 14px text)
-  - **Accessibility:**
-    - Proper ARIA attributes (role="dialog", aria-modal="true", aria-labelledby)
-    - Keyboard navigation support (Escape to close)
-    - Focus management
-  - **Assets created:**
-    - checkmark-circle.svg (green success icon)
-    - close-icon.svg (X close button)
-  - Files created: SuccessModal.jsx, SuccessModal.module.css
-  - Files modified: ContactForm.jsx (integrated modal, removed alert)
-- ✅ FAQ section updates (2025-11-29)
-  - Updated chevron-down.svg icon (user-provided design)
-  - Reduced chevron size from 40px to 32px (8px smaller)
-  - Removed "What founders ask us" heading
-  - Cleaned up spacing (removed gap from container)
-  - Files modified: FAQ.jsx, FAQ.module.css, chevron-down.svg
-- ✅ Privacy Policy contact updates (2025-11-29)
-  - Updated contact email: go@human-vector.work
-  - Updated website domain: human-vector.work
-  - Files modified: PrivacyPolicy.jsx
-- **Next:** Final testing and deployment
-
-**Session 2025-11-28 (Polish & Navigation):**
-- ✅ Spacing adjustments (2025-11-28)
-  - Added 32px to ChooseScale section bottom padding (desktop only): 80px → 112px
-  - Added 40px to IntegrationSteps section top padding (desktop only): 56px → 96px
-  - Better visual rhythm and breathing room between sections
-- ✅ CTA buttons scroll to contact form (2025-11-28)
-  - Updated all CTA buttons to scroll to ContactForm section instead of external links
-  - Hero button: "See how It works" → scrolls to #contact-form
-  - Navigation button: "See how It works" → scrolls to #contact-form
-  - ProvenSolution button: Changed from Calendly link to scroll function
-  - IntegrationSteps button: "Start with a Demo" → scrolls to #contact-form
-  - All buttons use smooth scrollIntoView({ behavior: 'smooth', block: 'start' })
-- ✅ Navigation menu smooth scrolling (2025-11-28)
-  - Added section IDs: #problem (ProblemBlock), #solution (ProvenSolution), #how-it-works (AlignVectors), #faq (FAQ)
-  - Added scroll-behavior: smooth to html element in global.css
-  - All navigation menu items now smoothly scroll to their target sections
-  - "The Problem" → "At 40+ people, your old systems stop keeping up"
-  - "The Solution" → "Proven solution" section
-  - "How It Works" → "Align the vectors" section
-  - "FAQ" → FAQ section
-- **Files modified:**
-  - ChooseScale.module.css, IntegrationSteps.module.css (spacing)
-  - Hero.jsx, Navigation.jsx, ProvenSolution.jsx, IntegrationSteps.jsx (scroll functions)
-  - ContactForm.jsx, ProblemBlock.jsx, ProvenSolution.jsx, AlignVectors.jsx, FAQ.jsx (section IDs)
-  - global.css (smooth scroll behavior)
-- **Next:** Final testing and deployment
-
-**Session 2025-11-28 (Privacy Policy & Routing):**
-- ✅ Added FAQ close functionality (2025-11-28)
-  - Fixed toggleFAQ function to allow closing any FAQ item (including first one)
-  - Changed logic from `setOpenIndex(openIndex === index ? index : index)` to `setOpenIndex(openIndex === index ? null : index)`
-  - Now all FAQ items can be expanded/collapsed, including the first one that opens by default
-- ✅ Installed and configured React Router DOM (2025-11-28)
-  - Installed react-router-dom package (v6)
-  - Updated main.jsx to wrap App with BrowserRouter
-  - Refactored App.jsx to use Routes and Route components
-  - Created LandingPage component with all existing sections
-  - Created ScrollToTop utility component for automatic scroll on route changes
-- ✅ Built Privacy Policy page (2025-11-28)
-  - Created comprehensive Privacy Policy page with standard legal content
-  - **Sections included:** Introduction, Information Collection, Usage, Sharing, Security, Retention, User Rights, Cookies, Third-Party Links, Children's Privacy, Policy Changes, Contact
-  - **Layout:**
-    - "Back to Home" link at top
-    - Main title: 48px desktop / 32px mobile, SemiBold
-    - Section headings: 28px desktop / 24px mobile, SemiBold
-    - Body text: 16px Regular, dark-2 color
-    - Bulleted lists with proper spacing
-    - All links styled in link-color with hover to accent red
-  - **Styling:**
-    - Max-width: 900px, centered
-    - Section gaps: 32px
-    - Responsive padding: 48px desktop / 32px mobile
-  - Files created: PrivacyPolicy.jsx, PrivacyPolicy.module.css
-- ✅ Updated Footer component (2025-11-28)
-  - Converted Privacy Policy text to Link component
-  - Added React Router Link with route to /privacy-policy
-  - Styled link to match existing text with hover effect (accent red)
-  - No underline by default, smooth color transition on hover
-- **Routing structure:**
-  - `/` - Landing page with all sections
-  - `/privacy-policy` - Privacy Policy page
-- **Next:** Final testing and deployment
-
-**Session 2025-11-28 (FAQ and Footer):**
-- ✅ Built FAQ section with expandable/collapsible functionality (2025-11-28)
-  - Fetched designs from Figma (node-id: 186-925 desktop, 186-962 mobile)
-  - Created FAQ component with React state management
-  - **Expandable/Collapsible Behavior:**
-    - First question (index 0) always open by default
-    - Click to expand/collapse any FAQ item
-    - Chevron icon rotates 180deg when open
-    - Smooth CSS transitions for chevron rotation (0.3s ease)
-  - **5 FAQ Items:**
-    - "Will this slow us down?" - Answer about speed and time savings
-    - "Does this work for remote/hybrid teams?" - Planfix integration
-    - "What if my team resists?" - Same answer as #2 (user provided)
-    - "Do you help with setup?" - Full onboarding support
-    - "What's the investment?" - Pricing discussion and ROI
-  - **Desktop Layout:**
-    - Heading: "What founders ask us" - 48px Medium, centered, 835px max
-    - FAQ container: 900px max width, centered
-    - FAQ items: Light-bg background, 6px border radius
-    - Open item: 24px horizontal padding, 12px top/bottom
-    - Closed items: 24px horizontal padding, 18px all around
-    - Questions: 28px SemiBold, dark color
-    - Answers: 16px Regular, dark-2 color, 16px top margin
-    - Chevron: 40px size, 6px gap from question
-  - **Mobile Layout:**
-    - Heading: 28px, left-aligned
-    - Questions: 20px
-    - FAQ items: full width
-    - Open item: 8px top, 12px horizontal/bottom
-    - Closed items: 12px all around
-  - **Spacing:**
-    - Section padding: 48px top, 120px bottom (desktop) / 32px top, 80px bottom (mobile)
-    - 24px gap between heading and FAQ container
-    - 16px gap between FAQ items
-  - Files created: FAQ.jsx, FAQ.module.css, chevron-down.svg, dot.svg
-- ✅ Built Footer section (2025-11-28)
-  - Created Footer component with responsive layout
-  - **Content:**
-    - Copyright: "© 2025 Human Vector"
-    - Company info: "Built on Oleg Kondrashov's book and 15+ years scaling EnCata"
-    - Privacy Policy text
-  - **Desktop Layout:**
-    - Horizontal layout with flex
-    - Items separated by 8px dot SVG (dark-2 color)
-    - 32px gap between items
-    - Copyright: 203px fixed width
-    - Other text: nowrap
-  - **Mobile Layout:**
-    - Vertical centered layout
-    - 8px gap between all items
-    - Company info text wraps and centers
-  - **Styling:**
-    - All text: 16px Regular, dark-2 color, line-height 1.5
-    - Footer padding: 0 horizontal, 48px bottom (desktop) / 64px bottom (mobile)
-  - Files created: Footer.jsx, Footer.module.css
-- ✅ Integrated both components into App.jsx
-- **Next:** Final testing and deployment
-
-**Session 2025-11-28 (ContactForm):**
-- ✅ Built ContactForm section with interactive video (2025-11-28)
-  - Fetched designs from Figma (node-id: 113-355 desktop, 179-751 mobile)
-  - Created ContactForm component with CSS Modules
-  - **Form validation:** Full client-side validation with error messages
-    - Name (text, required), Email (email, required + format validation), Team size (dropdown, required with preselected "20-40"), Biggest challenge (textarea, optional)
-    - Validation triggers: onBlur for individual fields, onSubmit for all fields
-    - Error messages in accent red, visual feedback with red border on invalid fields
-    - Focus state: 2px blue border (link color) instead of red
-  - **Layout & Styling:**
-    - Desktop: Two-column (heading left, form right 538px), 64px gap between content
-    - Mobile/Tablet: Vertical stack, full-width form
-    - Form: White card, dark-2 border, 6px radius, 16px padding
-    - Heading: 48px desktop / 28px mobile, Medium (500)
-    - CTA: "Book my demo" with George Kachanouski LinkedIn link and avatar (inline layout matching ProvenSolution)
-    - George's avatar positioned inline with name (24px, flex row with 8px gap)
-  - **Interactive Video Background:**
-    - User added person-waving.mp4 video to /public/images/contact-form/
-    - Desktop (non-touch devices): Shows last frame initially, plays on hover (loops while hovering), pauses on mouse leave
-    - Mobile/Tablet (touch devices): Autoplays and loops, tap to pause/play from current frame
-    - Touch detection using 'ontouchstart' in window and navigator.maxTouchPoints (more reliable than screen width)
-    - Video positioned at bottom with no padding after, 48px gap before content
-    - Responsive: Desktop (absolute positioned), Tablet/Mobile (static, full-width, aspect-ratio 1896/1892)
-    - z-index: 3 for clickability, pointer-events: auto, cursor: pointer
-  - **Icons & Assets:**
-    - Created chevron-down.svg for dropdown (removed resize-icon.svg from textarea)
-    - Reused George's avatar from proven-solution folder
-  - **Layout Spacing:**
-    - Section padding: 48px top, 0 bottom (video at edge)
-    - Content margin-bottom: 48px (gap before video)
-    - Desktop padding: 40px horizontal / Mobile: 18px horizontal
-  - Form ready for Supabase integration
-  - Files created: ContactForm.jsx, ContactForm.module.css, chevron-down.svg
-  - Integrated into App.jsx after ChooseScale section
-- **Next:** Build Footer section
-
-**Session 2025-11-28 (ChooseScale Responsive Fixes):**
-- ✅ Fixed ChooseScale section responsive behavior across all viewports (2025-11-28)
-  - **Problem:** Table content was overflowing dark container, breaking layout on tablet and small desktop
-  - **Solution:** Implemented clean horizontal scroll structure for all responsive breakpoints
-  - **Mobile (<768px):** Clean scroll with 1050px table wrapper, 18px padding, proper background box positioning
-  - **Tablet (768px-1024px):** Same structure as mobile with 32px padding, smooth horizontal scroll
-  - **Small Desktop (1025px-1320px):** Horizontal scroll enabled, 1280px wrapper, desktop gaps maintained
-  - **Desktop (1321px+):** Normal layout, no scroll needed
-  - Container structure: Removed padding from container, added to heading and scroll container separately
-  - Background boxes: Properly positioned within wrapper bounds for all breakpoints
-  - Divider lines: Set to 100% width, stay within white card boundaries
-  - All content now scrolls inside the dark container instead of overflowing
-  - Files modified: ChooseScale.module.css
-- **Next:** Build Contact Form and Footer sections
-
-**Session 2025-11-28 (Design Updates):**
-- ✅ Added decorative red arrow to ProblemBlock section (2025-11-28)
-  - Curved arrow pointing down from "But your old approach no longer scales" heading
-  - Desktop only (hidden on tablet and mobile)
-  - Positioned at right side of conclusion text (top: 605px)
-  - Created RedArrowDown.svg (78×168px, updated by user)
-  - Files modified: ProblemBlock.jsx, ProblemBlock.module.css
-- ✅ Added white triangle to ProvenSolution section (2025-11-28)
-  - Triangle decoration at top center of section
-  - Points downward from previous section
-  - Desktop: 162×56px at top: -2px / Mobile: 88×32px at top: -3px
-  - Created WhiteTriangle.svg
-  - Files modified: ProvenSolution.jsx, ProvenSolution.module.css
-- ✅ Fixed ProblemBlock conclusion text width (2025-11-28)
-  - Added max-width: 515px to "But your old approach" heading
-  - Files modified: ProblemBlock.module.css
-- ✅ Updated IntegrationSteps section design (2025-11-28)
-  - Numbers styled with outlined/stroked effect (1px stroke, transparent fill, bold weight)
-  - Numbers wrapped in container with bottom alignment (padding-bottom: 6px)
-  - Changed font-size: 48px, font-weight: 700 (Bold)
-  - Cards have equal width with flex: 1 1 0 and min-width: 0
-  - Desktop: align-items: center, numbers in bottom-aligned container
-  - Tablet/Mobile: align-items: flex-end for bottom alignment
-  - Text wraps naturally on all screen sizes for responsive behavior
-  - Description text updated: "Find who moves..." (removed "out")
-  - Files modified: IntegrationSteps.jsx, IntegrationSteps.module.css
-- ✅ Rebuilt ChooseScale section from scratch (2025-11-28)
-  - Fetched final designs from Figma (node-id: 165-632 desktop, 165-677 mobile)
-  - Completely rewrote component and styles based on exact Figma specifications
-  - Dark-2 background (#48555b) for table container
-  - Red overlay box (rgba(237,39,55,0.8)) behind "Doing Nothing" column (639px left desktop, 512px mobile)
-  - White background box behind "Human Vector" column (940px left desktop, 764px mobile)
-  - Text colors: white/light-bg on dark background, dark/dark-2 on white background
-  - Desktop gaps: 156px (challenge to columns), 96px (between columns), 18px (between rows)
-  - Mobile gaps: 56px (uniform), 728px fixed width for horizontal scroll
-  - Column widths: Challenge 213px, Generic HR Tools 190px, Doing Nothing 176px, Human Vector 236px
-  - Typography: SemiBold 16px headers, Regular 16px content, line-height 1.5
-  - Divider width: 1192px desktop, 100% mobile
-  - Row spacing: Added 12px bottom padding to comparison rows
-  - Background boxes: Fixed to stay within table bounds (top: 32px, max-height: calc(100% - 64px))
-  - Files rebuilt: ChooseScale.jsx, ChooseScale.module.css
-- **Next:** Build Contact Form and Footer sections
-
-**Session 2025-11-27 (ChooseScale):**
-- ✅ Built ChooseScale section (2025-11-27)
-  - Fetched designs from Figma (node-id: 113-310 desktop, 163-459 mobile)
-  - Created ChooseScale component with CSS Modules
-  - "Choose how you want to scale" heading
-  - Comparison table with 4 columns: Challenge, Generic HR Tools, Doing Nothing, Human Vector
-  - 5 comparison rows: Culture at scale, Performance tracking, Employee feedback loop, Team composition insight, Remote accountability
-  - Background styling: Light-bg box (#f8f6f2) behind Generic HR Tools and Doing Nothing columns, white box behind Human Vector column
-  - "Doing Nothing" column highlighted in accent red (#ed1d2d)
-  - Desktop: 48px heading (Medium 500), 156px gap between challenge and columns, 96px gap between columns
-  - Mobile: 28px heading, 64px and 40px gaps, horizontal scroll support
-  - Typography: Poppins SemiBold 16px for headers, Regular 16px for content
-  - Divider lines between rows using SVG
-  - Files created: ChooseScale.jsx, ChooseScale.module.css, divider-line.svg
-  - Integrated into App.jsx after IntegrationSteps section
-- **Next:** Build Contact Form and Footer sections
-
-**Session 2025-11-27 (IntegrationSteps):**
-- ✅ Built IntegrationSteps section (2025-11-27)
-  - Fetched designs from Figma (node-id: 113-288 desktop, 160-304 mobile)
-  - Created IntegrationSteps component with CSS Modules
-  - "How we integrate this system into your business" heading
-  - 4 step cards showing integration process: Request Demo, Pilot Program, Week 1 Visibility, Month 3 Results
-  - Desktop: 2x2 grid layout with 24px gaps, 48px heading
-  - Mobile: Vertical stack with 16px gaps, 28px heading
-  - Step cards: Light background (#f8f6f2), 120px height, 6px border radius
-  - Each card: Title (28px/20px SemiBold), description (16px Regular), number (56px Medium, accent red)
-  - Card layout: Text content on left (flex-grow), number on right
-  - Desktop padding: 16px top, 18px bottom, 24px horizontal
-  - Mobile padding: 16px horizontal, 16px top, 18px bottom
-  - CTA button: "Start with a Demo" (non-functional button, no link)
-  - Fully responsive with tablet optimization (32px horizontal padding)
-  - Files created: IntegrationSteps.jsx, IntegrationSteps.module.css
-  - Integrated into App.jsx
-- ✅ Changed hero video format from webm to mp4
-  - Updated Hero.jsx to use hero-video.mp4 instead of hero-video.webm
-  - Bumped cache-busting parameter from v=2 to v=3
-- ✅ Updated to hero-video2.mp4
-  - Changed to hero-video2.mp4 (14.4MB, higher quality)
-  - Bumped cache-busting parameter to v=4
-  - File location: /public/videos/hero-video2.mp4
-  - Removed old video files (hero-video.mp4, hero-video.webm) to reduce repository size
-- ✅ Added edge blur/fade effect to hero video
-  - Applied radial gradient mask to create soft edge fade
-  - Vignette effect: 85% ellipse, solid center (60%), fade to transparent (100%)
-  - Cross-browser compatible with -webkit-mask-image and mask-image
-- ✅ Made book StatsCard clickable with Amazon link
-  - Added optional `href`, `linkIndividual`, and `linkPrefix` props to StatsCard component
-  - Book card now links to https://www.amazon.ca/Human-Vector-Pivot-Profitability/dp/1642251534
-  - Opens in new tab with proper security (target="_blank" rel="noopener noreferrer")
-  - Individual links: Only book cover image and text are clickable (not whole card)
-  - Book cover: Cursor pointer on hover (overrides zoom-in with !important)
-  - Text styling matches Figma design:
-    - "Based on" - normal dark color (#1a2b32), no underline
-    - "«The Human Vector» by Oleg Kondrashov" - link color (#02669f) with underline, medium weight (500)
-  - No hover effect on card itself
-- ✅ Added LinkedIn link to George Kachanouski's name
-  - CTA text now links "George Kachanouski" to https://www.linkedin.com/in/georgekachanouski/
-  - Opens in new tab with security attributes (target="_blank" rel="noopener noreferrer")
-  - Styling: Medium weight, underlined, link color (#02669f), hover changes to accent red (#ed1d2d)
-  - Files modified: Hero.jsx, Hero.module.css
-- ✅ Improved TwoQuotes section layout
-  - Replaced CEO photos with company logos (Google G, Alibaba 'a')
-  - Desktop: Logo on left (72px), quote + attribution on right
-  - Mobile: Logos (72px) without background + attribution in top row, quote below
-  - Removed small icons from attribution text (logo is now the main visual)
-  - Desktop: Increased vertical padding from 56px to 72px (+16px)
-  - Desktop: Added 8px top padding to Google logo for better alignment
-  - Cleaner, more professional appearance matching updated Figma design
-  - Files modified: TwoQuotes.jsx, TwoQuotes.module.css
-- ✅ Global tablet spacing improvements
-  - Increased horizontal padding from 24px to 32px (+8px) on all sections for tablet (768px-1024px)
-  - Applied to: Hero, Quote, AlignVectors, TwoQuotes, ProblemBlock
-  - Better breathing room on tablet devices
-  - Files modified: Hero.module.css, Quote.module.css, AlignVectors.module.css, TwoQuotes.module.css, ProblemBlock.module.css
-- ✅ Enhanced link hover effects and section spacing
-  - Book link ("The Human Vector" by Oleg Kondrashov) now changes from blue to red on hover, matching George Kachanouski link
-  - Increased spacing between AlignVectors and TwoQuotes sections by 32px (88px bottom padding on AlignVectors)
-  - Increased spacing between TwoQuotes and ProblemBlock sections by 32px (32px bottom margin on TwoQuotes)
-  - Dark background of TwoQuotes section maintains original size with 72px padding
-  - Better visual separation between major content sections
-  - Files modified: StatsCard.module.css, AlignVectors.module.css, TwoQuotes.module.css
-- ✅ Updated ProblemBlock section with new design (2025-11-27)
-  - Changed all three heading texts to match new Figma design
-  - Reduced heading font sizes: 48px/56px → 28px desktop, 28px → 20px mobile
-  - Updated font weight to SemiBold (600) for all headings
-  - First heading: "At 40+ people, your old systems stop keeping up" (gray/red/gray)
-  - Second heading: "You've already done everything you could" (gray/red)
-  - Third heading: "But your old approach no longer scales as the team grows" (red/gray)
-  - Simplified CSS by removing separate .headingRed class
-  - Files modified: ProblemBlock.jsx, ProblemBlock.module.css
-- ✅ Built ProvenSolution section (2025-11-27)
-  - Fetched designs from Figma (node-id: 113-279 desktop, 158-266 mobile)
-  - Created ProvenSolution component with CSS Modules
-  - Light background section showcasing Human Vector dashboard
-  - Heading: "Human Vector is a proven solution for scaling your business while improving profitability"
-  - Mixed colors in heading: dark-2 (#48555b) and dark (#1a2b32)
-  - Desktop: 56px heading, 1200px max-width, 56px gap between elements
-  - Mobile: 28px heading, full width, 24px gap
-  - Large dashboard screenshot with rounded corners (8px)
-  - CTA button: "See how It works" linking to Calendly (https://calendly.com/georgekachanouski/30min)
-  - Co-founder info with George Kachanouski LinkedIn link and avatar
-  - Desktop: 40px×20px button padding, 16px font / Mobile: full width button, 14px font
-  - Downloaded dashboard screenshot and avatar images
-  - Files created: ProvenSolution.jsx, ProvenSolution.module.css
-  - Integrated into App.jsx
-- ✅ Increased spacing between ProblemBlock and ProvenSolution sections
-  - Desktop: Increased bottom padding by 48px (56px → 104px)
-  - Mobile: Increased bottom padding by 24px (32px → 56px)
-  - Better visual separation between sections
-  - File modified: ProblemBlock.module.css
-- ✅ Fixed ProvenSolution co-founder info layout
-  - Restructured HTML: separated text into two lines
-  - Line 1: "30-minute call with co-founder"
-  - Line 2: Avatar + "George Kachanouski" link (flex row with 8px gap)
-  - Changed avatar from absolute to relative positioning
-  - Removed padding-left workaround, using proper flex layout
-  - Files modified: ProvenSolution.jsx, ProvenSolution.module.css
-- **Next:** Build Contact Form and Footer sections
-
-**Session 2025-11-26 PM (ProblemBlock):**
-- ✅ Built ProblemBlock section (node-id: 113-256 desktop, 134-983 mobile)
-  - Fetched designs from Figma for desktop and mobile versions
-  - Created ProblemBlock component with CSS Modules
-  - Three subsections: "At 40+ employees, everything breaks", "You've tried", "None of it scales"
-  - 6 problem/solution cards total (3 cards per subsection)
-  - Desktop layout: 3 cards horizontal per row with 24px gap, 136px height
-  - Mobile layout: Stacked vertical cards with 8px gap, 104px enforced height
-  - Headings: 48px/56px desktop → 28px mobile
-  - Card styling: light-bg background, 6px border radius
-  - Decorative SVG brackets: User-exported from Figma (GreyArrowDesktop/Mobile, RedArrowDesktop/Mobile)
-  - Bracket positioning: Desktop (left: 2px, gray top: 24px, red top: 360px), Mobile (left: 12px, gray top: 28px, red top: 476px)
-  - Brackets hidden on tablet (768px-1024px)
-  - Fixed bracket positioning: Moved inside content container to work with centered layout
-  - Desktop gap between brackets and content: 29px
-  - Mobile content padding: 80px left, "everything breaks" wraps to new line
-  - Integrated into App.jsx
-- **Next:** Build Contact Form and Footer sections
-
-**Session 2025-11-26 PM (Bug Fix):**
-- ✅ Fixed horizontal scroll issue in AlignVectors section
-  - Root cause: Fixed flex widths (412px + 709px + 32px gap = 1153px) exceeded viewport width at 1024px-1200px range
-  - Solution: Changed `flex: 0 0 XXXpx` to `flex: 0 1 XXXpx` on `.featureText` and `.featureImage`
-  - Allows proportional shrinking on smaller viewports while maintaining design on larger screens
-  - Files modified: `src/components/AlignVectors/AlignVectors.module.css` (lines 53, 111)
-- **Next:** Build Contact Form and Footer sections
-
-**Session 2025-11-26 PM (TwoQuotes):**
-- ✅ Built TwoQuotes section (node-id: 113-218 desktop, 131-858 mobile)
-  - Fetched designs from Figma for desktop and mobile versions
-  - Downloaded 2 CEO photos (Sundar Pichai, Jack Ma)
-  - Extracted company SVG logos (Google, Alibaba) to separate files in /public/images/quotes/
-  - Created TwoQuotes component with CSS Modules
-  - Dark background section with 2 CEO quotes (Sundar Pichai, Jack Ma)
-  - Desktop layout: Photo (144x144px) left, quote + attribution right
-  - Mobile layout: Photo (96x96px) + attribution in top row, quote text below
-  - Quote text: Poppins Italic 32px desktop / 24px mobile, line-height 1.5/1.4
-  - Attribution: Poppins SemiBold 16px with company icons
-  - Jack Ma quote: Shorter width (605px max) vs Sundar's (797px default)
-  - Responsive padding: 56px vertical desktop / 32px mobile
-  - 48px gap between two quote blocks
-  - Integrated into App.jsx
-- **Next:** Build Contact Form and Footer sections
-
-**Session 2025-11-26 PM (AlignVectors):**
-- ✅ Built AlignVectors section (node-id: 113-191 desktop, 126-803 mobile)
-  - Fetched designs from Figma for desktop and mobile versions
-  - Downloaded 4 feature images (employee tracking, work schedule, payroll, suggestions)
-  - Created AlignVectors component with CSS Modules
-  - Implemented responsive design with correct layouts
-  - Desktop: Feature 1 & 3 (text left, image right), Feature 2 & 4 (image left, text right)
-  - Mobile: Vertical stack with image-first layout, 40px section padding, 32px gap
-  - Main heading: 48px desktop / 28px mobile, two-tone color (dark + gray)
-  - Feature headings: 28px desktop / 20px mobile
-  - Quote callout box: light-bg background, 40px padding desktop / 16px mobile
-  - Quote text: Poppins SemiBold 32px, line-height 1.5 (corrected from Inter)
-  - Mixed font weights in bullet points for emphasis (regular, medium, semibold)
-  - Fixed bullet list markers: Changed from none to disc outside
-  - Enhanced image quality with CSS optimization properties
-  - Re-extracted feature-2 image from Figma for better quality
-  - Integrated into App.jsx
-- ✅ Tablet spacing optimization
-  - Reduced spacing between Hero video and Quote section by 56px on tablet (768px-1024px)
-  - Hero bottom padding: 104px desktop → 48px tablet → 40px mobile
-- **Next:** Build Contact Form and Footer sections
-
-**Session 2025-11-26 PM (Quote section):**
-- ✅ Built Quote section (node-id: 113-172 desktop, 121-617 mobile)
-  - Fetched designs from Figma
-  - Downloaded author image (Elon Musk)
-  - Extracted actual SVG icons from Figma (quote-icon, verified-badge, external-link)
-  - Built Quote component with CSS Modules
-  - Implemented responsive design with Hero-matching padding structure
-  - Outer section: 56px vertical padding desktop, 40px mobile
-  - Container: 24px horizontal padding desktop, 18px mobile
-  - Quote box: 40px vertical, 64px horizontal padding desktop
-  - Quote icon visible on desktop only
-  - Font sizes: 32px desktop / 24px mobile for quote text
-  - Author image: 80px desktop / 64px mobile
-  - Post link text aligned to bottom of icon
-  - Integrated into App.jsx
-- ✅ Book cover image optimization
-  - Replaced high-res source image with properly-sized Figma export (76×114px desktop, 52×78px mobile)
-  - Added 1.5x zoom hover effect with zoom-in cursor
-  - Improved image quality at display size
-- ✅ Fixed horizontal scroll on desktop (1024px+)
-  - Added overflow: hidden to Hero section
-  - Resolved issue with absolutely positioned video extending beyond container
-- **Next:** Build Features, Form, and Footer sections
-
-**Session 2025-11-26 PM (Earlier):**
-- ✅ Replaced hero-main.png with hero-video.webm (autoplay, loop, muted)
-- ✅ Downloaded and integrated ENCATA logo from Figma (node-id: 118:596)
-- ✅ Fixed mobile menu to full-screen overlay with animations
-  - Hamburger transforms to X icon
-  - Dark backdrop with blur effect
-  - Smooth fade-in transition
-- ✅ Improved StatsCard layout and styling
-  - Better spacing, shadows, border radius
-  - Enhanced image quality rendering
-  - Stacked text hierarchy
-- ✅ Mobile-specific improvements (node-id: 116:61)
-  - Cards vertical layout (image top, text below)
-  - Cards and video fill full container width
-  - Equal height cards using CSS Grid (165px fixed height)
-  - Proper spacing (6px gap) matching design
-- ✅ Tablet navigation optimization
-  - Reduced header link gap to 32px for better spacing
-- **Next:** Build Quote, Features, Form, and Footer sections
-
-**Session 2025-11-30 (Major UI Updates & Restructuring):**
-- ✅ **Updated Elon Musk Quote Attribution** (2025-11-30)
-  - Changed text from "(quote based on...)" to "(quote of Elon Musk based on...)"
-  - File modified: Quote/Quote.jsx
-- ✅ **Updated Hero Video** (2025-11-30)
-  - Changed from hero-video2.mp4 to hero-video.mp4
-  - Added 8px border radius to video
-  - Repositioned video: moved right +24px and bottom +24px
-  - Files modified: Hero/Hero.jsx, Hero/Hero.module.css
-- ✅ **Created Article Section with Aleh Kandrashou Quote** (2025-11-30)
-  - Converted quote callout to standalone article section based on Figma design (node-id: 210-893)
-  - Later moved inside AlignVectors section after first feature
-  - Quote text: "It's easier to make specialist from right human than right human from specialist!"
-  - Author: Aleh Kandrashou with verified badge
-  - Desktop: 64px padding, 40px gap, 56px quote icon
-  - Mobile: 16px padding, smaller icon and text
-  - Files created: Article component (later integrated into AlignVectors)
-  - Files modified: AlignVectors/AlignVectors.jsx, AlignVectors/AlignVectors.module.css
-- ✅ **Increased TwoQuotes Logo Sizes** (2025-11-30)
-  - Initial increase: Desktop 72px → 132px, Mobile 72px → 96px
-  - Final adjustment: Desktop 132px → 106px (20% reduction), Mobile 96px
-  - Increased gap between logos and text: 32px → 48px
-  - File modified: TwoQuotes/TwoQuotes.module.css
-- ✅ **Removed ProblemBlock Section** (2025-11-30)
-  - Removed entire ProblemBlock component from landing page
-  - Removed "The Problem" navigation link
-  - Files modified: Navigation/Navigation.jsx, LandingPage.jsx
-- ✅ **Removed ProvenSolution Background** (2025-11-30)
-  - Changed background from light-bg to white
-  - File modified: ProvenSolution/ProvenSolution.module.css
-- ✅ **Updated CTA Text Throughout Site** (2025-11-30)
-  - Changed "30-minute call with co-founder" to "30-minute call with CEO and Co-founder"
-  - Files modified: Hero/Hero.jsx, ProvenSolution/ProvenSolution.jsx, ContactForm/ContactForm.jsx
-- ✅ **Hero CTA Text Formatting** (2025-11-30)
-  - Made "CEO and Co-founder" bolder (using ctaTextBold class)
-  - Added line break: "CEO and" on first line, "Co-founder" on second line
-  - Adjusted max-width: 260px → 276px (final value)
-  - File modified: Hero/Hero.jsx, Hero/Hero.module.css
-- **Next:** Final testing and deployment preparation
-
-**Session 2025-11-30 Continued (UI Polish & Updates):**
-- ✅ **IntegrationSteps Redesign** (2025-11-30)
-  - Removed CTA button from bottom of section
-  - Removed inline numbers (large outlined numbers) from cards
-  - Added step labels ("Step 1", "Step 2", etc.) above each card
-  - Labels: 28px Poppins SemiBold, accent red color (#ed1d2d)
-  - Updated Step 3 description: "Find out who moves..." (added "out")
-  - Desktop: 2x2 grid layout / Mobile: vertical stack
-  - Files modified: IntegrationSteps/IntegrationSteps.jsx, IntegrationSteps/IntegrationSteps.module.css
-- ✅ **FAQ Answer Update** (2025-11-30)
-  - Updated "What if my team resists?" answer
-  - New text: "Transparency builds trust, not resentment. Employees see exactly how their salary is calculated. No more black boxes."
-  - File modified: FAQ/FAQ.jsx
-- ✅ **Contact Form Image Replacement** (2025-11-30)
-  - Replaced video with static image "George pointing.png"
-  - Removed all video-related JavaScript (useRef, useEffect, event handlers)
-  - Updated positioning to match Figma design (left: 31px, width: 650px, height: 569px)
-  - Hidden on tablet and mobile (display: none in media queries)
-  - Files modified: ContactForm/ContactForm.jsx, ContactForm/ContactForm.module.css
-- ✅ **Hero Mobile Layout Update** (2025-11-30)
-  - Ensured video appears below stats cards on mobile
-  - Added explicit flex-direction: column to .content on mobile
-  - Order: textContainer → ctaContainer → statsContainer → imageContainer/video
-  - File modified: Hero/Hero.module.css
-- ✅ **TwoQuotes Mobile Logo Adjustment** (2025-11-30)
-  - Reduced logo size by 40% on mobile: 96px → 58px
-  - Applied to both .logoContainer and .logo classes
-  - File modified: TwoQuotes/TwoQuotes.module.css
-- ✅ **ChooseScale Table Font Weight & Colors** (2025-11-30)
-  - Made all table content fonts bolder (font-weight: 400 → 500)
-  - Updated text colors for better contrast:
-    - Challenge column: white (was light-bg)
-    - Generic HR Tools column: white (was light-bg)
-    - Doing Nothing column: white (was light-bg)
-    - Human Vector column: black/dark (was dark-2)
-  - Headers remain at 600 (SemiBold)
-  - File modified: ChooseScale/ChooseScale.module.css
-- **Next:** All updates complete, ready for deployment
-
-**Earlier session (2025-11-26 AM):**
-- ✅ Extracted design tokens from Figma (colors, spacing, typography)
-- ✅ Created CSS Variables system in `styles/variables.css`
-- ✅ Built reusable components: Button, StatsCard, Navigation, Hero
-- ✅ Implemented Hero section (desktop + mobile responsive)
-- ✅ CSS Modules for scoped styling
-- ✅ Dev server running at http://localhost:5173
+- ProblemBlock component exists but is removed from LandingPage
+- All CTA buttons scroll to #contact-form section
+- Navigation links use smooth scroll to section IDs
+- Video in Hero has edge blur/vignette effect
+- Contact form image (George pointing) hidden on mobile/tablet

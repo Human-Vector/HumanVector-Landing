@@ -1,4 +1,5 @@
 import styles from './AlignVectors.module.css';
+import ProgressiveImage from '../ProgressiveImage/ProgressiveImage';
 
 export default function AlignVectors() {
   return (
@@ -31,7 +32,7 @@ export default function AlignVectors() {
               </ul>
             </div>
             <div className={styles.featureImage}>
-              <img src="/images/align-vectors/feature-1.png" alt="Employee tracking dashboard" />
+              <ProgressiveImage src="/images/align-vectors/feature-1.webp" alt="Employee tracking dashboard" />
             </div>
           </div>
 
@@ -57,6 +58,7 @@ export default function AlignVectors() {
                   <img
                     src="/images/article/author.png"
                     alt="Oleg Kondrashov"
+                    loading="lazy"
                   />
                 </div>
 
@@ -91,7 +93,7 @@ export default function AlignVectors() {
           {/* Feature 2: Stop being the bottleneck */}
           <div className={styles.featureRow}>
             <div className={styles.featureImage}>
-              <img src="/images/align-vectors/feature-2.png" alt="Department work schedule settings" />
+              <ProgressiveImage src="/images/align-vectors/feature-2.webp" alt="Department work schedule settings" />
             </div>
             <div className={styles.featureText}>
               <h3 className={styles.featureHeading}>
@@ -130,14 +132,14 @@ export default function AlignVectors() {
               </ul>
             </div>
             <div className={styles.featureImage}>
-              <img src="/images/align-vectors/feature-3.png" alt="Payroll tracking interface" />
+              <ProgressiveImage src="/images/align-vectors/feature-3.webp" alt="Payroll tracking interface" />
             </div>
           </div>
 
           {/* Feature 4: Build a culture that scales */}
           <div className={styles.featureRow}>
             <div className={styles.featureImage}>
-              <img src="/images/align-vectors/feature-4.png" alt="Employee suggestions dashboard" />
+              <ProgressiveImage src="/images/align-vectors/feature-4.webp" alt="Employee suggestions dashboard" />
             </div>
             <div className={styles.featureText}>
               <h3 className={styles.featureHeading}>

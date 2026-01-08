@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './ContactForm.module.css';
 import SuccessModal from '../SuccessModal/SuccessModal';
+import ProgressiveImage from '../ProgressiveImage/ProgressiveImage';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -293,7 +294,7 @@ export default function ContactForm() {
                 </p>
                 <div className={styles.ctaFounderRow}>
                   <img
-                    src="/images/proven-solution/george-avatar.png"
+                    src="/images/proven-solution/george-avatar.webp"
                     alt="George Kachanouski"
                     className={styles.avatar}
                   />
@@ -313,8 +314,8 @@ export default function ContactForm() {
 
         {/* Decorative Image */}
         <div className={styles.decorativeImage}>
-          <img
-            src="/images/contact-form/George pointing.png"
+          <ProgressiveImage
+            src="/images/contact-form/george-pointing.webp"
             alt="George pointing"
             className={styles.decorativeImg}
           />

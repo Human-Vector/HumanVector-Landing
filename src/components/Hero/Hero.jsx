@@ -42,7 +42,7 @@ const Hero = () => {
             <div className={styles.ctaInfo}>
               <div className={styles.ctaAvatar}>
                 <img
-                  src="/images/hero/cta-avatar.png"
+                  src="/images/hero/cta-avatar.webp"
                   alt="George Kachanouski"
                 />
               </div>
